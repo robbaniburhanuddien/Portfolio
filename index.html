@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio profesional Burhanuddien Robbani, S.P. — spesialis rehabilitasi mangrove, GIS, UAV Pilot, dan community engagement bersama BRGM dan Kementerian Kehutanan RI." />
+  <meta name="keywords" content="Burhanuddien Robbani, mangrove, rehabilitasi, GIS, UAV pilot, BRGM, kementerian kehutanan, community engagement, lingkungan, konservasi, sarjana pertanian" />
+  <meta property="og:title" content="Burhanuddien Robbani, S.P. | Mangrove Specialist" />
+  <meta property="og:description" content="3 tahun mendedikasikan diri untuk ekosistem mangrove Indonesia — rehabilitasi, pemetaan GIS, UAV, dan pemberdayaan masyarakat bersama BRGM & Kemenhut RI." />
+  <meta property="og:type" content="website" />
+  <title>Burhanuddien Robbani, S.P. | Mangrove Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================
+       LOADING SCREEN
+  ============================= -->
+  <div id="loader" class="loader">
+    <div class="loader-content">
+      <div class="loader-leaf">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 10 C20 10, 5 40, 5 60 C5 80, 20 95, 50 95 C80 95, 95 80, 95 60 C95 40, 80 10, 50 10Z" fill="url(#leafGrad)" />
+          <line x1="50" y1="95" x2="50" y2="50" stroke="#B7E4C7" stroke-width="2"/>
+          <line x1="50" y1="70" x2="30" y2="55" stroke="#B7E4C7" stroke-width="1.5"/>
+          <line x1="50" y1="60" x2="70" y2="48" stroke="#B7E4C7" stroke-width="1.5"/>
+          <defs>
+            <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1B4332"/>
+              <stop offset="100%" stop-color="#40916C"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <p class="loader-text" data-id="id">Memuat Portofolio...</p>
+      <p class="loader-text en hidden" data-id="en">Loading Portfolio...</p>
+    </div>
+  </div>
+
+  <!-- ============================
+       NAVIGATION
+  ============================= -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-logo">
+      <span class="logo-icon">🌿</span>
+      <span class="logo-text">Burhan<span class="logo-accent">Robbani</span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" data-i18n="nav.about">Tentang</a></li>
+      <li><a href="#experience" data-i18n="nav.experience">Pengalaman</a></li>
+      <li><a href="#skills" data-i18n="nav.skills">Keahlian</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Proyek</a></li>
+      <li><a href="#gallery" data-i18n="nav.gallery">Galeri</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Kontak</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="langToggle" class="lang-btn" aria-label="Toggle Language">
+        <span class="lang-active">ID</span>
+        <span class="lang-divider">|</span>
+        <span class="lang-inactive">EN</span>
+      </button>
+      <button id="menuToggle" class="menu-btn" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================
+       HERO SECTION
+  ============================= -->
+  <section id="hero" class="hero">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span>
+        <span data-i18n="hero.badge">Tersedia untuk Kolaborasi</span>
+      </div>
+      <h1 class="hero-title reveal">
+        <span class="title-line" data-i18n="hero.title1">Spesialis</span>
+        <span class="title-line gradient-text" data-i18n="hero.title2">Mangrove</span>
+        <span class="title-line" data-i18n="hero.title3">Indonesia</span>
+      </h1>
+      <p class="hero-sub reveal" data-i18n="hero.subtitle">
+        Rehabilitasi · GIS & Remote Sensing · UAV Pilot · Community Engagement
+      </p>
+      <p class="hero-desc reveal" data-i18n="hero.desc">
+        3 tahun mendedikasikan diri untuk pemulihan ekosistem mangrove Indonesia bersama BRGM dan Kementerian Kehutanan RI
+      </p>
+      <div class="hero-ctas reveal">
+        <a href="#experience" class="btn btn-primary" data-i18n="hero.cta1">Lihat Pengalaman</a>
+        <a href="#contact" class="btn btn-outline" data-i18n="hero.cta2">Hubungi Saya</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat-item">
+          <span class="stat-num" data-target="3">0</span><span>+</span>
+          <span class="stat-label" data-i18n="hero.stat1">Tahun Pengalaman</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="15">0</span><span>+</span>
+          <span class="stat-label" data-i18n="hero.stat2">Proyek Selesai</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="8">0</span><span></span>
+          <span class="stat-label" data-i18n="hero.stat3">Wilayah Kerja</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+      <span data-i18n="hero.scroll">Scroll ke bawah</span>
+    </div>
+    <div class="hero-bg-orb orb1"></div>
+    <div class="hero-bg-orb orb2"></div>
+    <div class="hero-bg-orb orb3"></div>
+  </section>
+
+  <!-- ============================
+       ABOUT SECTION
+  ============================= -->
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="about.tag">Tentang Saya</span>
+        <h2 data-i18n="about.title">Siapa Saya?</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo-wrap reveal">
+          <div class="about-photo-frame">
+            <!-- GANTI: upload foto kamu ke folder images/ dan ubah src di sini -->
+            <img src="images/20230824_172149.jpg" alt="Burhanuddien Robbani, S.P." class="about-photo-img" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+          </div>
+          <div class="about-photo-badge">
+            <span>🛸 UAV Certified</span>
+          </div>
+        </div>
+        <div class="about-content reveal">
+          <h3 class="about-name">Burhanuddien Robbani, <span class="about-degree">S.P.</span></h3>
+          <p class="about-role" data-i18n="about.role">Mangrove Conservationist & Geospatial Specialist</p>
+          <p class="about-bio" data-i18n="about.bio">
+            Saya adalah seorang profesional lingkungan hidup yang berdedikasi dalam bidang rehabilitasi ekosistem mangrove, pemetaan geospasial, dan pemberdayaan masyarakat pesisir. Selama 3 tahun terakhir, saya berkontribusi aktif dalam program restorasi mangrove nasional di bawah naungan Badan Restorasi Gambut dan Mangrove (BRGM) dan Kementerian Kehutanan Republik Indonesia.
+          </p>
+          <p class="about-bio" data-i18n="about.bio2">
+            Dengan keahlian multidisiplin — mulai dari survei lapangan, pengoperasian drone UAV, analisis GIS, hingga koordinasi komunitas lokal — saya berkomitmen untuk menjembatani ilmu pengetahuan dengan aksi nyata di lapangan demi kelestarian ekosistem pesisir Indonesia.
+          </p>
+          <div class="about-info-grid">
+            <div class="info-item">
+              <span class="info-icon">🏛️</span>
+              <div>
+                <span class="info-label" data-i18n="about.org">Lembaga</span>
+                <span class="info-value">BRGM & Kemenhut RI</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">📍</span>
+              <div>
+                <span class="info-label" data-i18n="about.location">Lokasi</span>
+                <span class="info-value">Medan, Sumatera Utara</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">🎓</span>
+              <div>
+                <span class="info-label" data-i18n="about.edu">Pendidikan</span>
+                <span class="info-value" data-i18n="about.edu_val">S1 Pertanian (S.P.)</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">✉️</span>
+              <div>
+                <span class="info-label" data-i18n="about.email_label">Email</span>
+                <a data-db="email" class="info-value" href="mailto:burhanuddienrobbani@gmail.com">burhanuddienrobbani@gmail.com</a>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="btn btn-primary btn-sm" data-i18n="about.cv">Unduh CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       EXPERIENCE SECTION
+  ============================= -->
+  <section id="experience" class="section experience">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="exp.tag">Perjalanan Karir</span>
+        <h2 data-i18n="exp.title">Pengalaman Kerja</h2>
+        <p class="section-desc" data-i18n="exp.desc">3 tahun dedikasi di garis terdepan konservasi mangrove Indonesia</p>
+      </div>
+      <div class="timeline">
+
+        <!-- Timeline Item 1 -->
+        <div class="timeline-item reveal" data-aos="fade-up">
+          <div class="timeline-dot">
+            <span>1</span>
+          </div>
+          <div class="timeline-card glass-card">
+            <div class="tl-card-header">
+              <div class="tl-org-logo">
+                <span>🏛️</span>
+              </div>
+              <div class="tl-meta">
+                <span class="tl-period">2024 – Sekarang</span>
+                <span class="tl-type" data-i18n="exp.full">Full-time</span>
+              </div>
+            </div>
+            <h3 class="tl-position" data-i18n="exp1.pos">Field Coordinator – Mangrove Rehabilitation</h3>
+            <p class="tl-org">BRGM (Badan Restorasi Gambut dan Mangrove)</p>
+            <p class="tl-location">📍 <span data-i18n="exp1.loc">Pesisir Sumatera Utara & Riau</span></p>
+            <ul class="tl-duties">
+              <li data-i18n="exp1.d1">Koordinasi kegiatan penanaman dan pemeliharaan mangrove di wilayah target restorasi nasional</li>
+              <li data-i18n="exp1.d2">Pelaksanaan monitoring dan evaluasi kondisi ekosistem mangrove menggunakan metode transek</li>
+              <li data-i18n="exp1.d3">Pengoperasian drone UAV untuk pemetaan dan survei aerial kawasan mangrove</li>
+              <li data-i18n="exp1.d4">Koordinasi dengan pemerintah daerah, komunitas lokal, dan pemangku kepentingan</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="tag">Rehabilitasi</span>
+              <span class="tag">UAV</span>
+              <span class="tag">GIS</span>
+              <span class="tag">Community</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="timeline-item right reveal">
+          <div class="timeline-dot">
+            <span>2</span>
+          </div>
+          <div class="timeline-card glass-card">
+            <div class="tl-card-header">
+              <div class="tl-org-logo">
+                <span>🌿</span>
+              </div>
+              <div class="tl-meta">
+                <span class="tl-period">2023 – 2024</span>
+                <span class="tl-type" data-i18n="exp.full">Full-time</span>
+              </div>
+            </div>
+            <h3 class="tl-position" data-i18n="exp2.pos">GIS & Remote Sensing Specialist</h3>
+            <p class="tl-org">Kementerian Kehutanan Republik Indonesia</p>
+            <p class="tl-location">📍 <span data-i18n="exp2.loc">Jakarta & Medan</span></p>
+            <ul class="tl-duties">
+              <li data-i18n="exp2.d1">Analisis tutupan lahan dan perubahan ekosistem mangrove menggunakan citra satelit (Sentinel-2, Landsat)</li>
+              <li data-i18n="exp2.d2">Pembuatan peta tematik distribusi dan kondisi mangrove skala nasional</li>
+              <li data-i18n="exp2.d3">Pengolahan data penginderaan jauh menggunakan ArcGIS, QGIS, dan Google Earth Engine</li>
+              <li data-i18n="exp2.d4">Penyusunan laporan teknis geospasial sebagai dasar kebijakan restorasi</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="tag">ArcGIS</span>
+              <span class="tag">QGIS</span>
+              <span class="tag">Remote Sensing</span>
+              <span class="tag">Google Earth Engine</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot">
+            <span>3</span>
+          </div>
+          <div class="timeline-card glass-card">
+            <div class="tl-card-header">
+              <div class="tl-org-logo">
+                <span>👥</span>
+              </div>
+              <div class="tl-meta">
+                <span class="tl-period">2022 – 2023</span>
+                <span class="tl-type" data-i18n="exp.full">Full-time</span>
+              </div>
+            </div>
+            <h3 class="tl-position" data-i18n="exp3.pos">Community Engagement Officer</h3>
+            <p class="tl-org">BRGM – Program Pemberdayaan Masyarakat Pesisir</p>
+            <p class="tl-location">📍 <span data-i18n="exp3.loc">Pesisir Sumatera (Sumut, Riau, Sumsel)</span></p>
+            <ul class="tl-duties">
+              <li data-i18n="exp3.d1">Fasilitasi pelatihan dan pendampingan masyarakat pesisir dalam pengelolaan mangrove berbasis komunitas</li>
+              <li data-i18n="exp3.d2">Pelaksanaan sosialisasi program restorasi mangrove nasional kepada kelompok masyarakat lokal</li>
+              <li data-i18n="exp3.d3">Koordinasi dan pembentukan kelompok tani/nelayan peduli mangrove di wilayah target</li>
+              <li data-i18n="exp3.d4">Dokumentasi dan pelaporan kegiatan pemberdayaan masyarakat kepada pemangku kepentingan</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="tag">Pemberdayaan</span>
+              <span class="tag">Pelatihan</span>
+              <span class="tag">Sosialisasi</span>
+              <span class="tag">Laporan</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       SKILLS SECTION
+  ============================= -->
+  <section id="skills" class="section skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="skills.tag">Kompetensi</span>
+        <h2 data-i18n="skills.title">Keahlian & Spesialisasi</h2>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-domain-card glass-card reveal">
+          <div class="skill-domain-icon">🌱</div>
+          <h3 data-i18n="skill1.title">Rehabilitasi Mangrove</h3>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span data-i18n="skill1.s1">Penanaman & Pemeliharaan</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span data-i18n="skill1.s2">Monitoring Ekosistem</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span data-i18n="skill1.s3">Identifikasi Spesies</span>
+                <span>80%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-domain-card glass-card reveal">
+          <div class="skill-domain-icon">🗺️</div>
+          <h3 data-i18n="skill2.title">GIS & Remote Sensing</h3>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>ArcGIS / QGIS</span>
+                <span>88%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Google Earth Engine</span>
+                <span>75%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span data-i18n="skill2.s3">Citra Satelit (Sentinel/Landsat)</span>
+                <span>82%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-domain-card glass-card reveal">
+          <div class="skill-domain-icon">🛸</div>
+          <h3 data-i18n="skill3.title">UAV / Drone</h3>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span data-i18n="skill3.s1">Operasi Penerbangan</span>
+                <span>92%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span data-i18n="skill3.s2">Fotogrametri & Pemetaan Udara</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span data-i18n="skill3.s3">Pengolahan Data Orthophoto</span>
+                <span>78%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-domain-card glass-card reveal">
+          <div class="skill-domain-icon">👥</div>
+          <h3 data-i18n="skill4.title">Community Engagement</h3>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span data-i18n="skill4.s1">Fasilitasi Komunitas</span>
+                <span>88%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span data-i18n="skill4.s2">Pelatihan & Sosialisasi</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span data-i18n="skill4.s3">Penulisan Laporan</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Soft Skills / Badges -->
+      <div class="badge-cloud reveal">
+        <h3 data-i18n="skills.tools">Tools & Teknologi</h3>
+        <div class="badges">
+          <span class="badge-item">ArcGIS Pro</span>
+          <span class="badge-item">QGIS</span>
+          <span class="badge-item">Google Earth Engine</span>
+          <span class="badge-item">DJI Terra</span>
+          <span class="badge-item">Agisoft Metashape</span>
+          <span class="badge-item">Pix4D</span>
+          <span class="badge-item">Sentinel-2</span>
+          <span class="badge-item">Landsat</span>
+          <span class="badge-item">AutoCAD Map</span>
+          <span class="badge-item">MS Office</span>
+          <span class="badge-item">DJI Mavic/Phantom</span>
+          <span class="badge-item">GPS Garmin</span>
+          <span class="badge-item">R / Python</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       PROJECTS SECTION
+  ============================= -->
+  <section id="projects" class="section projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="proj.tag">Portofolio Proyek</span>
+        <h2 data-i18n="proj.title">Proyek Unggulan</h2>
+        <p class="section-desc" data-i18n="proj.desc">Proyek pilihan yang mencerminkan keahlian dan dampak nyata di lapangan</p>
+      </div>
+      <div class="project-filter reveal">
+        <button class="filter-btn active" data-filter="all" data-i18n="proj.filter_all">Semua</button>
+        <button class="filter-btn" data-filter="rehabilitasi" data-i18n="proj.filter_rehab">Rehabilitasi</button>
+        <button class="filter-btn" data-filter="gis" data-i18n="proj.filter_gis">GIS & Pemetaan</button>
+        <button class="filter-btn" data-filter="uav" data-i18n="proj.filter_uav">UAV</button>
+        <button class="filter-btn" data-filter="community" data-i18n="proj.filter_comm">Community</button>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card glass-card reveal" data-category="rehabilitasi">
+          <div class="project-img">
+            <img src="images/IMG_9403~photo.JPG" alt="Penanaman Mangrove Skala Besar">
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="proj-tag" data-i18n="proj.tag_rehab">Rehabilitasi</span>
+              <span class="proj-tag">BRGM</span>
+            </div>
+            <h3 data-i18n="p1.title">Penanaman Mangrove Skala Besar</h3>
+            <p data-i18n="p1.desc">Program penanaman dan pemulihan ekosistem mangrove di wilayah pesisir target nasional dengan pendekatan berbasis ekologi.</p>
+            <div class="project-stats">
+              <div class="proj-stat"><span class="proj-stat-num">500+</span><span data-i18n="p1.unit1">ha Area</span></div>
+              <div class="proj-stat"><span class="proj-stat-num">10K+</span><span data-i18n="p1.unit2">Bibit</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card glass-card reveal" data-category="gis">
+          <div class="project-img">
+            <img src="images/DJI_0381.JPG" alt="Pemetaan Distribusi Mangrove Nasional">
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="proj-tag">GIS</span>
+              <span class="proj-tag">Remote Sensing</span>
+            </div>
+            <h3 data-i18n="p2.title">Pemetaan Distribusi Mangrove Nasional</h3>
+            <p data-i18n="p2.desc">Pemetaan dan analisis perubahan tutupan mangrove menggunakan citra satelit multi-temporal untuk mendukung kebijakan restorasi.</p>
+            <div class="project-stats">
+              <div class="proj-stat"><span class="proj-stat-num">5+</span><span data-i18n="p2.unit1">Provinsi</span></div>
+              <div class="proj-stat"><span class="proj-stat-num">3</span><span data-i18n="p2.unit2">Tahun Data</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card glass-card reveal" data-category="uav">
+          <div class="project-img">
+            <img src="images/DJI_0379.JPG" alt="Survei Aerial Kawasan Mangrove">
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="proj-tag">UAV</span>
+              <span class="proj-tag">Fotogrametri</span>
+            </div>
+            <h3 data-i18n="p3.title">Survei Aerial Kawasan Mangrove</h3>
+            <p data-i18n="p3.desc">Pelaksanaan survei menggunakan drone untuk menghasilkan orthophoto dan DSM beresolusi tinggi sebagai basis peta kerja lapangan.</p>
+            <div class="project-stats">
+              <div class="proj-stat"><span class="proj-stat-num">20+</span><span data-i18n="p3.unit1">Misi Terbang</span></div>
+              <div class="proj-stat"><span class="proj-stat-num">2cm</span><span data-i18n="p3.unit2">Resolusi GSD</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card glass-card reveal" data-category="community">
+          <div class="project-img">
+            <img src="images/KT Sejahtera_23112024_105851.jpg" alt="Pemberdayaan Masyarakat Pesisir">
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="proj-tag" data-i18n="proj.tag_comm">Komunitas</span>
+              <span class="proj-tag">Pemberdayaan</span>
+            </div>
+            <h3 data-i18n="p4.title">Pemberdayaan Masyarakat Pesisir</h3>
+            <p data-i18n="p4.desc">Program pendampingan dan pelatihan masyarakat nelayan dan petani pesisir dalam pengelolaan mangrove berbasis komunitas berkelanjutan.</p>
+            <div class="project-stats">
+              <div class="proj-stat"><span class="proj-stat-num">500+</span><span data-i18n="p4.unit1">Peserta</span></div>
+              <div class="proj-stat"><span class="proj-stat-num">15+</span><span data-i18n="p4.unit2">Desa</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card glass-card reveal" data-category="gis rehabilitasi">
+          <div class="project-img">
+            <img src="images/20260416_034518537_iOS.jpg" alt="Sistem Monitoring Mangrove Terpadu">
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="proj-tag">Monitoring</span>
+              <span class="proj-tag">GIS</span>
+            </div>
+            <h3 data-i18n="p5.title">Sistem Monitoring Mangrove Terpadu</h3>
+            <p data-i18n="p5.desc">Pengembangan sistem pemantauan kondisi mangrove secara berkala menggunakan integrasi data lapangan, GIS, dan penginderaan jauh.</p>
+            <div class="project-stats">
+              <div class="proj-stat"><span class="proj-stat-num">12</span><span data-i18n="p5.unit1">Plot Monitoring</span></div>
+              <div class="proj-stat"><span class="proj-stat-num">Semi-annual</span><span data-i18n="p5.unit2">Siklus Data</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card glass-card reveal" data-category="uav gis">
+          <div class="project-img">
+            <img src="images/WhatsApp Image 2024-06-24 at 12.55.17 AM.jpeg" alt="Validasi Lapangan via Drone & GIS">
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="proj-tag">UAV</span>
+              <span class="proj-tag">GIS</span>
+              <span class="proj-tag">BRGM</span>
+            </div>
+            <h3 data-i18n="p6.title">Validasi Lapangan via Drone & GIS</h3>
+            <p data-i18n="p6.desc">Integrasi data drone dan analisis GIS untuk validasi tutupan mangrove dan identifikasi area prioritas restorasi secara akurat.</p>
+            <div class="project-stats">
+              <div class="proj-stat"><span class="proj-stat-num">95%</span><span data-i18n="p6.unit1">Akurasi</span></div>
+              <div class="proj-stat"><span class="proj-stat-num">3</span><span data-i18n="p6.unit2">Kawasan</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       GALLERY SECTION
+  ============================= -->
+  <section id="gallery" class="section gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="gal.tag">Dokumentasi</span>
+        <h2 data-i18n="gal.title">Galeri Lapangan</h2>
+        <p class="section-desc" data-i18n="gal.desc">Momen nyata dari lapangan — rehabilitasi, survei, dan kolaborasi komunitas</p>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="gallery-item" data-label="Penanaman Mangrove">
+          <img src="images/IMG_9403~photo.JPG" alt="Penanaman Mangrove">
+        </div>
+        <div class="gallery-item large" data-label="Survei UAV">
+          <img src="images/DJI_0379.JPG" alt="Survei UAV">
+        </div>
+        <div class="gallery-item" data-label="Pemetaan GIS">
+          <img src="images/20260416_034518537_iOS.jpg" alt="Pemetaan GIS">
+        </div>
+        <div class="gallery-item" data-label="Community Meeting">
+          <img src="images/20260416_033920743_iOS.jpg" alt="Community Meeting">
+        </div>
+        <div class="gallery-item large" data-label="Aerial View">
+          <img src="images/DJI_0381.JPG" alt="Aerial View">
+        </div>
+        <div class="gallery-item" data-label="Transek Mangrove">
+          <img src="images/20230824_172149.jpg" alt="Transek Mangrove">
+        </div>
+      </div>
+      <div class="gallery-hint reveal">
+        <p data-i18n="gal.hint">💡 Klik gambar untuk melihat ukuran penuh</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       EDUCATION & CERTS
+  ============================= -->
+  <section id="education" class="section education">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="edu.tag">Latar Belakang</span>
+        <h2 data-i18n="edu.title">Pendidikan & Sertifikasi</h2>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-col reveal">
+          <h3 class="edu-col-title"><span>🎓</span> <span data-i18n="edu.edu">Pendidikan</span></h3>
+          <div class="edu-item glass-card">
+            <div class="edu-icon">🏫</div>
+            <div class="edu-body">
+              <h4 data-i18n="edu.deg1">Sarjana Pertanian (S.P.)</h4>
+              <p data-i18n="edu.uni1">Universitas Jenderal Soedirman (UNSOED), Purwokerto</p>
+              <span class="edu-year">2018 – 2022</span>
+            </div>
+          </div>
+        </div>
+        <div class="edu-col reveal">
+          <h3 class="edu-col-title"><span>📜</span> <span data-i18n="edu.cert">Sertifikasi & Pelatihan</span></h3>
+          <div class="edu-item glass-card">
+            <div class="edu-icon">✈️</div>
+            <div class="edu-body">
+              <h4 data-i18n="cert1.name">Sertifikat Pilot RPAS / UAV</h4>
+              <p data-i18n="cert1.org">Lembaga Sertifikasi Profesi Kedirgantaraan</p>
+              <span class="edu-year">2023</span>
+            </div>
+          </div>
+          <div class="edu-item glass-card">
+            <div class="edu-icon">🗺️</div>
+            <div class="edu-body">
+              <h4 data-i18n="cert2.name">Pelatihan GIS & Remote Sensing</h4>
+              <p data-i18n="cert2.org">Kementerian Kehutanan RI</p>
+              <span class="edu-year">2023</span>
+            </div>
+          </div>
+          <div class="edu-item glass-card">
+            <div class="edu-icon">🌱</div>
+            <div class="edu-body">
+              <h4 data-i18n="cert3.name">Pelatihan Rehabilitasi Mangrove</h4>
+              <p data-i18n="cert3.org">BRGM – Badan Restorasi Gambut dan Mangrove</p>
+              <span class="edu-year">2022</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       CONTACT SECTION
+  ============================= -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="contact.tag">Mari Terhubung</span>
+        <h2 data-i18n="contact.title">Hubungi Saya</h2>
+        <p class="section-desc" data-i18n="contact.desc">Terbuka untuk kolaborasi riset, konsultasi, atau peluang proyek mangrove</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="contact-card glass-card">
+            <div class="contact-item">
+              <span class="contact-icon">✉️</span>
+              <div>
+                <span class="contact-label" data-i18n="contact.email">Email</span>
+                <a data-db="email" href="mailto:burhanuddienrobbani@gmail.com" class="contact-value">burhanuddienrobbani@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">💼</span>
+              <div>
+                <span class="contact-label">LinkedIn</span>
+                <a data-db="linkedin" href="https://linkedin.com/in/robbanib" class="contact-value" target="_blank">linkedin.com/in/robbanib</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📱</span>
+              <div>
+                <span class="contact-label" data-i18n="contact.wa">WhatsApp</span>
+                <a data-db="whatsapp" href="https://wa.me/6281226768040" class="contact-value" target="_blank">+62 812-2676-8040</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <div>
+                <span class="contact-label" data-i18n="contact.loc">Lokasi</span>
+                <span data-db="location" class="contact-value">Medan, Sumatera Utara</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrap reveal">
+          <form class="contact-form glass-card" id="contactForm">
+            <div class="form-group">
+              <label for="contact-name" data-i18n="form.name">Nama</label>
+              <input type="text" id="contact-name" name="name" required placeholder="Nama Anda" />
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" required placeholder="email@anda.com" />
+            </div>
+            <div class="form-group">
+              <label for="contact-subject" data-i18n="form.subject">Subjek</label>
+              <input type="text" id="contact-subject" name="subject" placeholder="Topik pesan" />
+            </div>
+            <div class="form-group">
+              <label for="contact-message" data-i18n="form.message">Pesan</label>
+              <textarea id="contact-message" name="message" rows="5" required placeholder="Tulis pesan Anda di sini..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" data-i18n="form.send">Kirim Pesan</button>
+            <div class="form-success hidden" id="formSuccess">
+              <span>✅</span> <span data-i18n="form.success">Pesan terkirim! Terima kasih.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       FOOTER
+  ============================= -->
+  <footer class="footer">
+    <div class="footer-glow"></div>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">🌿</span>
+        <span class="logo-text">Burhan<span class="logo-accent">Robbani</span></span>
+      </div>
+      <p class="footer-copy" data-i18n="footer.copy">© 2025 · Burhanuddien Robbani, S.P. — Mangrove Specialist Indonesia</p>
+      <div class="footer-links">
+        <a href="#about" data-i18n="nav.about">Tentang</a>
+        <a href="#experience" data-i18n="nav.experience">Pengalaman</a>
+        <a href="#contact" data-i18n="nav.contact">Kontak</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox hidden">
+    <div class="lightbox-overlay" id="lightboxOverlay"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose">&times;</button>
+      <img src="" alt="" id="lightboxImg" />
+      <p id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
