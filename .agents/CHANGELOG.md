@@ -96,3 +96,11 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   Labuhanbatu Utara, Labuhanbatu). Tambah §9 terminologi resmi dari Perpres 120/2020
   (target 600rb ha mangrove, 1,2 jt ha gambut, NSPK, M&E, rewetting, padat karya).
   Simpan salinan Perpres & surat Mensesneg di `reference/`.
+
+
+* **Sesuaikan front-end dengan KNOWLEDGE.md (SAFE, tanpa section baru)** — perkuat
+  daftar Tools & Teknologi di index.html: tambah ArcMap, Dronelink, DJI Fly, DJI GO,
+  perjelas unit drone (Mavic Air 2 / Air 2S / Phantom 4 / Mavic 3); singkat
+  "Google Earth Engine" -> "GEE (Google Earth Engine)" di badge/tag/skill-bar/exp2.d3
+  (id+en) biar konsisten dengan glosarium KNOWLEDGE §3. Tidak ubah layout/struktur.
+  node --check script.js OK.
