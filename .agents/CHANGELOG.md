@@ -104,3 +104,9 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   "Google Earth Engine" -> "GEE (Google Earth Engine)" di badge/tag/skill-bar/exp2.d3
   (id+en) biar konsisten dengan glosarium KNOWLEDGE §3. Tidak ubah layout/struktur.
   node --check script.js OK.
+
+* **Perbaiki Experience (2 item, akurat vs fakta Robbani)** — hapus exp3 (Community
+  Engagement Officer, tidak disebutkan); exp1 -> PPIU M4CR Sumut (Jan 2025-Sekarang,
+  Medan, Technical Facilitator: M&E, survei hidrologi, swakelola pokmas); exp2 -> BRGM
+  (Jul 2023-Des 2025, Kepri & Babel, Deputi Pemberdayaan Masyarakat, GIS Operator).
+  Update index.html + script.js (id/en). node --check OK, exp3_residual=0.
