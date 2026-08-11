@@ -9,6 +9,12 @@ Baca dari atas ke bawah setiap kali memulai sesi. Semua aturan membatasi ada di 
 * Setiap perubahan **wajib di-commit + dicatat di CHANGELOG** (`AGENTS.md` §6).
 * Jangan hapus gambar / file inti / rename var `data.js` tanpa izin (`AGENTS.md` §5).
 
+## 0b. Catatan Environment (Windows / MSYS)
+* Tool `search_files` di subagent kadang gagal dengan prefix `/c/...` (MSYS path).
+  Pakai **path Windows asli** (`C:\Users\burha\Downloads\portfolio\...`) atau
+  periksa lewat `terminal` (`ls`, `grep -n`) saat `search_files` error "IO error".
+* Selalu verifikasi dengan `node --check <file>.js` via `terminal` (authoritative).
+
 ## 1. URUTAN BACA (wajib, sebelum kerja)
 1. `AGENTS.md`        — aturan, izin, DoD (single source of truth).
 2. `ARCHITECTURE.md`  — struktur & fakta data flow (cegah asumsi salah).

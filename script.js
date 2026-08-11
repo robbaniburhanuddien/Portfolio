@@ -69,6 +69,9 @@ const i18n = {
     "exp3.d2":         "Pelaksanaan sosialisasi program restorasi mangrove nasional kepada kelompok masyarakat lokal",
     "exp3.d3":         "Koordinasi dan pembentukan kelompok tani/nelayan peduli mangrove di wilayah target",
     "exp3.d4":         "Dokumentasi dan pelaporan kegiatan pemberdayaan masyarakat kepada pemangku kepentingan",
+    "exp1.period":     "2024 – Sekarang",
+    "exp2.period":     "2023 – 2024",
+    "exp3.period":     "2022 – 2023",
 
     // Skills
     "skills.tag":      "Kompetensi",
@@ -221,6 +224,9 @@ const i18n = {
     "exp3.d2":         "Socialization of the national mangrove restoration program to local community groups",
     "exp3.d3":         "Coordination and formation of mangrove-aware farmer/fisherman groups in target areas",
     "exp3.d4":         "Documentation and reporting of community empowerment activities to stakeholders",
+    "exp1.period":     "2024 – Present",
+    "exp2.period":     "2023 – 2024",
+    "exp3.period":     "2022 – 2023",
 
     // Skills
     "skills.tag":      "Competencies",

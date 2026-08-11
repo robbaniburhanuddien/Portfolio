@@ -25,7 +25,7 @@ Urutan eksekusi orchestrator: High → Medium → Low.
 
 ### Medium Priority
 * [ ] Unggah file PDF kurikulum vitae (cv.pdf) ke root + aktifkan tombol "Download CV" (butuh file dari user). `[CONTENT]`
-* [ ] Periksa & sesuaikan tahun pengalaman kerja di index.html/script.js agar 100% akurat. `[CONTENT]`
+* [x] Periksa & sesuaikan tahun pengalaman kerja di index.html/script.js agar 100% akurat. `[CONTENT]`
 * [ ] Uji coba tombol kirim pesan formulir kontak (simulasi respons). `[STYLIST]`
 
 ### Low Priority / Future Scope
@@ -70,3 +70,17 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   Mengubah ini = breaking change → wajib minta izin (`AGENTS.md` §5).
 * ~~Caption lightbox galeri masih bahasa ID saja (belum ikut switch EN).~~ — SUDAH DIBERESKAN (2026-08-10): caption kini bilingual & ikut switch EN.
 * 76 dari 96 foto di `images/` tidak dipakai + ada file duplikat byte-identik.
+
+### [2026-08-11]
+* **Audit akurasi tahun Experience/Timeline** — rentang tahun di `index.html`
+  (`2024 – Sekarang`, `2023 – 2024`, `2022 – 2023`) sudah konsisten: berurutan
+  kronologis (terbaru di atas), tidak saling tabrakan/tumpang tindih, dan tidak ada
+  tahun masa depan yang salah (Sekarang = 2026 valid).
+* **Fix ketidaksesuaian ID↔EN pada label periode** — span `.tl-period` sebelumnya
+  **hardcode** di `index.html` tanpa `data-i18n`, sehingga di mode EN tetap menampilkan
+  "Sekarang" (bukan "Present"). Ditambahkan key `exp1.period`/`exp2.period`/`exp3.period`
+  ke kamus `i18n` (`id`: "2024 – Sekarang" / `en`: "2024 – Present"; rentang lain sama di
+  kedua bahasa) dan atribut `data-i18n="expX.period"` ke ketiga span. Tidak ada fakta/
+  riwayat kerja baru yang dikarang — hanya bikin label periode bilingual & konsisten.
+* **Verifikasi** — `node --check script.js` & `node --check data.js` OK; ke-133 key
+  `data-i18n` di `index.html` ada di kamus `id` & `en`; ke-8 `src="images/..."` ada file-nya.
