@@ -37,8 +37,8 @@ const i18n = {
     "about.tag":       "Tentang Saya",
     "about.title":     "Siapa Saya?",
     "about.role":      "Mangrove Conservationist & Geospatial Specialist",
-    "about.bio":       "Saya adalah Burhanuddien Robbani, S.P., seorang profesional di bidang rehabilitasi ekosistem mangrove, pemetaan geospasial, dan pemberdayaan masyarakat pesisir. Selama 3 tahun terakhir, saya berkontribusi aktif dalam program restorasi mangrove nasional di bawah naungan Badan Restorasi Gambut dan Mangrove (BRGM) dan Kementerian Kehutanan Republik Indonesia.",
-    "about.bio2":      "Dengan keahlian multidisiplin — survei lapangan, pengoperasian drone UAV, analisis GIS, hingga koordinasi komunitas lokal — saya berkomitmen untuk menjembatani ilmu pengetahuan dengan aksi nyata demi kelestarian ekosistem pesisir Indonesia.",
+    "about.bio":       "Perkenalkan, saya Burhanuddien Robbani, S.P. — masih terus belajar dan ikut berkontribusi di bidang rehabilitasi mangrove, pemetaan geospasial, dan pemberdayaan masyarakat pesisir. Beberapa tahun ini saya berkesempatan belajar langsung lewat program restorasi mangrove nasional, antara lain bersama Badan Restorasi Gambut dan Mangrove (BRGM) dan Kementerian Kehutanan Republik Indonesia.",
+    "about.bio2":      "Dari survei lapangan, pengoperasian drone UAV, hingga analisis GIS dan duduk bersama masyarakat pesisir — saya mencoba menyambungkan ilmu dan aksi nyata, meski masih banyak yang harus dipelajari, demi ekosistem pesisir Indonesia yang lebih baik.",
     "about.org":       "Lembaga",
     "about.location":  "Lokasi",
     "about.edu":       "Pendidikan",
@@ -58,7 +58,7 @@ const i18n = {
     "exp1.d3":         "Penyusunan administrasi kegiatan swakelola rehabilitasi mangrove bersama kelompok masyarakat (pokmas)",
     "exp1.d4":         "Koordinasi dengan pemerintah daerah, masyarakat lokal, dan pemangku kepentingan",
     "exp2.pos":        "Staf Rehabilitasi Mangrove — Deputi Pemberdayaan Masyarakat",
-    "exp2.loc":        "Kepulauan Riau & Kepulauan Bangka Belitung",
+    "exp2.loc":        "Jakarta & Kepulauan Riau & Kepulauan Bangka Belitung",
     "exp2.d1":         "Pelaksanaan rehabilitasi mangrove di wilayah kerja Kepri & Babel",
     "exp2.d2":         "Pengolahan data spasial & operasional sebagai GIS Operator (ArcGIS, QGIS, GEE)",
     "exp2.d3":         "Pendekatan pemberdayaan masyarakat & padat karya dalam rehabilitasi",
@@ -187,8 +187,8 @@ const i18n = {
     "about.tag":       "About Me",
     "about.title":     "Who Am I?",
     "about.role":      "Mangrove Conservationist & Geospatial Specialist",
-    "about.bio":       "I am Burhanuddien Robbani, S.P., a professional in mangrove ecosystem rehabilitation, geospatial mapping, and coastal community empowerment. Over the past 3 years, I have actively contributed to the national mangrove restoration program under the Peatland and Mangrove Restoration Agency (BRGM) and the Ministry of Forestry of the Republic of Indonesia.",
-    "about.bio2":      "With multidisciplinary expertise — field surveys, UAV drone operations, GIS analysis, and local community coordination — I am committed to bridging science and real-world action for the sustainability of Indonesia's coastal ecosystems.",
+    "about.bio":       "Hello, I'm Burhanuddien Robbani, S.P. — still learning and contributing in mangrove rehabilitation, geospatial mapping, and coastal community empowerment. Over the past few years I've had the chance to learn hands-on through the national mangrove restoration program, including with the Peatland and Mangrove Restoration Agency (BRGM) and the Ministry of Forestry of the Republic of Indonesia.",
+    "about.bio2":      "From field surveys and UAV drone operations to GIS analysis and sitting with coastal communities — I try to connect knowledge with real action, though there's still much to learn, for the sake of Indonesia's coastal ecosystems.",
     "about.org":       "Institution",
     "about.location":  "Location",
     "about.edu":       "Education",
@@ -208,7 +208,7 @@ const i18n = {
     "exp1.d3":         "Preparation of self-managed (swakelola) mangrove rehabilitation administration with local community groups (pokmas)",
     "exp1.d4":         "Coordinating with local governments, communities, and stakeholders",
     "exp2.pos":        "Mangrove Rehabilitation Officer — Community Empowerment Deputy",
-    "exp2.loc":        "Riau Islands & Bangka Belitung Islands",
+    "exp2.loc":        "Jakarta & Riau Islands & Bangka Belitung Islands",
     "exp2.d1":         "Implementation of mangrove rehabilitation in Kepri & Babel working areas",
     "exp2.d2":         "Spatial data processing & operations as GIS Operator (ArcGIS, QGIS, GEE)",
     "exp2.d3":         "Community empowerment & labor-intensive approach in rehabilitation",
@@ -395,6 +395,26 @@ langToggle.addEventListener('click', () => {
   inactive.textContent = currentLang === 'id' ? 'EN' : 'ID';
   document.documentElement.setAttribute('data-lang', currentLang);
 });
+
+// ---- Theme toggle (light/dark) ----
+const themeToggle = document.getElementById('themeToggle');
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const icon = themeToggle ? themeToggle.querySelector('.theme-icon') : null;
+  if (icon) icon.textContent = (theme === 'dark') ? '🌙' : '☀️';
+  try { localStorage.setItem('portfolio-theme', theme); } catch (e) {}
+}
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(current);
+  });
+}
+// restore saved preference (default light)
+try {
+  const saved = localStorage.getItem('portfolio-theme');
+  if (saved === 'dark' || saved === 'light') applyTheme(saved);
+} catch (e) {}
 
 function applyLanguage(lang) {
   const dict = i18n[lang];

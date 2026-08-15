@@ -134,3 +134,9 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   contact (butuh handle asli user — tidak ditebak), Peta interaktif Leaflet.js
   (NEEDS-PERMISSION, tambah library). Verifikasi agregat: `node --check` script.js
   & data.js OK; 0 teks "undefined" di index.html; ke-13 `src="images/..."` valid.
+
+* **Tema light + toggle & perbaikan bio/exp2** — default light mode (putih kehutanan,
+  kartu glass) via `:root[data-theme=light]`; tombol themeToggle di navbar + simpan
+  localStorage (bisa ke dark). Bio intro diubah jadi humble-professional (id+en).
+  exp2.loc BRGM -> "Jakarta & Kepulauan Riau & Kepulauan Bangka Belitung" (id+en).
+  node --check OK; verify PASS.
