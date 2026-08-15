@@ -8,7 +8,7 @@
   <meta property="og:title" content="Burhanuddien Robbani, S.P. | Mangrove Specialist" />
   <meta property="og:description" content="3 tahun mendedikasikan diri untuk ekosistem mangrove Indonesia — rehabilitasi, pemetaan GIS, UAV, dan pemberdayaan masyarakat bersama BRGM & Kemenhut RI." />
   <meta property="og:type" content="website" />
-  <title>Burhanuddien Robbani, S.P. | Mangrove Specialist</title>
+  <title>Robbani | Spesialis Mangrove Indonesia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -45,8 +45,8 @@
   ============================= -->
   <nav id="navbar" class="navbar">
     <div class="nav-logo">
-      <span class="logo-icon">🌿</span>
-      <span class="logo-text">Burhan<span class="logo-accent">Robbani</span></span>
+      <span class="logo-photo" id="logoPhoto" aria-hidden="true"></span>
+      <span class="logo-text">Robbani</span>
     </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" data-i18n="nav.about">Tentang</a></li>
@@ -57,13 +57,15 @@
       <li><a href="#contact" data-i18n="nav.contact">Kontak</a></li>
     </ul>
     <div class="nav-actions">
-      <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">
-        <span class="theme-icon">☀️</span>
+      <button id="themeToggle" class="switch theme-switch" aria-label="Toggle Theme">
+        <span class="switch-opt base">☀️</span>
+        <span class="switch-opt alt">🌙</span>
+        <span class="switch-knob"></span>
       </button>
-      <button id="langToggle" class="lang-btn" aria-label="Toggle Language">
-        <span class="lang-active">ID</span>
-        <span class="lang-divider">|</span>
-        <span class="lang-inactive">EN</span>
+      <button id="langToggle" class="switch lang-switch" aria-label="Toggle Language">
+        <span class="switch-opt base">ID</span>
+        <span class="switch-opt alt">EN</span>
+        <span class="switch-knob"></span>
       </button>
       <button id="menuToggle" class="menu-btn" aria-label="Toggle Menu">
         <span></span><span></span><span></span>
@@ -562,24 +564,7 @@
         <p class="section-desc" data-i18n="gal.desc">Momen nyata dari lapangan — rehabilitasi, survei, dan kolaborasi komunitas</p>
       </div>
       <div class="gallery-grid reveal">
-        <div class="gallery-item" data-label="Penanaman Mangrove">
-          <img src="images/IMG_9403~photo.JPG" alt="Penanaman Mangrove">
-        </div>
-        <div class="gallery-item large" data-label="Survei UAV">
-          <img src="images/DJI_0379.JPG" alt="Survei UAV">
-        </div>
-        <div class="gallery-item" data-label="Pemetaan GIS">
-          <img src="images/20260416_034518537_iOS.jpg" alt="Pemetaan GIS">
-        </div>
-        <div class="gallery-item" data-label="Community Meeting">
-          <img src="images/20260416_033920743_iOS.jpg" alt="Community Meeting">
-        </div>
-        <div class="gallery-item large" data-label="Aerial View">
-          <img src="images/DJI_0381.JPG" alt="Aerial View">
-        </div>
-        <div class="gallery-item" data-label="Transek Mangrove">
-          <img src="images/20230824_172149.jpg" alt="Transek Mangrove">
-        </div>
+        <!-- diisi otomatis oleh script.js dari folder images/ (semua foto) -->
       </div>
       <div class="gallery-hint reveal">
         <p data-i18n="gal.hint">💡 Klik gambar untuk melihat ukuran penuh</p>

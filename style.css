@@ -1,10 +1,10 @@
 /* =========================================
    MANGROVE PORTFOLIO — STYLE.CSS
-   Theme: Dark Emerald | Glassmorphism
+   Theme: Dark Emerald (default) | Light Forestry | Glassmorphism
    ========================================= */
 
-/* ---- CUSTOM PROPERTIES ---- */
-:root {
+/* ---- CUSTOM PROPERTIES (DARK = default) ---- */
+:root, :root[data-theme="dark"] {
   --clr-bg:           #071a12;
   --clr-bg-2:         #0a2218;
   --clr-surface:      #0f2e1e;
@@ -16,9 +16,9 @@
   --clr-accent:       #74c69d;
   --clr-gold:         #d4a843;
   --clr-gold-light:   #f0c94b;
-  --clr-text:         #d8f3dc;
-  --clr-text-muted:   #8fb49a;
-  --clr-text-dim:     #527a60;
+  --clr-text:         #eafaf0;
+  --clr-text-muted:   #a9c9b8;
+  --clr-text-dim:     #6f9a82;
   --clr-white:        #ffffff;
 
   --font-sans:    'Inter', sans-serif;
@@ -37,23 +37,26 @@
   --transition-fast: all 0.18s ease;
 }
 
-/* ---- LIGHT THEME (default, forestry on white) ---- */
+/* ---- LIGHT THEME (forestry on white) ---- */
 :root[data-theme="light"] {
-  --clr-bg:           #f4f8f4;
-  --clr-bg-2:         #e8f1ea;
+  --clr-bg:           #f3f8f4;
+  --clr-bg-2:         #e6f0ea;
   --clr-surface:      #ffffff;
-  --clr-glass:        rgba(255, 255, 255, 0.65);
-  --clr-glass-border: rgba(64, 145, 108, 0.22);
+  --clr-glass:        rgba(255, 255, 255, 0.70);
+  --clr-glass-border: rgba(45, 106, 79, 0.20);
   --clr-primary:      #2d6a4f;
   --clr-primary-light:#40916c;
-  --clr-primary-glow: rgba(64, 145, 108, 0.18);
+  --clr-primary-glow: rgba(64, 145, 108, 0.15);
   --clr-accent:       #40916c;
-  --clr-gold:         #b5832a;
-  --clr-gold-light:   #d4a843;
-  --clr-text:         #1b3a2b;
-  --clr-text-muted:   #4f7261;
-  --clr-text-dim:     #7da389;
+  --clr-gold:         #9c6b1f;
+  --clr-gold-light:   #c9941f;
+  --clr-text:         #163023;
+  --clr-text-muted:   #45624f;
+  --clr-text-dim:     #7a9b8a;
   --clr-white:        #ffffff;
+
+  --shadow-glow:  0 0 40px rgba(64, 145, 108, 0.12);
+  --shadow-card:  0 8px 28px rgba(20, 48, 35, 0.10);
 }
 
 /* ---- RESET & BASE ---- */
@@ -253,12 +256,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-weight: 700;
   font-size: 1.1rem;
-  color: var(--clr-white);
+  color: var(--clr-text);
 }
-.logo-icon { font-size: 1.4rem; }
+.logo-photo {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px dashed var(--clr-glass-border);
+  background: var(--clr-glass);
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  display: inline-block;
+  /* placeholder: nanti diisi background-image(url foto/logo kamu) via inline style/JS */
+}
 .logo-accent { color: var(--clr-accent); }
 
 .nav-links {
@@ -286,45 +299,51 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .nav-actions { display: flex; align-items: center; gap: 16px; }
 
-.lang-btn {
-  display: flex;
+/* ---- ESTETIK SWITCH (bahasa & tema) ---- */
+.switch {
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  color: var(--clr-text-muted);
-  border: 1px solid var(--clr-glass-border);
-  padding: 6px 14px;
+  height: 34px;
+  padding: 0 12px;
   border-radius: 50px;
-  background: var(--clr-glass);
-  transition: var(--transition-fast);
-}
-.lang-btn:hover {
-  border-color: var(--clr-accent);
-  color: var(--clr-accent);
-}
-.lang-active { color: var(--clr-accent); font-weight: 700; }
-.lang-divider { opacity: 0.4; }
-
-.theme-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  line-height: 1;
-  color: var(--clr-text-muted);
   border: 1px solid var(--clr-glass-border);
-  width: 38px; height: 38px;
-  border-radius: 50%;
   background: var(--clr-glass);
+  color: var(--clr-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 1px;
   cursor: pointer;
+  user-select: none;
   transition: var(--transition-fast);
+  overflow: hidden;
 }
-.theme-btn:hover { border-color: var(--clr-accent); color: var(--clr-accent); }
-[data-theme="dark"] .theme-icon::before { content: "🌙"; }
-[data-theme="dark"] .theme-icon { font-size: 0; }
-[data-theme="dark"] .theme-icon::before { font-size: 1rem; }
+.switch:hover { border-color: var(--clr-accent); }
+.switch .switch-opt {
+  position: relative;
+  z-index: 2;
+  padding: 0 6px;
+  transition: color 0.25s ease;
+  line-height: 1;
+}
+.switch .switch-knob {
+  position: absolute;
+  top: 3px; bottom: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  border-radius: 50px;
+  background: var(--clr-primary);
+  box-shadow: 0 2px 8px var(--clr-primary-glow);
+  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+  z-index: 1;
+}
+.switch.is-alt .switch-knob { transform: translateX(100%); }
+.switch.is-alt .switch-opt.alt { color: #fff; }
+.switch:not(.is-alt) .switch-opt.base { color: #fff; }
+
+/* theme switch icon style */
+.theme-switch .switch-opt { font-size: 0.95rem; padding: 0 4px; }
+.theme-switch .switch-knob { background: var(--clr-gold); box-shadow: 0 2px 8px rgba(212,168,67,0.4); }
 
 .menu-btn {
   display: none;

@@ -140,3 +140,23 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   localStorage (bisa ke dark). Bio intro diubah jadi humble-professional (id+en).
   exp2.loc BRGM -> "Jakarta & Kepulauan Riau & Kepulauan Bangka Belitung" (id+en).
   node --check OK; verify PASS.
+
+## NOTES / IDE PENDING (Robbani)
+* **Logo/foto navbar**: `.logo-photo` (lingkaran 34px di kiri teks "Robbani") sudah disiapkan
+  sebagai placeholder dashed. Belum diisi — nanti Robbani tentukan foto/logo mana (mis. foto
+  diri atau logo BRGM/M4CR) lalu set `background-image` via inline style atau JS. Catat di sini
+  saat sudah diputuskan.
+* **Galeri lapangan**: saat ini hanya 4 item hardcode; folder images/ punya 96 file. Ingin
+  tampilkan semua foto kegiatan -> butuh render dinamis (JS generate dari list images/) atau
+  pilih subset. STATUS: menunggu keputuan Robbani (render semua vs kurasi).
+* **Peta Indonesia animasi + foto di lokasi**: ide Render dokumentasi ke kab/kota (Kepri, Babel,
+  Medan/Sumut, dll) agar recruiter tahu sebaran. Opsi: SVG peta + marker (tanpa library, SAFE)
+  atau Leaflet/WebGIS (tambah library = NEEDS-PERMISSION). STATUS: menunggu izin Robbani.
+
+* **Fix tema + switch estetik + galeri dinamis + head tab** — perbaiki bug toggle tema
+  (palet dark tidak terdefinisi -> sekarang `:root,:root[data-theme=dark]` = dark default,
+  `[data-theme=light]` = light forestry). Kontras teks dirapikan kedua tema. Toggle bahasa
+  & tema diubah jadi saklar estetik-profesional (`.switch` + knob geser). Galeri kini render
+  semua 96 foto dari `images/` via JS (`GALLERY_FILES` + `buildGallery()`), lightbox tetap
+  jalan. Head tab title -> "Robbani", logo kiri jadi slot `.logo-photo` (placeholder foto).
+  node --check OK; verify PASS. STATUS: menunggu preview visual Robbani.
