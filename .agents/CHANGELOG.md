@@ -26,7 +26,7 @@ Urutan eksekusi orchestrator: High → Medium → Low.
 ### Medium Priority
 * [ ] Unggah file PDF kurikulum vitae (cv.pdf) ke root + aktifkan tombol "Download CV" (butuh file dari user). `[CONTENT]`
 * [x] Periksa & sesuaikan tahun pengalaman kerja di index.html/script.js agar 100% akurat. `[CONTENT]`
-* [ ] Uji coba tombol kirim pesan formulir kontak (simulasi respons). `[STYLIST]`
+* [x] Uji coba tombol kirim pesan formulir kontak (simulasi respons). `[STYLIST]`
 
 ### Low Priority / Future Scope
 * [ ] Tambahkan tautan Instagram & Github ke contact (data.js inject + index.html). `[CONTENT]`
@@ -110,3 +110,18 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   Medan, Technical Facilitator: M&E, survei hidrologi, swakelola pokmas); exp2 -> BRGM
   (Jul 2023-Des 2025, Kepri & Babel, Deputi Pemberdayaan Masyarakat, GIS Operator).
   Update index.html + script.js (id/en). node --check OK, exp3_residual=0.
+
+### [2026-08-16]
+* **Polish & verifikasi tombol kirim pesan kontak (simulasi)** — handler
+  `CONTACT FORM (Simulated)` di `script.js` sudah berjalan benar: saat submit tombol
+  tampil status "Mengirim.../Sending...", ter-disable sementara, setelah ~1,2s muncul
+  `#formSuccess` (bilingual via `data-i18n="form.success"`), form di-reset, tombol
+  kembali normal, pesan sukses auto-hilang (5s). Perbaikan SAFE (tanpa refactor CSS):
+  - Hilangkan teks hardcoded status kirim -> pakai key i18n baru `form.sending` (id/en).
+  - Tampilkan nama pengirim di pesan sukses via key `form.success_name` (id/en,
+    placeholder `{name}`); fallback ke `form.success` bila nama kosong.
+  - Restore teks tombol via `i18n[currentLang]['form.send']` (konsisten walau bahasa
+    di-switch saat mengirim); atribut `data-i18n` pada success span dilepas saat
+    tampil & dikembalikan saat disembunyi agar tak tertimpa `applyLanguage`.
+  Verifikasi: node --check script.js & data.js OK; 126 key data-i18n di HTML ada di
+  kamus id+en; semua src="images/..." valid.

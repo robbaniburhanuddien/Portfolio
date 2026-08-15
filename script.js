@@ -153,6 +153,8 @@ const i18n = {
     "form.message":    "Pesan",
     "form.send":       "Kirim Pesan",
     "form.success":    "Pesan terkirim! Terima kasih.",
+    "form.success_name":"Pesan terkirim! Terima kasih, {name}.",
+    "form.sending":    "Mengirim...",
 
     // Footer
     "footer.copy":     "© 2025 · Burhanuddien Robbani, S.P. — Mangrove Specialist Indonesia",
@@ -301,6 +303,8 @@ const i18n = {
     "form.message":    "Message",
     "form.send":       "Send Message",
     "form.success":    "Message sent! Thank you.",
+    "form.success_name":"Message sent! Thank you, {name}.",
+    "form.sending":    "Sending...",
 
     // Footer
     "footer.copy":     "© 2025 · Burhanuddien Robbani, S.P. — Mangrove Specialist Indonesia",
@@ -557,16 +561,25 @@ const formSuccess = document.getElementById('formSuccess');
 contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const btn = contactForm.querySelector('[type="submit"]');
-  const origText = btn.textContent;
-  btn.textContent = currentLang === 'id' ? 'Mengirim...' : 'Sending...';
+  btn.textContent = i18n[currentLang]['form.sending'];
   btn.disabled = true;
 
   setTimeout(() => {
+    const name = (contactForm.querySelector('#contact-name').value || '').trim();
+    const successSpan = formSuccess.querySelector('[data-i18n]');
+    const key = name ? 'form.success_name' : 'form.success';
+    if (successSpan) {
+      successSpan.removeAttribute('data-i18n');
+      successSpan.textContent = i18n[currentLang][key].replace('{name}', name);
+    }
     formSuccess.classList.remove('hidden');
     contactForm.reset();
-    btn.textContent = origText;
+    btn.textContent = i18n[currentLang]['form.send'];
     btn.disabled = false;
-    setTimeout(() => formSuccess.classList.add('hidden'), 5000);
+    setTimeout(() => {
+      formSuccess.classList.add('hidden');
+      if (successSpan) successSpan.setAttribute('data-i18n', 'form.success');
+    }, 5000);
   }, 1200);
 });
 
