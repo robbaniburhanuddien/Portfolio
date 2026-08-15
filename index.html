@@ -573,6 +573,52 @@
   </section>
 
   <!-- ============================
+       MAP / SEBARAN DOKUMENTASI
+  ============================= -->
+  <section id="map" class="section map-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag" data-i18n="map.tag">Sebaran Lapangan</span>
+        <h2 class="section-title" data-i18n="map.title">Di Mana Saya Bekerja?</h2>
+        <p class="section-desc" data-i18n="map.desc">Dokumentasi kegiatan mangrove tersebar di beberapa wilayah. Klik titik untuk melihat foto dari lokasi tersebut.</p>
+      </div>
+      <div class="map-wrap reveal">
+        <div class="map-canvas" id="mapCanvas">
+          <!-- SVG silhouette Indonesia (stylized) -->
+          <svg class="map-svg" viewBox="0 0 800 420" preserveAspectRatio="xMidYMid meet" aria-label="Peta Indonesia">
+            <defs>
+              <linearGradient id="mapGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="var(--clr-primary-light)"/>
+                <stop offset="100%" stop-color="var(--clr-primary)"/>
+              </linearGradient>
+            </defs>
+            <!-- simplified archipelago shapes -->
+            <g class="map-land" fill="url(#mapGrad)" opacity="0.85">
+              <path d="M120 90 q40 -20 90 -10 q60 10 120 0 q40 -8 70 6 q20 30 -10 60 q-30 30 -80 26 q-50 4 -90 -10 q-60 -20 -100 -42 q-30 -18 -10 -30 Z"/>
+              <path d="M300 150 q50 -10 90 6 q30 40 10 90 q-20 50 -70 60 q-40 6 -50 -40 q-10 -50 10 -86 q10 -24 10 -30 Z"/>
+              <path d="M250 250 q30 -6 50 14 q26 30 18 70 q-10 40 -50 44 q-36 2 -42 -40 q-6 -50 12 -78 q6 -14 12 -10 Z"/>
+              <path d="M430 280 q40 -10 70 18 q24 40 6 80 q-22 36 -64 28 q-34 -10 -32 -54 q2 -44 20 -72 Z"/>
+              <path d="M560 200 q60 -16 110 4 q50 24 60 70 q8 50 -36 70 q-50 18 -94 -8 q-46 -28 -54 -76 q-6 -40 14 -60 Z"/>
+            </g>
+          </svg>
+          <!-- markers (positioned by %) -->
+          <button class="map-marker" data-region="jakarta"   style="left:43%; top:62%" aria-label="Jakarta"><span class="dot"></span><span class="pin-label">Jakarta</span></button>
+          <button class="map-marker" data-region="kepri"     style="left:55%; top:40%" aria-label="Kepulauan Riau"><span class="dot"></span><span class="pin-label">Kepri</span></button>
+          <button class="map-marker" data-region="babel"     style="left:58%; top:58%" aria-label="Kepulauan Bangka Belitung"><span class="dot"></span><span class="pin-label">Babel</span></button>
+          <button class="map-marker" data-region="sumut"     style="left:48%; top:38%" aria-label="Sumatera Utara"><span class="dot"></span><span class="pin-label">Sumut</span></button>
+        </div>
+        <!-- popup -->
+        <div class="map-popup" id="mapPopup" hidden>
+          <button class="map-popup-close" id="mapPopupClose" aria-label="Tutup">×</button>
+          <h3 class="map-popup-title" id="mapPopupTitle"></h3>
+          <p class="map-popup-sub" id="mapPopupSub"></p>
+          <div class="map-popup-grid" id="mapPopupGrid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
        EDUCATION & CERTS
   ============================= -->
   <section id="education" class="section education">

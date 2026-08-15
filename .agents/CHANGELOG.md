@@ -160,3 +160,9 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   semua 96 foto dari `images/` via JS (`GALLERY_FILES` + `buildGallery()`), lightbox tetap
   jalan. Head tab title -> "Robbani", logo kiri jadi slot `.logo-photo` (placeholder foto).
   node --check OK; verify PASS. STATUS: menunggu preview visual Robbani.
+
+* **Peta sebaran dokumentasi (Opsi C, zero-dep SVG)** — section `#map` dengan SVG silhouette
+  Indonesia stylized + 4 marker (Jakarta, Kepri, Babel, Sumut) animasi pop+pulse. Klik marker
+  -> popup glass berisi grid foto dari `images/` (MAP_REGIONS di script.js). Kab/kota Sumut
+  (Langkat, Sergai, Batu Bara, Deli Serdang, Asahan, Labuhanbatu) tertulis di sub popup Sumut.
+  Tanpa library eksternal. node --check OK; verify PASS. STATUS: menunggu preview visual.

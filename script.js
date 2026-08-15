@@ -652,6 +652,47 @@ contactForm.addEventListener('submit', (e) => {
   }, 1200);
 });
 
+// ---- Map / Sebaran Dokumentasi: marker -> popup foto ----
+const MAP_REGIONS = {
+  jakarta: { title: 'Jakarta', sub: 'Pusat BRGM — Deputi Pemberdayaan Masyarakat',
+    photos: ['20260416_034518537_iOS.jpg', '20260416_033920743_iOS.jpg', 'KT Sejahtera_23112024_105851.jpg'] },
+  kepri:   { title: 'Kepulauan Riau', sub: 'Rehabilitasi mangrove & operasional GIS',
+    photos: ['DJI_0379.JPG', 'DJI_0381.JPG', '20230824_172149.jpg', 'IMG_9403~photo.JPG', 'IMG_9410~photo.JPG', 'IMG_9530~photo.JPG'] },
+  babel:   { title: 'Kepulauan Bangka Belitung', sub: 'Rehabilitasi mangrove & pemberdayaan masyarakat',
+    photos: ['IMG_9407~photo.JPG', 'IMG_9536~photo.JPG', 'IMG_9537~photo.JPG', 'IMG_9543~photo.JPG', 'IMG_9622~photo.JPG'] },
+  sumut:   { title: 'Sumatera Utara', sub: 'PPIU M4CR — Langkat, Sergai, Batu Bara, Deli Serdang, Asahan, Labuhanbatu',
+    photos: ['20231125_090745.jpg', '20231125_090917.jpg', 'TimePhoto_20240503_101405.jpg', 'TimePhoto_20240503_145638.jpg', 'WhatsApp Image 2023-12-21 at 6.04.47 PM.jpeg', 'WhatsApp Image 2024-07-02 at 10.16.58 AM.jpeg'] }
+};
+(function initMap() {
+  const markers = document.querySelectorAll('.map-marker');
+  const popup = document.getElementById('mapPopup');
+  const pTitle = document.getElementById('mapPopupTitle');
+  const pSub = document.getElementById('mapPopupSub');
+  const pGrid = document.getElementById('mapPopupGrid');
+  const pClose = document.getElementById('mapPopupClose');
+  if (!markers.length || !popup) return;
+  markers.forEach(m => {
+    m.addEventListener('click', () => {
+      const region = MAP_REGIONS[m.getAttribute('data-region')];
+      if (!region) return;
+      pTitle.textContent = region.title;
+      pSub.textContent = region.sub;
+      pGrid.innerHTML = '';
+      region.photos.forEach(f => {
+        const im = document.createElement('img');
+        im.src = 'images/' + encodeURIComponent(f);
+        im.alt = region.title;
+        im.loading = 'lazy';
+        im.onerror = () => im.remove();
+        pGrid.appendChild(im);
+      });
+      popup.hidden = false;
+    });
+  });
+  if (pClose) pClose.addEventListener('click', () => { popup.hidden = true; });
+})();
+
+
 // =========================================
 // SMOOTH ACTIVE NAV HIGHLIGHT
 // =========================================
