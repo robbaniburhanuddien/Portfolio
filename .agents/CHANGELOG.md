@@ -29,7 +29,7 @@ Urutan eksekusi orchestrator: High → Medium → Low.
 * [x] Uji coba tombol kirim pesan formulir kontak (simulasi respons). `[STYLIST]`
 
 ### Low Priority / Future Scope
-* [ ] Tambahkan tautan Instagram & Github ke contact (data.js inject + index.html). `[CONTENT]`
+* [~] Tambahkan tautan Instagram & Github ke contact (data.js inject + index.html). `[CONTENT]` → blocked: butuh handle IG/Github asli dari user (cron HOLD — jangan tebak akun).
 * [x] Caption lightbox galeri jadi bilingual (ikuti switch EN). `[STYLIST]`
 * [ ] Rancang modul peta interaktif mini (Leaflet.js/WebGIS) untuk lokasi kerja mangrove Sumatera. `[ARCH]` → NEEDS-PERMISSION (tambah library)
 
@@ -125,3 +125,12 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
     tampil & dikembalikan saat disembunyi agar tak tertimpa `applyLanguage`.
   Verifikasi: node --check script.js & data.js OK; 126 key data-i18n di HTML ada di
   kamus id+en; semua src="images/..." valid.
+
+* **Cron run `portfolio-orchestrator` (agregat verifikasi)** — dispatch task SAFE
+  beruntun; task NEEDS-PERMISSION/blocked di-HOLD (mode cron: tanpa tanya, JANGAN
+  git push). SAFE selesai: tombol kirim formulir kontak (entri di atas, commit
+  `937979c`). DI-HOLD: Push GitHub (NEEDS-PERMISSION, no PAT), Netlify (NEEDS-
+  PERMISSION, tunggu push), Unggah cv.pdf (butuh file dari user), IG/Github di
+  contact (butuh handle asli user — tidak ditebak), Peta interaktif Leaflet.js
+  (NEEDS-PERMISSION, tambah library). Verifikasi agregat: `node --check` script.js
+  & data.js OK; 0 teks "undefined" di index.html; ke-13 `src="images/..."` valid.
