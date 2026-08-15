@@ -166,3 +166,11 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   -> popup glass berisi grid foto dari `images/` (MAP_REGIONS di script.js). Kab/kota Sumut
   (Langkat, Sergai, Batu Bara, Deli Serdang, Asahan, Labuhanbatu) tertulis di sub popup Sumut.
   Tanpa library eksternal. node --check OK; verify PASS. STATUS: menunggu preview visual.
+
+* **Kurasi galeri**: GALLERY_FILES dikurasi dari 96 -> 19 foto terbaik (penanaman, drone,
+  GIS laptop, transek, komunitas) tanpa caption (visual only, pilihan Robbani). node OK.
+* **CARA TANDAI FOTO UNTUK PETA** (Robbani): tidak perlu pindah folder / tidak perlu stock
+  foto peta. Cukup di chat sebutkan: "foto X.jpg di Kepri, Y.jpg di Babel, Z.jpg di Sumut,
+  W.jpg di Jakarta" -> saya update MAP_REGIONS.photos agar popup peta berisi foto lokasi itu.
+  Boleh juga rename file jadi prefix lokasi (mis. kepri_penanaman1.jpg) lalu bilang saja.
+  Marker peta sudah ada 4: jakarta, kepri, babel, sumut (posisi % di CSS, bisa digeser).

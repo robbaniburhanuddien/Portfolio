@@ -535,37 +535,13 @@ const GALLERY_CAPTIONS = {
 };
 let activeGalleryItem = null;
 
-// ---- Dynamic gallery: render all images/ files ----
+// ---- Dynamic gallery: curated field-documentation photos ----
 const GALLERY_FILES = [
-  "1000058956.jpg.jpeg", "1000263704.jpg.jpeg", "1000263705.jpg.jpeg", "1000263706.jpg.jpeg",
-  "1000263707.jpg.jpeg", "1000263708.jpg.jpeg", "20230824_172149.jpg", "20230924_121008.jpg",
-  "20231010_124625.jpg", "20231010_165638.jpg", "20231125_090745.jpg", "20231125_090749.jpg",
-  "20231125_090917.jpg", "20260416_033920743_iOS.jpg", "20260416_034518537_iOS.jpg", "20260416_034548341_iOS 1.jpg",
-  "DJI_0026.JPG", "DJI_0030.JPG", "DJI_0342.JPG", "DJI_0377.JPG", "DJI_0378.JPG", "DJI_0379.JPG",
-  "DJI_0380.JPG", "DJI_0381.JPG", "DJI_0382.JPG", "GOPR0278.JPG", "GOPR0282.JPG", "GOPR0321.JPG",
-  "GOPR0366.JPG", "IMG-20231230-WA0022.jpg", "IMG-20231230-WA0032.jpg", "IMG-20240106-WA0278.png",
-  "IMG_9338~photo.JPG", "IMG_9339~photo.JPG", "IMG_9389~photo.JPG", "IMG_9390~photo.JPG", "IMG_9391~photo.JPG",
-  "IMG_9392~photo.JPG", "IMG_9394~photo.JPG", "IMG_9395~photo.JPG", "IMG_9401~photo.JPG", "IMG_9402~photo.JPG",
-  "IMG_9403~photo.JPG", "IMG_9404~photo.JPG", "IMG_9405~photo.JPG", "IMG_9406~photo.JPG", "IMG_9407~photo (1).JPG",
-  "IMG_9407~photo.JPG", "IMG_9410~photo.JPG", "IMG_9414~photo (2).JPG", "IMG_9414~photo.JPG", "IMG_9415~photo.JPG",
-  "IMG_9417~photo.JPG", "IMG_9422~photo.JPG", "IMG_9436~photo.JPG", "IMG_9518~photo.JPG", "IMG_9530~photo.JPG",
-  "IMG_9536~photo.JPG", "IMG_9537~photo.JPG", "IMG_9543~photo.JPG", "IMG_9622~photo.JPG",
-  "KT Sejahtera_23112024_105851.jpg", "KT Sejahtera_23112024_105855.jpg", "KT Sejahtera_23112024_105859.jpg",
-  "KT Sejahtera_23112024_113852.jpg", "KT Sejahtera_23112024_113900.jpg", "KT Sejahtera_23112024_113906.jpg",
-  "KT Sejahtera_23112024_114030.jpg", "KT Sejahtera_23112024_114040.jpg", "TimePhoto_20240503_101405.jpg",
-  "TimePhoto_20240503_144504.jpg", "TimePhoto_20240503_145638.jpg", "TimePhoto_20240504_162223.jpg",
-  "WhatsApp Image 2023-09-09 at 10.57.22 PM.jpeg", "WhatsApp Image 2023-09-09 at 10.57.24 PM (1).jpeg",
-  "WhatsApp Image 2023-09-09 at 10.57.24 PM.jpeg", "WhatsApp Image 2023-09-10 at 7.52.47 AM.jpeg",
-  "WhatsApp Image 2023-10-23 at 11.57.46 AM.jpeg", "WhatsApp Image 2023-10-27 at 3.28.44 PM.jpeg",
-  "WhatsApp Image 2023-10-28 at 11.21.44 AM.jpeg", "WhatsApp Image 2023-10-28 at 6.19.22 AM.jpeg",
-  "WhatsApp Image 2023-10-29 at 5.18.41 PM (1).jpeg", "WhatsApp Image 2023-10-29 at 5.18.41 PM (2).jpeg",
-  "WhatsApp Image 2023-10-29 at 5.18.41 PM.jpeg", "WhatsApp Image 2023-10-30 at 4.01.52 PM.jpeg",
-  "WhatsApp Image 2023-12-01 at 1.14.54 PM.jpeg", "WhatsApp Image 2023-12-21 at 6.04.47 PM.jpeg",
-  "WhatsApp Image 2023-12-21 at 6.04.50 PM (1).jpeg", "WhatsApp Image 2023-12-21 at 6.04.50 PM (2).jpeg",
-  "WhatsApp Image 2023-12-21 at 6.04.53 PM (1).jpeg", "WhatsApp Image 2023-12-27 at 6.23.14 PM.jpeg",
-  "WhatsApp Image 2024-06-24 at 12.55.17 AM.jpeg", "WhatsApp Image 2024-07-02 at 10.16.58 AM.jpeg",
-  "WhatsApp Image 2024-09-27 at 9.40.07 PM (1).jpeg", "WhatsApp Image 2024-09-28 at 12.23.38 AM (2).jpeg",
-  "WhatsApp Image 2024-12-07 at 10.29.01 PM.jpeg"
+  "IMG_9403~photo.JPG", "IMG_9410~photo.JPG", "IMG_9530~photo.JPG", "IMG_9536~photo.JPG",
+  "IMG_9537~photo.JPG", "IMG_9543~photo.JPG", "IMG_9436~photo.JPG", "IMG_9622~photo.JPG",
+  "DJI_0379.JPG", "DJI_0381.JPG", "DJI_0382.JPG", "GOPR0278.JPG", "GOPR0366.JPG",
+  "20260416_034518537_iOS.jpg", "20260416_033920743_iOS.jpg",
+  "20231125_090745.jpg", "20231125_090917.jpg", "20230824_172149.jpg", "TimePhoto_20240503_101405.jpg"
 ];
 (function buildGallery() {
   const grid = document.querySelector('.gallery-grid');
@@ -574,13 +550,13 @@ const GALLERY_FILES = [
   GALLERY_FILES.forEach((file, i) => {
     const src = 'images/' + encodeURIComponent(file);
     const item = document.createElement('div');
-    item.className = 'gallery-item' + (i % 7 === 0 ? ' large' : '');
-    item.setAttribute('data-label', file.replace(/\.[^.]+$/, '').replace(/[_~]/g, ' ').trim());
+    item.className = 'gallery-item' + (i % 7 === 3 ? ' large' : '');
+    item.setAttribute('data-label', '');
     const img = document.createElement('img');
     img.src = src;
     img.alt = file;
     img.loading = 'lazy';
-    img.onerror = () => item.style.display = 'none'; // skip broken
+    img.onerror = () => item.style.display = 'none';
     item.appendChild(img);
     frag.appendChild(item);
   });
