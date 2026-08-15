@@ -82,8 +82,11 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   ke kamus `i18n` (`id`: "2024 – Sekarang" / `en`: "2024 – Present"; rentang lain sama di
   kedua bahasa) dan atribut `data-i18n="expX.period"` ke ketiga span. Tidak ada fakta/
   riwayat kerja baru yang dikarang — hanya bikin label periode bilingual & konsisten.
-* **Verifikasi** — `node --check script.js` & `node --check data.js` OK; ke-133 key
-  `data-i18n` di `index.html` ada di kamus `id` & `en`; ke-8 `src="images/..."` ada file-nya.
+* **Verifikasi** — `node --check script.js` & `node --check data.js` OK; ke-133+ key
+  `data-i18n` di `index.html` ada di kamus `id` & `en`; ke-35 `src` galeri ada file-nya.
+
+* **Galeri profesional (full)** — kurasi 35 foto dari 96 (`images/`), tag kategori
+  (plant/survey/gis/community/aerial/doc) dari pola nama file + metada...[truncated]
 
 * **Lengkapi KNOWLEDGE.md (profil & glosarium personal)** — isi dari Robbani:
   tone "santai-ilmiah", English American; spesies mangrove latin+lokal (Rhizophora

@@ -126,6 +126,12 @@ const i18n = {
     "gal.title":       "Galeri Lapangan",
     "gal.desc":        "Momen nyata dari lapangan — rehabilitasi, survei, dan kolaborasi komunitas",
     "gal.hint":        "💡 Klik gambar untuk melihat ukuran penuh",
+    "gal.filter.all":       "Semua",
+    "gal.filter.plant":     "Penanaman",
+    "gal.filter.survey":    "Survei UAV",
+    "gal.filter.gis":       "Pemetaan GIS",
+    "gal.filter.community": "Komunitas",
+    "gal.filter.doc":       "Dokumentasi",
 
     // Education
     "edu.tag":         "Latar Belakang",
@@ -276,6 +282,12 @@ const i18n = {
     "gal.title":       "Field Gallery",
     "gal.desc":        "Real moments from the field — rehabilitation, surveys, and community collaboration",
     "gal.hint":        "💡 Click an image to view full size",
+    "gal.filter.all":       "All",
+    "gal.filter.plant":     "Planting",
+    "gal.filter.survey":    "UAV Survey",
+    "gal.filter.gis":       "GIS Mapping",
+    "gal.filter.community": "Community",
+    "gal.filter.doc":       "Documentation",
 
     // Education
     "edu.tag":         "Background",
@@ -383,11 +395,7 @@ const langToggle = document.getElementById('langToggle');
 langToggle.addEventListener('click', () => {
   currentLang = currentLang === 'id' ? 'en' : 'id';
   applyLanguage(currentLang);
-  // Keep an open lightbox caption in sync with the new language
-  if (activeGalleryItem && !lightbox.classList.contains('hidden')) {
-    const lbl = activeGalleryItem.getAttribute('data-label') || '';
-    lightboxCaption.textContent = (GALLERY_CAPTIONS[currentLang] && GALLERY_CAPTIONS[currentLang][lbl]) ? GALLERY_CAPTIONS[currentLang][lbl] : lbl;
-  }
+  refreshGalleryLabels();
   // Move switch knob
   langToggle.classList.toggle('is-alt', currentLang === 'en');
   document.documentElement.setAttribute('data-lang', currentLang);
@@ -514,47 +522,86 @@ filterBtns.forEach(btn => {
 // =========================================
 // GALLERY LIGHTBOX
 // =========================================
-// Bilingual caption map for gallery lightbox (keyed by Indonesian data-label)
+// Bilingual caption map for gallery lightbox (keyed by category kind)
 const GALLERY_CAPTIONS = {
   id: {
-    "Penanaman Mangrove": "Penanaman Mangrove",
-    "Survei UAV":          "Survei UAV",
-    "Pemetaan GIS":        "Pemetaan GIS",
-    "Community Meeting":   "Community Meeting",
-    "Aerial View":         "Aerial View",
-    "Transek Mangrove":    "Transek Mangrove"
+    "plant":     "Penanaman Mangrove",
+    "survey":    "Survei UAV",
+    "gis":       "Pemetaan GIS",
+    "community": "Kolaborasi Komunitas",
+    "aerial":    "Tampak Udara",
+    "doc":       "Dokumentasi Lapangan"
   },
   en: {
-    "Penanaman Mangrove": "Mangrove Planting",
-    "Survei UAV":          "UAV Survey",
-    "Pemetaan GIS":        "GIS Mapping",
-    "Community Meeting":   "Community Meeting",
-    "Aerial View":         "Aerial View",
-    "Transek Mangrove":    "Transect Survey"
+    "plant":     "Mangrove Planting",
+    "survey":    "UAV Survey",
+    "gis":       "GIS Mapping",
+    "community": "Community Collaboration",
+    "aerial":    "Aerial View",
+    "doc":       "Field Documentation"
   }
 };
 let activeGalleryItem = null;
 
 // ---- Dynamic gallery: curated field-documentation photos ----
+// Each entry: { file, cat (plant/survey/gis/community/aerial/doc), id, en (bilingual caption) }
 const GALLERY_FILES = [
-  "IMG_9403~photo.JPG", "IMG_9410~photo.JPG", "IMG_9530~photo.JPG", "IMG_9536~photo.JPG",
-  "IMG_9537~photo.JPG", "IMG_9543~photo.JPG", "IMG_9436~photo.JPG", "IMG_9622~photo.JPG",
-  "DJI_0379.JPG", "DJI_0381.JPG", "DJI_0382.JPG", "GOPR0278.JPG", "GOPR0366.JPG",
-  "20260416_034518537_iOS.jpg", "20260416_033920743_iOS.jpg",
-  "20231125_090745.jpg", "20231125_090917.jpg", "20230824_172149.jpg", "TimePhoto_20240503_101405.jpg"
+  // Planting (Penanaman Mangrove)
+  { file: "IMG_9403~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
+  { file: "IMG_9410~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
+  { file: "IMG_9530~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
+  { file: "IMG_9536~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
+  { file: "IMG_9537~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
+  { file: "IMG_9543~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
+  { file: "IMG_9622~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
+  { file: "IMG_9436~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
+  // UAV Survey (Survei UAV)
+  { file: "DJI_0379.JPG",                     cat: "survey",    id: "Survei UAV",                  en: "UAV Survey" },
+  { file: "DJI_0381.JPG",                     cat: "survey",    id: "Survei UAV",                  en: "UAV Survey" },
+  { file: "DJI_0382.JPG",                     cat: "survey",    id: "Survei UAV",                  en: "UAV Survey" },
+  { file: "GOPR0278.JPG",                     cat: "survey",    id: "Survei UAV",                  en: "UAV Survey" },
+  { file: "GOPR0321.JPG",                     cat: "survey",    id: "Survei UAV",                  en: "UAV Survey" },
+  { file: "GOPR0366.JPG",                     cat: "survey",    id: "Survei UAV",                  en: "UAV Survey" },
+  // GIS Mapping (Pemetaan GIS)
+  { file: "IMG_9401~photo.JPG",               cat: "gis",       id: "Pemetaan GIS",               en: "GIS Mapping" },
+  { file: "IMG_9402~photo.JPG",               cat: "gis",       id: "Pemetaan GIS",               en: "GIS Mapping" },
+  { file: "IMG_9404~photo.JPG",               cat: "gis",       id: "Pemetaan GIS",               en: "GIS Mapping" },
+  { file: "IMG_9405~photo.JPG",               cat: "gis",       id: "Pemetaan GIS",               en: "GIS Mapping" },
+  { file: "IMG_9406~photo.JPG",               cat: "gis",       id: "Pemetaan GIS",               en: "GIS Mapping" },
+  { file: "IMG_9518~photo.JPG",               cat: "gis",       id: "Pemetaan GIS",               en: "GIS Mapping" },
+  // Community Collaboration (Kolaborasi Komunitas)
+  { file: "KT Sejahtera_23112024_105851.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
+  { file: "KT Sejahtera_23112024_105855.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
+  { file: "KT Sejahtera_23112024_105859.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
+  { file: "KT Sejahtera_23112024_113852.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
+  { file: "KT Sejahtera_23112024_113900.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
+  { file: "KT Sejahtera_23112024_113906.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
+  { file: "KT Sejahtera_23112024_114030.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
+  { file: "KT Sejahtera_23112024_114040.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
+  // Aerial View (Tampak Udara)
+  { file: "DJI_0026.JPG",                     cat: "aerial",    id: "Tampak Udara",                en: "Aerial View" },
+  { file: "DJI_0030.JPG",                     cat: "aerial",    id: "Tampak Udara",                en: "Aerial View" },
+  { file: "DJI_0342.JPG",                     cat: "aerial",    id: "Tampak Udara",                en: "Aerial View" },
+  // Field Documentation (Dokumentasi Lapangan)
+  { file: "20231125_090745.jpg",              cat: "doc",       id: "Dokumentasi Lapangan",        en: "Field Documentation" },
+  { file: "20231125_090917.jpg",              cat: "doc",       id: "Dokumentasi Lapangan",        en: "Field Documentation" },
+  { file: "20230824_172149.jpg",              cat: "doc",       id: "Dokumentasi Lapangan",        en: "Field Documentation" },
+  { file: "TimePhoto_20240503_101405.jpg",    cat: "doc",       id: "Dokumentasi Lapangan",        en: "Field Documentation" }
 ];
 (function buildGallery() {
   const grid = document.querySelector('.gallery-grid');
   if (!grid) return;
   const frag = document.createDocumentFragment();
-  GALLERY_FILES.forEach((file, i) => {
-    const src = 'images/' + encodeURIComponent(file);
+  GALLERY_FILES.forEach((entry, i) => {
+    const src = 'images/' + encodeURIComponent(entry.file);
     const item = document.createElement('div');
-    item.className = 'gallery-item' + (i % 7 === 3 ? ' large' : '');
-    item.setAttribute('data-label', '');
+    item.className = 'gallery-item' + (i % 8 === 3 ? ' large' : '');
+    item.setAttribute('data-cat', entry.cat);
+    item.setAttribute('data-index', i);
+    item.setAttribute('data-label', currentLang === 'en' ? entry.en : entry.id);
     const img = document.createElement('img');
     img.src = src;
-    img.alt = file;
+    img.alt = entry.file;
     img.loading = 'lazy';
     img.onerror = () => item.style.display = 'none';
     item.appendChild(img);
@@ -574,16 +621,60 @@ document.querySelectorAll('.gallery-item').forEach(item => {
   item.addEventListener('click', () => {
     const img = item.querySelector('img');
     if (img) {
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      const lbl = item.getAttribute('data-label') || '';
       activeGalleryItem = item;
-      lightboxCaption.textContent = (GALLERY_CAPTIONS[currentLang] && GALLERY_CAPTIONS[currentLang][lbl]) ? GALLERY_CAPTIONS[currentLang][lbl] : lbl;
-      lightbox.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
+      openLightbox(parseInt(item.getAttribute('data-index'), 10));
     }
   });
 });
+
+// Open lightbox by gallery index (respects current filter so prev/next stays in-view)
+function openLightbox(index) {
+  const visible = Array.from(document.querySelectorAll('.gallery-item'))
+    .filter(el => el.style.display !== 'none');
+  if (!visible.length) return;
+  const item = visible[index] || visible[0];
+  activeGalleryItem = item;
+  const img = item.querySelector('img');
+  if (!img) return;
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt;
+  setLightboxCaption(item.getAttribute('data-label'));
+  lightbox.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+// Navigate prev/next within currently visible items
+function navLightbox(dir) {
+  const visible = Array.from(document.querySelectorAll('.gallery-item'))
+    .filter(el => el.style.display !== 'none');
+  if (!visible.length || !activeGalleryItem) return;
+  let pos = visible.indexOf(activeGalleryItem);
+  if (pos === -1) pos = 0;
+  pos = (pos + dir + visible.length) % visible.length;
+  openLightbox(pos);
+}
+
+function setLightboxCaption(lbl) {
+  lightboxCaption.textContent = (GALLERY_CAPTIONS[currentLang] && GALLERY_CAPTIONS[currentLang][lbl])
+    ? GALLERY_CAPTIONS[currentLang][lbl] : lbl;
+}
+
+// Gallery category filter
+(function initGalleryFilter() {
+  const bar = document.getElementById('galleryFilter');
+  if (!bar) return;
+  bar.addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    bar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.getAttribute('data-filter');
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      const show = (cat === 'all' || item.getAttribute('data-cat') === cat);
+      item.style.display = show ? '' : 'none';
+    });
+  });
+})();
 
 function closeLightbox() {
   lightbox.classList.add('hidden');
@@ -593,9 +684,25 @@ function closeLightbox() {
 }
 lightboxClose.addEventListener('click', closeLightbox);
 lightboxOverlay.addEventListener('click', closeLightbox);
+document.getElementById('lightboxPrev').addEventListener('click', e => { e.stopPropagation(); navLightbox(-1); });
+document.getElementById('lightboxNext').addEventListener('click', e => { e.stopPropagation(); navLightbox(1); });
 document.addEventListener('keydown', e => {
+  if (lightbox.classList.contains('hidden')) return;
   if (e.key === 'Escape') closeLightbox();
+  else if (e.key === 'ArrowLeft') navLightbox(-1);
+  else if (e.key === 'ArrowRight') navLightbox(1);
 });
+
+// Keep an open lightbox caption + overlay labels in sync with the new language
+function refreshGalleryLabels() {
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    const entry = GALLERY_FILES[parseInt(item.getAttribute('data-index'), 10)];
+    if (entry) item.setAttribute('data-label', currentLang === 'en' ? entry.en : entry.id);
+    const ov = item.querySelector('.gallery-item-overlay span');
+    if (ov) ov.textContent = item.getAttribute('data-label');
+  });
+  if (activeGalleryItem) setLightboxCaption(activeGalleryItem.getAttribute('data-label'));
+}
 
 // =========================================
 // CONTACT FORM (Simulated)

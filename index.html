@@ -563,8 +563,14 @@
         <h2 data-i18n="gal.title">Galeri Lapangan</h2>
         <p class="section-desc" data-i18n="gal.desc">Momen nyata dari lapangan — rehabilitasi, survei, dan kolaborasi komunitas</p>
       </div>
-      <div class="gallery-grid reveal">
-        <!-- diisi otomatis oleh script.js dari folder images/ (semua foto) -->
+      <div class="gallery-grid reveal"></div>
+      <div class="gallery-filter reveal" id="galleryFilter" role="tablist" aria-label="Filter galeri">
+        <button class="filter-btn active" data-filter="all"      data-i18n="gal.filter.all">Semua</button>
+        <button class="filter-btn"        data-filter="plant"     data-i18n="gal.filter.plant">Penanaman</button>
+        <button class="filter-btn"        data-filter="survey"    data-i18n="gal.filter.survey">Survei UAV</button>
+        <button class="filter-btn"        data-filter="gis"       data-i18n="gal.filter.gis">Pemetaan GIS</button>
+        <button class="filter-btn"        data-filter="community" data-i18n="gal.filter.community">Komunitas</button>
+        <button class="filter-btn"        data-filter="doc"       data-i18n="gal.filter.doc">Dokumentasi</button>
       </div>
       <div class="gallery-hint reveal">
         <p data-i18n="gal.hint">💡 Klik gambar untuk melihat ukuran penuh</p>
@@ -764,8 +770,10 @@
   <div id="lightbox" class="lightbox hidden">
     <div class="lightbox-overlay" id="lightboxOverlay"></div>
     <div class="lightbox-content">
-      <button class="lightbox-close" id="lightboxClose">&times;</button>
+      <button class="lightbox-close" id="lightboxClose" aria-label="Tutup">&times;</button>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Sebelumnya">&#8249;</button>
       <img src="" alt="" id="lightboxImg" />
+      <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Berikutnya">&#8250;</button>
       <p id="lightboxCaption"></p>
     </div>
   </div>
