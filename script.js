@@ -878,12 +878,12 @@ const MAP_REGIONS = {
 // =========================================
 // ABOUT — foto slider + media sosial
 // =========================================
-// Foto profil (placeholder). Ganti nama file di sini saat Robbani kirim fotonya.
+// Foto profil (dari folder images/profil tentang saya). Ganti/urutkan di sini.
 const ABOUT_PHOTOS = [
-  'images/20230824_172149.jpg',
-  'images/DJI_0381.JPG',
-  'images/KT Sejahtera_23112024_105851.jpg',
-  'images/WhatsApp Image 2024-06-24 at 12.55.17 AM.jpeg'
+  'images/profil tentang saya/1000263706.jpg.jpeg',
+  'images/profil tentang saya/DJI_0382.JPG',
+  'images/profil tentang saya/WhatsApp Image 2026-08-16 at 9.57.30 PM.jpeg',
+  'images/profil tentang saya/WhatsApp Image 2026-08-16 at 9.58.35 PM.jpeg'
 ];
 
 (function buildAboutSlider() {
@@ -893,7 +893,7 @@ const ABOUT_PHOTOS = [
   if (!track || !ABOUT_PHOTOS.length) return;
   ABOUT_PHOTOS.forEach(src => {
     const im = document.createElement('img');
-    im.src = src;
+    im.src = encodeURI(src);
     im.alt = 'Burhanuddien Robbani, S.P.';
     im.loading = 'lazy';
     track.appendChild(im);
