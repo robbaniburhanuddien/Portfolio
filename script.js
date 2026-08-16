@@ -17,6 +17,7 @@ const i18n = {
     "nav.skills":      "Keahlian",
     "nav.projects":    "Proyek",
     "nav.gallery":     "Galeri",
+    "nav.video":       "Video",
     "nav.contact":     "Kontak",
 
     // Hero
@@ -58,8 +59,8 @@ const i18n = {
     "exp1.d3":         "Penyusunan administrasi kegiatan swakelola rehabilitasi mangrove bersama kelompok masyarakat (pokmas)",
     "exp1.d4":         "Koordinasi dengan pemerintah daerah, masyarakat lokal, dan pemangku kepentingan",
     "exp2.pos":        "Staf Rehabilitasi Mangrove — Deputi Pemberdayaan Masyarakat",
-    "exp2.loc":        "Jakarta & Kepulauan Riau & Kepulauan Bangka Belitung",
-    "exp2.d1":         "Pelaksanaan rehabilitasi mangrove di wilayah kerja Kepri & Babel",
+    "exp2.loc":        "Jakarta, Indonesia",
+    "exp2.d1":         "Melaksanakan Percepatan Rehabilitasi Mangrove di wilayah Provinsi Kepulauan Riau dan Kepulauan Bangka Belitung",
     "exp2.d2":         "Pengolahan data spasial & operasional sebagai GIS Operator (ArcGIS, QGIS, GEE)",
     "exp2.d3":         "Pendekatan pemberdayaan masyarakat & padat karya dalam rehabilitasi",
     "exp2.d4":         "Koordinasi dengan pemerintah daerah, komunitas lokal, dan pemangku kepentingan",
@@ -164,6 +165,12 @@ const i18n = {
 
     // Footer
     "footer.copy":     "© 2025 · Burhanuddien Robbani, S.P. — Mangrove Specialist Indonesia",
+
+    // Field Video
+    "vid.tag":         "Dokumentasi Lapangan",
+    "vid.title":       "Perjalanan di Lapangan",
+    "vid.desc":        "Rekam jejak kegiatan rehabilitasi mangrove — dari survei UAV hingga bersama masyarakat pesisir.",
+    "vid.note":        "Video akan aktif setelah file field.mp4 ditambahkan ke folder portofolio.",
   },
 
   en: {
@@ -173,6 +180,7 @@ const i18n = {
     "nav.skills":      "Skills",
     "nav.projects":    "Projects",
     "nav.gallery":     "Gallery",
+    "nav.video":       "Video",
     "nav.contact":     "Contact",
 
     // Hero
@@ -214,8 +222,8 @@ const i18n = {
     "exp1.d3":         "Preparation of self-managed (swakelola) mangrove rehabilitation administration with local community groups (pokmas)",
     "exp1.d4":         "Coordinating with local governments, communities, and stakeholders",
     "exp2.pos":        "Mangrove Rehabilitation Officer — Community Empowerment Deputy",
-    "exp2.loc":        "Jakarta & Riau Islands & Bangka Belitung Islands",
-    "exp2.d1":         "Implementation of mangrove rehabilitation in Kepri & Babel working areas",
+    "exp2.loc":        "Jakarta, Indonesia",
+    "exp2.d1":         "Implementing Accelerated Mangrove Rehabilitation across Riau Islands and Bangka Belitung Islands Provinces",
     "exp2.d2":         "Spatial data processing & operations as GIS Operator (ArcGIS, QGIS, GEE)",
     "exp2.d3":         "Community empowerment & labor-intensive approach in rehabilitation",
     "exp2.d4":         "Coordinating with local governments, communities, and stakeholders",
@@ -320,6 +328,12 @@ const i18n = {
 
     // Footer
     "footer.copy":     "© 2025 · Burhanuddien Robbani, S.P. — Mangrove Specialist Indonesia",
+
+    // Field Video
+    "vid.tag":         "Field Documentation",
+    "vid.title":       "Journey in the Field",
+    "vid.desc":        "Footprints of mangrove rehabilitation — from UAV surveys to working alongside coastal communities.",
+    "vid.note":        "Video activates once field.mp4 is added to the portfolio folder.",
   }
 };
 
@@ -589,27 +603,88 @@ const GALLERY_FILES = [
   { file: "TimePhoto_20240503_101405.jpg",    cat: "doc",       id: "Dokumentasi Lapangan",        en: "Field Documentation" }
 ];
 (function buildGallery() {
-  const grid = document.querySelector('.gallery-grid');
-  if (!grid) return;
-  const frag = document.createDocumentFragment();
-  GALLERY_FILES.forEach((entry, i) => {
-    const src = 'images/' + encodeURIComponent(entry.file);
-    const item = document.createElement('div');
-    item.className = 'gallery-item' + (i % 8 === 3 ? ' large' : '');
-    item.setAttribute('data-cat', entry.cat);
-    item.setAttribute('data-index', i);
-    item.setAttribute('data-label', currentLang === 'en' ? entry.en : entry.id);
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = entry.file;
-    img.loading = 'lazy';
-    img.onerror = () => item.style.display = 'none';
-    item.appendChild(img);
-    frag.appendChild(item);
+  const track  = document.getElementById('sliderTrack');
+  const dotsBox= document.getElementById('sliderDots');
+  const capTitle = document.getElementById('sliderCapTitle');
+  const capSub   = document.getElementById('sliderCapSub');
+  const prevBtn  = document.getElementById('sliderPrev');
+  const nextBtn  = document.getElementById('sliderNext');
+  const filterBox= document.getElementById('galleryFilter');
+  if (!track) return;
+
+  const CAT_SUB = {
+    id: { plant:'Penanaman bibit mangrove di pesisir', survey:'Survei udara menggunakan drone UAV',
+          gis:'Pemetaan & analisis spasial mangrove', community:'Pendampingan kelompok masyarakat pesisir',
+          aerial:'Tampak udara kawasan mangrove', doc:'Dokumentasi kegiatan lapangan' },
+    en: { plant:'Mangrove seedling planting along the coast', survey:'Aerial survey using UAV drone',
+          gis:'Mangrove spatial mapping & analysis', community:'Coastal community group facilitation',
+          aerial:'Aerial view of mangrove area', doc:'Field activity documentation' }
+  };
+
+  let current = 0, timer = null, filtered = [];
+
+  function render(filter) {
+    filtered = GALLERY_FILES.filter(e => filter === 'all' || e.cat === filter);
+    track.innerHTML = '';
+    dotsBox.innerHTML = '';
+    filtered.forEach((entry, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'slider-slide';
+      const img = document.createElement('img');
+      img.src = 'images/' + encodeURIComponent(entry.file);
+      img.alt = entry.file;
+      img.loading = 'lazy';
+      img.onerror = () => { slide.style.display = 'none'; };
+      slide.appendChild(img);
+      track.appendChild(slide);
+
+      const dot = document.createElement('button');
+      dot.className = 'slider-dot';
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dot.addEventListener('click', () => go(i));
+      dotsBox.appendChild(dot);
+    });
+    current = 0;
+    update();
+  }
+
+  function update() {
+    const total = filtered.length;
+    if (!total) return;
+    current = (current + total) % total;
+    track.style.transform = 'translateX(' + (-current * 100) + '%)';
+    capTitle.textContent = currentLang === 'en' ? filtered[current].en : filtered[current].id;
+    capSub.textContent = CAT_SUB[currentLang][filtered[current].cat] || '';
+    Array.from(dotsBox.children).forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function go(i) { current = i; update(); restart(); }
+  function next() { current++; update(); }
+  function prev() { current--; update(); }
+  function restart() { if (timer) clearInterval(timer); timer = setInterval(() => next(), 5000); }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); restart(); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { next(); restart(); });
+  if (filterBox) filterBox.querySelectorAll('.filter-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      filterBox.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      render(b.getAttribute('data-filter'));
+      restart();
+    });
   });
-  grid.innerHTML = '';
-  grid.appendChild(frag);
+
+  // pause on hover
+  const slider = document.getElementById('gallerySlider');
+  if (slider) {
+    slider.addEventListener('mouseenter', () => { if (timer) clearInterval(timer); });
+    slider.addEventListener('mouseleave', restart);
+  }
+
+  render('all');
+  restart();
 })();
+
 
 const lightbox        = document.getElementById('lightbox');
 const lightboxImg     = document.getElementById('lightboxImg');
@@ -763,7 +838,7 @@ const MAP_REGIONS = {
       pGrid.innerHTML = '';
       region.photos.forEach(f => {
         const im = document.createElement('img');
-        im.src = 'images/' + encodeURIComponent(f);
+        im.src = 'images/' + encodeURI(f);
         im.alt = region.title;
         im.loading = 'lazy';
         im.onerror = () => im.remove();
@@ -773,6 +848,31 @@ const MAP_REGIONS = {
     });
   });
   if (pClose) pClose.addEventListener('click', () => { popup.hidden = true; });
+
+  // Grid foto langsung terlihat di bawah peta
+  const photosBox = document.getElementById('mapPhotos');
+  if (photosBox) {
+    Object.keys(MAP_REGIONS).forEach(key => {
+      const region = MAP_REGIONS[key];
+      const group = document.createElement('div');
+      group.className = 'map-photo-group';
+      const h = document.createElement('h4');
+      h.textContent = region.title;
+      group.appendChild(h);
+      const grid = document.createElement('div');
+      grid.className = 'map-photo-grid';
+      region.photos.slice(0, 6).forEach(f => {
+        const im = document.createElement('img');
+        im.src = 'images/' + encodeURI(f);
+        im.alt = region.title;
+        im.loading = 'lazy';
+        im.onerror = () => im.remove();
+        grid.appendChild(im);
+      });
+      group.appendChild(grid);
+      photosBox.appendChild(group);
+    });
+  }
 })();
 
 

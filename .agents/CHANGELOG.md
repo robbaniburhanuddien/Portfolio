@@ -40,6 +40,26 @@ Urutan eksekusi orchestrator: High → Medium → Low.
 
 Format: `[YYYY-MM-DD]` — deskripsi singkat.
 
+### [2026-08-16] (batch 2 — request Robbani)
+* **Logo pengalaman → file asli** — monogram M4CR/BRGM diganti `<img>` ke
+  `images/logo/m4cr-logo.png` & `images/logo/brgm-logo.png` (copy dari file asli
+  `Logo Kemenhut & M4CR CSASumut.png` & `LOGO-BRGM...-removebg-preview.png`). CSS `.tl-org-logo img` ditambah.
+* **Teks BRGM diperbaiki** — `exp2.loc` → "Jakarta, Indonesia"; `exp2.d1` diperluas
+  jadi "Melaksanakan Percepatan Rehabilitasi Mangrove di wilayah Provinsi Kepulauan
+  Riau dan Kepulauan Bangka Belitung" (id+en).
+* **Galeri → slider otomatis** — `.gallery-grid` diganti `.gallery-slider` (track +
+  prev/next + dots + caption judul/sub di bawah). Auto-rotate 5s, pause on hover,
+  filter kategori tetap jalan. Caption sub per kategori (CAT_SUB id/en). Lightbox lama dicabut.
+* **Proyek unggulan → editable manual** — 6 `project-card` di-hardcode (hapus `data-i18n`
+  pada judul/desc/stats/tag) agar Robbani bisa edit langsung di HTML tanpa sentuh dict.
+* **Video perjalanan lapangan → DITUNDA** — section `#field-video` + nav link + CSS
+  dihapus (simpan untuk nanti). i18n `vid.*` masih ada di script.js (tidak dipakai).
+* **Peta sebaran → foto langsung terlihat** — tambah `.map-photos` grid 4 kolom di bawah
+  peta, render foto tiap wilayah (Jakarta/Kepri/Babel/Sumut) dari `MAP_REGIONS`.
+  Fix: `encodeURIComponent` → `encodeURI` agar foto dengan spasi/`~` load benar.
+  Popup marker tetap jalan.
+* Verifikasi: node --check OK, css brace 320/320, ad-hoc structural check 22/22 PASS.
+
 ### [2026-08-10]
 * **Init Git lokal** — `git init`, commit "first commit" (README.md), branch `main`,
   remote `origin` → `https://github.com/robbaniburhanuddien/Portofolio.git`.
