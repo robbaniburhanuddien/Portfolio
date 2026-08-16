@@ -27,6 +27,7 @@ Urutan eksekusi orchestrator: High → Medium → Low.
 * [ ] Unggah file PDF kurikulum vitae (cv.pdf) ke root + aktifkan tombol "Download CV" (butuh file dari user). `[CONTENT]`
 * [x] Periksa & sesuaikan tahun pengalaman kerja di index.html/script.js agar 100% akurat. `[CONTENT]`
 * [x] Uji coba tombol kirim pesan formulir kontak (simulasi respons). `[STYLIST]`
+* [x] Perbaiki UI hero (scroll-indicator tumpang tindih + readability light mode + tema switch). `[STYLIST]` → lihat HISTORY 2026-08-16
 
 ### Low Priority / Future Scope
 * [~] Tambahkan tautan Instagram & Github ke contact (data.js inject + index.html). `[CONTENT]` → blocked: butuh handle IG/Github asli dari user (cron HOLD — jangan tebak akun).
@@ -177,3 +178,18 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   W.jpg di Jakarta" -> saya update MAP_REGIONS.photos agar popup peta berisi foto lokasi itu.
   Boleh juga rename file jadi prefix lokasi (mis. kepri_penanaman1.jpg) lalu bilang saja.
   Marker peta sudah ada 4: jakarta, kepri, babel, sumut (posisi % di CSS, bisa digeser).
+
+### [2026-08-16]
+* **Perbaiki UI hero (request Robbani)** — 3 perbaikan di `style.css`:
+  1. **Scroll-indicator tumpang tindih** — `.hero-scroll` dipindah dari tengah bawah
+     (`left:50%; translateX(-50%)`) ke **pojok kanan bawah** (`right:28px; bottom:28px`),
+     sehingga tidak lagi menutupi data stat. Di mobile (<480px) diperkecil & tetap di pojok kanan.
+  2. **Readability light mode** — 8 heading section yang hardcode `var(--clr-white)`
+     (section-header h2, about-name, tl-position, skill-domain-card h3, badge-cloud h3,
+     project-body h3, edu-col-title, edu-body h4) diubah ke `var(--clr-text)` agar otomatis
+     gelap saat light mode (background section terang) & terang saat dark mode. Hero title &
+     stat-number sengaja **tetap putih** karena background hero selalu gelap di kedua tema.
+  3. **Tema switch** — tambah transisi halus 0.45s pada body + elemen utama saat toggle.
+     Knob `.theme-switch` di **dark mode** jadi navy/abu-abu gelap (`linear-gradient(#1e2a44,#2c3e5c)`),
+     di **light mode** kembali emas/oranye (`var(--clr-gold)`) sesuai permintaan.
+  STATUS: perubahan lokal siap, belum di-commit (menunggu persetujuan Robbani sebelum commit).
