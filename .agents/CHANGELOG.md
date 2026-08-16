@@ -30,7 +30,7 @@ Urutan eksekusi orchestrator: High → Medium → Low.
 * [x] Perbaiki UI hero (scroll-indicator tumpang tindih + readability light mode + tema switch). `[STYLIST]` → lihat HISTORY 2026-08-16
 
 ### Low Priority / Future Scope
-* [~] Tambahkan tautan Instagram & Github ke contact (data.js inject + index.html). `[CONTENT]` → blocked: butuh handle IG/Github asli dari user (cron HOLD — jangan tebak akun).
+* [~] Tambahkan tautan Instagram & Github ke contact (data.js inject + index.js). `[CONTENT]` → SELESAI: handle `https://www.instagram.com/robbanib/` & `https://github.com/robbaniburhanuddien` sudah diisi di `data.js`, icon sosmed render di section Tentang (fix guard `PORTFOLIO_DATA.contact` di script.js). Lihat HISTORY 2026-08-16 batch 4.
 * [x] Caption lightbox galeri jadi bilingual (ikuti switch EN). `[STYLIST]`
 * [ ] Rancang modul peta interaktif mini (Leaflet.js/WebGIS) untuk lokasi kerja mangrove Sumatera. `[ARCH]` → NEEDS-PERMISSION (tambah library)
 
@@ -58,6 +58,24 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   peta, render foto tiap wilayah (Jakarta/Kepri/Babel/Sumut) dari `MAP_REGIONS`.
   Fix: `encodeURIComponent` → `encodeURI` agar foto dengan spasi/`~` load benar.
   Popup marker tetap jalan.
+
+### [2026-08-16] (batch 3 — polish hero & section)
+* **Header & Nav** — `.logo-photo` `margin-right:14px`; `.nav-links` gap `36px→48px`.
+* **Hero title** — "Spesialis" → "Mangrove Restoration & GIS Specialist" (lebih akurat, tidak overclaim).
+* **Subtitle highlight** — GIS & Remote Sensing / UAV Pilot / Community Engagement di-aksen `.hl`.
+* **CTA hover** — pendar hijau (`box-shadow` glow) pada `.btn-primary` & `.btn-outline`.
+* **Stats** — 3+ Tahun, 10+ Jam Terbang UAV, 11 Kab/Kota; tooltip (`title`); `+` naik sejajar.
+* **Latar hero** — tambah `.hero-contour` (SVG contour + siluet perakaran mangrove, opacity 5–8%).
+
+### [2026-08-16] (batch 4 — section Tentang & sosmed)
+* **About: hapus "Siapa Saya?"**, samakan font/ukuran/warna nama & gelar S.P. (2rem, weight 700, `var(--clr-text)`, bukan italic/emas).
+* **Hapus badge "UAV Certified"** (`.about-photo-badge` dicabut).
+* **Foto → slider** — `.about-photo-frame` jadi `.about-slider` (track + tombol ‹ › + auto-rotate 4.5s + pause on hover). `ABOUT_PHOTOS` di script.js.
+* **Info-grid (Lembaga/Lokasi/Pendidikan/Email) → icon sosmed** — `.about-social` render Instagram, LinkedIn, GitHub, Email, WhatsApp dari `PORTFOLIO_DATA.contact` (SVG inline).
+* **FIX icon sosmed tidak muncul** — guard `(window.PORTFOLIO_DATA && ...)` salah karena `const PORTFOLIO_DATA` bukan property `window`; diganti `typeof PORTFOLIO_DATA !== 'undefined'`.
+* **Isi link IG/GitHub** di `data.js` (`robbanib` / `robbaniburhanuddien`).
+* **Pasang 4 foto profil** dari `images/profil tentang saya/` ke `ABOUT_PHOTOS` (`encodeURI(src)` untuk spasi).
+* Verifikasi: node --check OK; simulasi DOM node → slider 4 img + 5 icon sosmed (CHILDREN=5).
 * Verifikasi: node --check OK, css brace 320/320, ad-hoc structural check 22/22 PASS.
 
 ### [2026-08-10]
