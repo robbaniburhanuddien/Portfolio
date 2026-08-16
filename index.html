@@ -150,16 +150,13 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="section-tag" data-i18n="about.tag">Tentang Saya</span>
-        <h2 data-i18n="about.title">Siapa Saya?</h2>
       </div>
       <div class="about-grid">
         <div class="about-photo-wrap reveal">
-          <div class="about-photo-frame">
-            <!-- GANTI: upload foto kamu ke folder images/ dan ubah src di sini -->
-            <img src="images/20230824_172149.jpg" alt="Burhanuddien Robbani, S.P." class="about-photo-img" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
-          </div>
-          <div class="about-photo-badge">
-            <span>🛸 UAV Certified</span>
+          <div class="about-photo-frame about-slider" id="aboutSlider">
+            <div class="about-slider-track" id="aboutSliderTrack"></div>
+            <button class="about-slider-nav prev" id="aboutPrev" aria-label="Foto sebelumnya">‹</button>
+            <button class="about-slider-nav next" id="aboutNext" aria-label="Foto berikutnya">›</button>
           </div>
         </div>
         <div class="about-content reveal">
@@ -171,36 +168,7 @@
           <p class="about-bio" data-i18n="about.bio2">
             Dengan keahlian multidisiplin — mulai dari survei lapangan, pengoperasian drone UAV, analisis GIS, hingga koordinasi komunitas lokal — saya berkomitmen untuk menjembatani ilmu pengetahuan dengan aksi nyata di lapangan demi kelestarian ekosistem pesisir Indonesia.
           </p>
-          <div class="about-info-grid">
-            <div class="info-item">
-              <span class="info-icon">🏛️</span>
-              <div>
-                <span class="info-label" data-i18n="about.org">Lembaga</span>
-                <span class="info-value">BRGM & Kemenhut RI</span>
-              </div>
-            </div>
-            <div class="info-item">
-              <span class="info-icon">📍</span>
-              <div>
-                <span class="info-label" data-i18n="about.location">Lokasi</span>
-                <span class="info-value">Medan, Sumatera Utara</span>
-              </div>
-            </div>
-            <div class="info-item">
-              <span class="info-icon">🎓</span>
-              <div>
-                <span class="info-label" data-i18n="about.edu">Pendidikan</span>
-                <span class="info-value" data-i18n="about.edu_val">S1 Pertanian (S.P.)</span>
-              </div>
-            </div>
-            <div class="info-item">
-              <span class="info-icon">✉️</span>
-              <div>
-                <span class="info-label" data-i18n="about.email_label">Email</span>
-                <a data-db="email" class="info-value" href="mailto:burhanuddienrobbani@gmail.com">burhanuddienrobbani@gmail.com</a>
-              </div>
-            </div>
-          </div>
+          <div class="about-social" id="aboutSocial" aria-label="Media sosial"></div>
           <a href="#" class="btn btn-primary btn-sm" data-i18n="about.cv">Unduh CV</a>
         </div>
       </div>

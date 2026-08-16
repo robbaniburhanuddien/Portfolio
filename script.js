@@ -875,9 +875,79 @@ const MAP_REGIONS = {
   }
 })();
 
-
 // =========================================
-// SMOOTH ACTIVE NAV HIGHLIGHT
+// ABOUT — foto slider + media sosial
+// =========================================
+// Foto profil (placeholder). Ganti nama file di sini saat Robbani kirim fotonya.
+const ABOUT_PHOTOS = [
+  'images/20230824_172149.jpg',
+  'images/DJI_0381.JPG',
+  'images/KT Sejahtera_23112024_105851.jpg',
+  'images/WhatsApp Image 2024-06-24 at 12.55.17 AM.jpeg'
+];
+
+(function buildAboutSlider() {
+  const track = document.getElementById('aboutSliderTrack');
+  const prev  = document.getElementById('aboutPrev');
+  const next  = document.getElementById('aboutNext');
+  if (!track || !ABOUT_PHOTOS.length) return;
+  ABOUT_PHOTOS.forEach(src => {
+    const im = document.createElement('img');
+    im.src = src;
+    im.alt = 'Burhanuddien Robbani, S.P.';
+    im.loading = 'lazy';
+    track.appendChild(im);
+  });
+  let idx = 0;
+  const total = ABOUT_PHOTOS.length;
+  function go(i) {
+    idx = (i + total) % total;
+    track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+  }
+  function nextSlide() { go(idx + 1); }
+  if (next) next.addEventListener('click', nextSlide);
+  if (prev) prev.addEventListener('click', () => go(idx - 1));
+  // auto-rotate 4.5s, pause saat hover
+  let timer = setInterval(nextSlide, 4500);
+  const slider = document.getElementById('aboutSlider');
+  if (slider) {
+    slider.addEventListener('mouseenter', () => clearInterval(timer));
+    slider.addEventListener('mouseleave', () => { timer = setInterval(nextSlide, 4500); });
+  }
+})();
+
+// Media sosial dari data.js (PORTFOLIO_DATA.contact)
+(function buildAboutSocial() {
+  const box = document.getElementById('aboutSocial');
+  if (!box) return;
+  const c = (window.PORTFOLIO_DATA && PORTFOLIO_DATA.contact) || {};
+  const ICONS = {
+    email:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
+    linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"/></svg>',
+    instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',
+    github:   '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>',
+    whatsapp: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2zm5.8 14.24c-.24.68-1.4 1.31-1.92 1.36-.5.05-.94.23-3.2-.66-2.7-1.06-4.4-3.78-4.53-3.96-.13-.18-1.06-1.41-1.06-2.69s.67-1.91.91-2.17c.24-.26.52-.33.7-.33.18 0 .36 0 .51.01.17.01.39-.06.6.46.24.57.81 1.97.88 2.11.07.14.12.3.02.48-.1.18-.15.3-.3.46-.15.16-.31.36-.45.48-.15.15-.3.3-.13.59.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.19.72-.84 1-1.13.26-.29.53-.24.89-.14.36.1 2.3.85 2.7 1 .39.15.66.22.76.34.1.12.1.71-.14 1.39z"/></svg>'
+  };
+  const ORDER = [
+    ['instagram', c.instagram, 'Instagram'],
+    ['linkedin', c.linkedin, 'LinkedIn'],
+    ['github', c.github, 'GitHub'],
+    ['email', c.email, 'Email'],
+    ['whatsapp', c.whatsapp, 'WhatsApp']
+  ];
+  ORDER.forEach(([key, val, label]) => {
+    if (!val) return;
+    const a = document.createElement('a');
+    a.href = key === 'email' ? 'mailto:' + val : val;
+    a.title = label;
+    a.setAttribute('aria-label', label);
+    a.target = key === 'email' ? '' : '_blank';
+    a.rel = 'noopener';
+    a.innerHTML = ICONS[key];
+    box.appendChild(a);
+  });
+})();
+
 // =========================================
 const sections = document.querySelectorAll('section[id]');
 const navAnchors = document.querySelectorAll('.nav-links a');

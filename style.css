@@ -696,30 +696,88 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 0 20px;
 }
 
-.about-photo-badge {
-  position: absolute;
-  bottom: -16px; right: -16px;
-  background: linear-gradient(135deg, var(--clr-primary), var(--clr-primary-light));
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #fff;
-  box-shadow: 0 4px 20px var(--clr-primary-glow);
-  white-space: nowrap;
+.about-slider {
+  position: relative;
+  overflow: hidden;
 }
+.about-slider-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+}
+.about-slider-track img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about-slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--clr-glass-border);
+  background: rgba(7,26,18,0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 2;
+}
+.about-slider-nav:hover { background: var(--clr-primary); transform: translateY(-50%) scale(1.08); }
+.about-slider-nav.prev { left: 12px; }
+.about-slider-nav.next { right: 12px; }
+
+/* Media sosial — pengganti info grid */
+.about-social {
+  display: flex;
+  gap: 14px;
+  margin: 30px 0 8px;
+  flex-wrap: wrap;
+}
+.about-social a {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--clr-glass-border);
+  background: var(--clr-glass);
+  color: var(--clr-text);
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s, color 0.2s;
+}
+.about-social a:hover {
+  background: var(--clr-primary);
+  border-color: var(--clr-primary-light);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px var(--clr-primary-glow);
+}
+.about-social a svg { width: 20px; height: 20px; }
 
 .about-name {
   font-family: var(--font-display);
   font-size: 2rem;
   color: var(--clr-text);
   margin-bottom: 6px;
+  font-weight: 700;
 }
 .about-degree {
-  font-size: 1.2rem;
-  color: var(--clr-gold);
-  font-style: italic;
-  opacity: 0.9;
+  font-size: 2rem;
+  color: var(--clr-text);
+  font-style: normal;
+  font-weight: 700;
+  opacity: 1;
 }
 .about-role {
   color: var(--clr-accent);
