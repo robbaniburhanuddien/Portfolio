@@ -920,7 +920,7 @@ const ABOUT_PHOTOS = [
 (function buildAboutSocial() {
   const box = document.getElementById('aboutSocial');
   if (!box) return;
-  const c = (window.PORTFOLIO_DATA && PORTFOLIO_DATA.contact) || {};
+  const c = (typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.contact) || {};
   const ICONS = {
     email:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
     linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"/></svg>',
