@@ -79,18 +79,36 @@
   <section id="hero" class="hero">
     <div class="hero-particles" id="particles"></div>
     <div class="hero-overlay"></div>
+    <!-- Latar: contour lines + siluet perakaran mangrove abstrak (opacity rendah) -->
+    <div class="hero-contour" aria-hidden="true">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="var(--clr-accent)" stroke-width="1.2" opacity="0.08">
+          <path d="M-50 720 C 200 660, 420 760, 720 700 S 1180 640, 1500 710" />
+          <path d="M-50 770 C 220 710, 440 800, 740 745 S 1200 690, 1500 760" />
+          <path d="M-50 820 C 240 760, 460 840, 760 790 S 1210 740, 1500 810" />
+          <path d="M120 880 C 360 820, 560 900, 860 850 S 1280 800, 1500 860" />
+          <path d="M-50 660 C 180 610, 400 690, 700 640 S 1160 600, 1500 650" />
+        </g>
+        <g fill="none" stroke="var(--clr-primary-light)" stroke-width="1.4" opacity="0.07">
+          <!-- siluet perakaran mangrove: batang + cabang melengkung -->
+          <path d="M300 900 C 300 760, 280 700, 320 620 M320 720 C 260 690, 230 720, 200 700 M320 700 C 380 670, 410 700, 440 680 M320 640 C 290 600, 300 560, 280 520" />
+          <path d="M1080 900 C 1080 770, 1100 700, 1060 620 M1060 720 C 1120 690, 1150 720, 1180 700 M1060 700 C 1000 670, 970 700, 940 680 M1060 640 C 1090 600, 1080 560, 1100 520" />
+          <path d="M700 900 C 700 800, 690 740, 710 680 M710 780 C 660 760, 640 780, 620 765 M710 760 C 760 740, 780 760, 800 748" />
+        </g>
+      </svg>
+    </div>
     <div class="hero-content">
       <div class="hero-badge reveal">
         <span class="badge-dot"></span>
         <span data-i18n="hero.badge">Tersedia untuk Kolaborasi</span>
       </div>
       <h1 class="hero-title reveal">
-        <span class="title-line" data-i18n="hero.title1">Spesialis</span>
-        <span class="title-line gradient-text" data-i18n="hero.title2">Mangrove</span>
+        <span class="title-line" data-i18n="hero.title1">Mangrove Restoration</span>
+        <span class="title-line gradient-text" data-i18n="hero.title2">&amp; GIS Specialist</span>
         <span class="title-line" data-i18n="hero.title3">Indonesia</span>
       </h1>
       <p class="hero-sub reveal" data-i18n="hero.subtitle">
-        Rehabilitasi · GIS & Remote Sensing · UAV Pilot · Community Engagement
+        Rehabilitasi · <strong class="hl">GIS &amp; Remote Sensing</strong> · <strong class="hl">UAV Pilot</strong> · <strong class="hl">Community Engagement</strong>
       </p>
       <p class="hero-desc reveal" data-i18n="hero.desc">
         3 tahun mendedikasikan diri untuk pemulihan ekosistem mangrove Indonesia bersama BRGM dan Kementerian Kehutanan RI
@@ -100,19 +118,19 @@
         <a href="#contact" class="btn btn-outline" data-i18n="hero.cta2">Hubungi Saya</a>
       </div>
       <div class="hero-stats reveal">
-        <div class="stat-item">
-          <span class="stat-num" data-target="3">0</span><span>+</span>
+        <div class="stat-item" title="Pengalaman di garis depan rehabilitasi mangrove" aria-label="3+ tahun pengalaman">
+          <span class="stat-num"><span class="num" data-target="3">0</span><span class="plus">+</span></span>
           <span class="stat-label" data-i18n="hero.stat1">Tahun Pengalaman</span>
         </div>
         <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-num" data-target="15">0</span><span>+</span>
-          <span class="stat-label" data-i18n="hero.stat2">Proyek Selesai</span>
+        <div class="stat-item" title="Total jam terbang drone survei UAV" aria-label="10+ total jam terbang UAV">
+          <span class="stat-num"><span class="num" data-target="10">0</span><span class="plus">+</span></span>
+          <span class="stat-label" data-i18n="hero.stat2">Jam Terbang UAV</span>
         </div>
         <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-num" data-target="8">0</span><span></span>
-          <span class="stat-label" data-i18n="hero.stat3">Wilayah Kerja</span>
+        <div class="stat-item" title="Kabupaten/Kota pelaksanaan rehabilitasi mangrove" aria-label="11 Kab/Kota pelaksanaan">
+          <span class="stat-num"><span class="num" data-target="11">0</span></span>
+          <span class="stat-label" data-i18n="hero.stat3">Kab/Kota Pelaksanaan</span>
         </div>
       </div>
     </div>

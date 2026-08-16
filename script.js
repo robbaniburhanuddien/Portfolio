@@ -463,7 +463,7 @@ revealEls.forEach(el => revealObserver.observe(el));
 // =========================================
 function animateCounters() {
   if (countersAnimated) return;
-  const nums = document.querySelectorAll('.stat-num');
+  const nums = document.querySelectorAll('.stat-num .num');
   nums.forEach(el => {
     const target = parseInt(el.getAttribute('data-target'), 10);
     let current = 0;
