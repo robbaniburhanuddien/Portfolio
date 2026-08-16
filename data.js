@@ -49,8 +49,8 @@ real-world action for the sustainability of Indonesia's coastal ecosystems.`,
     email:      "burhanuddienrobbani@gmail.com",   // ✅ Sudah diisi
     whatsapp:   "+62 812-2676-8040",              // ✅ Sudah diisi
     linkedin:   "https://linkedin.com/in/robbanib", // ✅ Sudah diisi
-    instagram:  "",                                 // 📌 Opsional
-    github:     "",                                 // 📌 Opsional
+    instagram:  "https://www.instagram.com/robbanib/", // ✅ Diisi
+    github:     "https://github.com/robbaniburhanuddien", // ✅ Diisi
     location:   "Medan, Sumatera Utara",
     locationEN: "Medan, North Sumatra",
     mapLink:    "",                                 // 📌 Opsional: Google Maps link
