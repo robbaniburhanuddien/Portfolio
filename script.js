@@ -171,6 +171,11 @@ const i18n = {
     "vid.title":       "Perjalanan di Lapangan",
     "vid.desc":        "Rekam jejak kegiatan rehabilitasi mangrove — dari survei UAV hingga bersama masyarakat pesisir.",
     "vid.note":        "Video akan aktif setelah file field.mp4 ditambahkan ke folder portofolio.",
+
+    // Map (sebaran wilayah kerja: Jakarta, Kepri, Babel, Sumut)
+    "map.tag":         "Sebaran Lapangan",
+    "map.title":       "Di Mana Saya Bekerja?",
+    "map.desc":        "Dokumentasi kegiatan mangrove tersebar di beberapa wilayah. Klik titik untuk melihat foto dari lokasi tersebut.",
   },
 
   en: {
@@ -334,6 +339,11 @@ const i18n = {
     "vid.title":       "Journey in the Field",
     "vid.desc":        "Footprints of mangrove rehabilitation — from UAV surveys to working alongside coastal communities.",
     "vid.note":        "Video activates once field.mp4 is added to the portfolio folder.",
+
+    // Map (work area coverage: Jakarta, Kepri, Babel, Sumut)
+    "map.tag":         "Field Coverage",
+    "map.title":       "Where Do I Work?",
+    "map.desc":        "Mangrove activities are documented across several regions. Click a point to see photos from that location.",
   }
 };
 

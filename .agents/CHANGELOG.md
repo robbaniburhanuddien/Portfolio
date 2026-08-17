@@ -32,6 +32,7 @@ Urutan eksekusi orchestrator: High → Medium → Low.
 ### Low Priority / Future Scope
 * [~] Tambahkan tautan Instagram & Github ke contact (data.js inject + index.js). `[CONTENT]` → SELESAI: handle `https://www.instagram.com/robbanib/` & `https://github.com/robbaniburhanuddien` sudah diisi di `data.js`, icon sosmed render di section Tentang (fix guard `PORTFOLIO_DATA.contact` di script.js). Lihat HISTORY 2026-08-16 batch 4.
 * [x] Caption lightbox galeri jadi bilingual (ikuti switch EN). `[STYLIST]`
+* [x] Fix bug i18n section #map — key map.tag/map.title/map.desc ditambah ke kamus id+en (sebelumnya undefined saat switch bahasa). `[CONTENT]`
 * [ ] Rancang modul peta interaktif mini (Leaflet.js/WebGIS) untuk lokasi kerja mangrove Sumatera. `[ARCH]` → NEEDS-PERMISSION (tambah library)
 
 =================
@@ -231,3 +232,17 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
      Knob `.theme-switch` di **dark mode** jadi navy/abu-abu gelap (`linear-gradient(#1e2a44,#2c3e5c)`),
      di **light mode** kembali emas/oranye (`var(--clr-gold)`) sesuai permintaan.
   STATUS: perubahan lokal siap, belum di-commit (menunggu persetujuan Robbani sebelum commit).
+
+### [2026-08-17]
+* **Fix bug i18n section #map** — tiga key `map.tag` / `map.title` / `map.desc`
+  dipakai sebagai atribut `data-i18n` di `<section id="map">` (peta sebaran dokumentasi
+  kerja: Jakarta, Kepri, Babel, Sumut) tetapi belum terdaftar di kamus `i18n` (`id`
+  maupun `en`) → teks bisa tampil "undefined" saat switch bahasa. Ditambahkan ke
+  kedua kamus: `id` = "Sebaran Lapangan" / "Di Mana Saya Bekerja?" / deskripsi sebaran
+  wilayah; `en` = "Field Coverage" / "Where Do I Work?" / "Mangrove activities are
+  documented across several regions. Click a point to see photos from that location."
+  Teks `id` diambil persis dari fallback HTML yang sudah ada (tidak ada fakta baru),
+  gaya "santai-ilmiah", English = American English. Tanpa ubah struktur HTML/CSS,
+  tanpa library eksternal. Verifikasi: `node --check` script.js & data.js OK;
+  `scripts/verify-portfolio.cjs` → ALL CHECKS PASS (102 key data-i18n ada di kamus
+  id+en; 0 "undefined"; 8 image src valid). `[CONTENT]`
