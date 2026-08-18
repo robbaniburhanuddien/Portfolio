@@ -1063,10 +1063,27 @@ function buildEducation() {
 }
 
 // =========================================
+// BUILD STATS (from data.js)
+// =========================================
+function buildStats() {
+  if (!PORTFOLIO_DATA.stats) return;
+  const map = {
+    years:   PORTFOLIO_DATA.stats.yearsExperience,
+    uav:     PORTFOLIO_DATA.stats.projectsDone,
+    regions: PORTFOLIO_DATA.stats.workRegions,
+  };
+  Object.keys(map).forEach(k => {
+    const el = document.querySelector('.num[data-stat="' + k + '"]');
+    if (el) { el.setAttribute('data-target', map[k]); el.textContent = '0'; }
+  });
+}
+
+// =========================================
 // INIT
 // =========================================
 applyLanguage(currentLang);
 buildExperience();
 buildEducation();
 buildProjects();
+buildStats();
 console.log('🌿 Mangrove Portfolio — Initialized');
