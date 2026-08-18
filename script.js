@@ -1081,9 +1081,18 @@ function buildStats() {
 // =========================================
 // INIT
 // =========================================
-applyLanguage(currentLang);
-buildExperience();
-buildEducation();
-buildProjects();
-buildStats();
-console.log('🌿 Mangrove Portfolio — Initialized');
+(function initPortfolio() {
+  if (typeof PORTFOLIO_DATA === 'undefined' && typeof window.PORTFOLIO_DATA === 'undefined') {
+    var warn = document.createElement('div');
+    warn.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:99998;background:#b00020;color:#fff;padding:10px 14px;font:13px monospace';
+    warn.textContent = '⚠️ data.js tidak termuat (PORTFOLIO_DATA undefined). Buka lewat server http://localhost:8123, bukan file://.';
+    (document.body || document.documentElement).appendChild(warn);
+    return;
+  }
+  applyLanguage(currentLang);
+  buildExperience();
+  buildEducation();
+  buildProjects();
+  buildStats();
+  console.log('🌿 Mangrove Portfolio — Initialized');
+})();

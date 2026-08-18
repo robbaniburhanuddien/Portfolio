@@ -3,6 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ERROR REPORTER: menampilkan error JS di layar agar mudah didiagnosis -->
+  <script>
+    window.__errs = [];
+    window.addEventListener('error', function (e) {
+      var msg = 'JS ERROR: ' + (e.message || (e.error && e.error.message) || 'unknown')
+        + (e.filename ? (' @ ' + String(e.filename).split('/').pop() + ':' + e.lineno) : '');
+      window.__errs.push(msg);
+      var d = document.getElementById('__fatal');
+      if (!d) {
+        d = document.createElement('div');
+        d.id = '__fatal';
+        d.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#b00020;color:#fff;padding:10px 14px;font:13px/1.45 monospace;white-space:pre-wrap;box-shadow:0 2px 8px rgba(0,0,0,.4)';
+        (document.documentElement || document.body).appendChild(d);
+      }
+      d.textContent = '⚠️ ' + window.__errs.join('\n⚠️ ');
+    });
+  </script>
   <meta name="description" content="Portfolio profesional Burhanuddien Robbani, S.P. — spesialis rehabilitasi mangrove, GIS, UAV Pilot, dan community engagement bersama BRGM dan Kementerian Kehutanan RI." />
   <meta name="keywords" content="Burhanuddien Robbani, mangrove, rehabilitasi, GIS, UAV pilot, BRGM, kementerian kehutanan, community engagement, lingkungan, konservasi, sarjana pertanian" />
   <meta property="og:title" content="Burhanuddien Robbani, S.P. | Mangrove Specialist" />
