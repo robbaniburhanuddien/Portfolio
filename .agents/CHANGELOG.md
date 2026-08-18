@@ -249,3 +249,46 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   tanpa library eksternal. Verifikasi: `node --check` script.js & data.js OK;
   `scripts/verify-portfolio.cjs` → ALL CHECKS PASS (102 key data-i18n ada di kamus
   id+en; 0 "undefined"; 8 image src valid). `[CONTENT]`
+
+### [2026-08-18] — Penyempurnaan hero, logo, galeri, mode terang (batch panjang)
+* **Hero tone "terus belajar & siap kolaborasi"** (commit `1de32d6`): title
+  "Praktisi Rehabilitasi Mangrove" / desc sebut 3 th BRGM + M4CR–Kemenhut; role
+  disamakan. Fix bug krusial: portfolio pakai `applyLanguage()` yang **menimpa** teks
+  HTML pakai kamus `script.js` — jadi edit hero harus di kamus, bukan cuma HTML.
+* **Batch5** (`fff75ef`): hero.desc "hal baru" (bukan "cara baru"), logo M4CR jadi
+  rectangle putih lebar (`min-width:88px`) agar logo 2-elemen terbaca, sub-judul
+  pengalaman diubah humble ("Fasilitator Lapangan Rehabilitasi Mangrove" /
+  "Staf Rehabilitasi Mangrove (GIS & Pemberdayaan Masyarakat)"), hapus filter kategori
+  galeri + slide diturunkan 460→320px, pendidikan "2018 – 2023", hero-desc kontras.
+* **Gradasi hero** (`edb04e3`): `.hero-overlay` diturunkan `transparent 40%`→`15%`
+  (zona CTA) agar teks terbaca di mode terang.
+* **Fix hero render** (`ca06c35`): `hero-desc` & `hero-stats` dilepas class `reveal`
+  (sebelumnya `opacity:0` nunggu scroll-trigger → pudar & ke-potong di batas viewport);
+  hero-desc `#f2fbf6` + text-shadow; densitas hero dirapatkan agar stats (3+/10+/11) muat 1 viewport.
+* **Logo R + footer + stat** (`f7e7a29`): dari foto folder `images/#1 halaman depan/`
+  (Minimalist_letter_R_logo jpeg) dibuat **PNG transparan** `images/logo/robbani-r-logo.png`
+  (PIL hapus bg putih → alpha), dipasang di header samping "Robbani"; footer nama
+  disamakan "Robbani"; tanda `+` stat digelapkan (`--clr-accent`→`--clr-primary`).
+* **Navbar + footer** (`c5c8703`): akar masalah mode terang — hero SELALU gelap
+  (background hardcode), navbar transparan → di light mode text gelap hilang di atas
+  hero gelap. Fix: `.navbar` diberi **glass gelap permanen + text terang** di kedua mode
+  (nama & tab Tentang/Pengalaman/Keahlian/Kontak terbaca di light mode). Footer ditambah
+  logo R + teks "Mangrove Enthusiast" + tahun **2026**.
+* **EDIT MANUAL ROBBANI (working tree, belum commit)** — Robbani ubah sendiri `script.js`
+  (kamus i18n `id`+`en`) di section Experience:
+  - `exp.desc`: "3 tahun dedikasi di garis terdepan..." → **"Perjalanan Karir yang luar
+    biasa ikut berperan dalam Rehabilitasi Mangrove di indonesia"** (id; "indonesia" sengaja
+    huruf kecil di teks asli user — EN: "An extraordinary career journey has played a role
+    in mangrove rehabilitation in Indonesia").
+  - `exp1.pos`: "Fasilitator Lapangan Rehabilitasi Mangrove" → **"Technical Mangrove
+    Rehabilitation Facilitator"** (id+en sama).
+  - `exp2.pos`: "...(GIS & Pemberdayaan Masyarakat)" → **"Staf Rehabilitasi Mangrove
+    (Teknis dan GIS)"** (id) / "(Technical and GIS)" (en).
+  - Kapitalisasi nama entitas di `exp1.d3/d4` & `exp2.d4`: "pokmas"→"Pokmas"/"Kelompok
+    Masyarakat", "pemerintah daerah"→"Pemerintah Daerah", "komunitas lokal"→"Masyarakat
+    Lokal", "pemangku kepentingan"→"Pemangku Kawasan" (id+en).
+  CATATAN AGENT: ini **mengembalikan sebagian phrasing humble** yang kita sepakati di
+  batch5 — itu hak pemilik, dicatat apa adanya. Tone `exp.desc` baru lebih formal/berat,
+  agak berbeda dari hero "terus belajar". "indonesia" (huruf kecil) di `exp.desc` id
+  mungkin typo kapitalisasi (EN benar "Indonesia"). Belum di-commit — menunggu review Robbani.
+
