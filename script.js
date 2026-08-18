@@ -1032,8 +1032,52 @@ function buildExperience() {
 }
 
 // =========================================
+// BUILD EDUCATION + CERTIFICATIONS (from data.js)
+// =========================================
+function buildEducation() {
+  const root = document.getElementById('eduRoot');
+  if (!root || !PORTFOLIO_DATA.education) return;
+  root.innerHTML = '';
+  const L = currentLang === 'en';
+  const edu = PORTFOLIO_DATA.education[0];
+  const eduCol = document.createElement('div');
+  eduCol.className = 'edu-col reveal';
+  eduCol.innerHTML = `
+    <h3 class="edu-col-title"><span>🎓</span> <span>${L ? 'Education' : 'Pendidikan'}</span></h3>
+    <div class="edu-item glass-card">
+      <div class="edu-icon">🏫</div>
+      <div class="edu-body">
+        <h4>${L ? edu.degree_en : edu.degree_id}</h4>
+        <p>${edu.institution}${edu.city ? ', ' + edu.city : ''}</p>
+        <span class="edu-year">${edu.year_start} – ${edu.year_end}</span>
+      </div>
+    </div>`;
+  root.appendChild(eduCol);
+
+  const certCol = document.createElement('div');
+  certCol.className = 'edu-col reveal';
+  let certItems = '';
+  PORTFOLIO_DATA.certifications.forEach(c => {
+    certItems += `
+      <div class="edu-item glass-card">
+        <div class="edu-icon">📜</div>
+        <div class="edu-body">
+          <h4>${L ? c.name_en : c.name_id}</h4>
+          <p>${L ? c.issuer_en : c.issuer_id}</p>
+          <span class="edu-year">${c.year}</span>
+        </div>
+      </div>`;
+  });
+  certCol.innerHTML = `
+    <h3 class="edu-col-title"><span>📜</span> <span>${L ? 'Certifications & Training' : 'Sertifikasi & Pelatihan'}</span></h3>
+    ${certItems}`;
+  root.appendChild(certCol);
+}
+
+// =========================================
 // INIT
 // =========================================
 applyLanguage(currentLang);
 buildExperience();
+buildEducation();
 console.log('🌿 Mangrove Portfolio — Initialized');
