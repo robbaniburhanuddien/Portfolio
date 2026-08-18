@@ -296,3 +296,15 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   ("in Indonesia" sudah benar). Tidak ada perubaan lain. Konteks humble dibiarkan apa
   adanya per keputusan Robbani ("kali ini seperti itu dulu"). Status: sudah di-commit.
 
+* **TAMBAH PENGALAMAN #3 — Internship Research Analyst (Kementan)** — Robbani minta
+  tambah experience magang: Balai Besar Karantina Pertanian Tanjung Priok, Kementerian
+  Pertanian RI, Jakarta (Jan 2021 – Mar 2021). Posisi "Intern Research Analyst" (id) /
+  "Research Analyst Intern" (en). Duties (id+en): deteksi & identifikasi biomolekuler
+  bakteri OPTK pada benih kentang Skotlandia; PCR & metode lain on komoditas karantina
+  impor-ekspor (kentang, anggrek); inspeksi instalasi karantina di pelabuhan/gudang.
+  Logo asli Kementan di-copy ke `images/logo/kementan-logo.png` (nama aman, hindari
+  spasi/&). Timeline item ke-3 (selang-seling, tanpa `right`=kiri), `.logo-kementan`
+  box putih seperti M4CR/BRGM. Key i18n `exp3.*` + `exp.internship` (Magang/Internship)
+  ditambah ke kamus id+en. node --check OK; simulasi applyLanguage('id') render exp3 benar;
+  verify PASS. Status: menunggu preview visual.
+
