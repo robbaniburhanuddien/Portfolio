@@ -21,12 +21,12 @@ const i18n = {
     "nav.contact":     "Kontak",
 
     // Hero
-    "hero.badge":      "Tersedia untuk Kolaborasi",
-    "hero.title1":     "Spesialis",
-    "hero.title2":     "Mangrove",
+    "hero.badge":      "Terus Belajar · Siap Berkolaborasi",
+    "hero.title1":     "Praktisi",
+    "hero.title2":     "Rehabilitasi Mangrove",
     "hero.title3":     "Indonesia",
     "hero.subtitle":   "Rehabilitasi · GIS & Remote Sensing · UAV Pilot · Community Engagement",
-    "hero.desc":       "3 tahun mendedikasikan diri untuk pemulihan ekosistem mangrove Indonesia bersama BRGM dan Kementerian Kehutanan RI",
+    "hero.desc":       "3 tahun belajar dan berkontribusi di lapangan rehabilitasi mangrove bersama BRGM dan M4CR–Kementerian Kehutanan RI. Masih terus mengeksplorasi cara baru — dan siap diajak kolaborasi untuk tantangan yang lebih besar.",
     "hero.cta1":       "Lihat Pengalaman",
     "hero.cta2":       "Hubungi Saya",
     "hero.stat1":      "Tahun Pengalaman",
@@ -37,7 +37,7 @@ const i18n = {
     // About
     "about.tag":       "Tentang Saya",
     "about.title":     "Siapa Saya?",
-    "about.role":      "Mangrove Conservationist & Geospatial Specialist",
+    "about.role":      "Praktisi Rehabilitasi Mangrove & Geospasial",
     "about.bio":       "Perkenalkan, saya Burhanuddien Robbani, S.P. — masih terus belajar dan ikut berkontribusi di bidang rehabilitasi mangrove, pemetaan geospasial, dan pemberdayaan masyarakat pesisir. Beberapa tahun ini saya berkesempatan belajar langsung lewat program restorasi mangrove nasional, antara lain bersama Badan Restorasi Gambut dan Mangrove (BRGM) dan Kementerian Kehutanan Republik Indonesia.",
     "about.bio2":      "Dari survei lapangan, pengoperasian drone UAV, hingga analisis GIS dan duduk bersama masyarakat pesisir — saya mencoba menyambungkan ilmu dan aksi nyata, meski masih banyak yang harus dipelajari, demi ekosistem pesisir Indonesia yang lebih baik.",
     "about.org":       "Lembaga",
@@ -189,12 +189,12 @@ const i18n = {
     "nav.contact":     "Contact",
 
     // Hero
-    "hero.badge":      "Open for Collaboration",
-    "hero.title1":     "Mangrove",
-    "hero.title2":     "Restoration",
-    "hero.title3":     "Specialist",
+    "hero.badge":      "Always Learning · Open to Collaborate",
+    "hero.title1":     "Practitioner",
+    "hero.title2":     "Mangrove Restoration",
+    "hero.title3":     "Indonesia",
     "hero.subtitle":   "Rehabilitation · GIS & Remote Sensing · UAV Pilot · Community Engagement",
-    "hero.desc":       "3 years dedicated to restoring Indonesia's mangrove ecosystems alongside BRGM and the Ministry of Forestry RI",
+    "hero.desc":       "3 years learning and contributing in mangrove rehabilitation with BRGM and M4CR–Ministry of Forestry RI. Still exploring new approaches — and ready to collaborate on bigger challenges ahead.",
     "hero.cta1":       "View Experience",
     "hero.cta2":       "Get in Touch",
     "hero.stat1":      "Years Experience",
@@ -205,7 +205,7 @@ const i18n = {
     // About
     "about.tag":       "About Me",
     "about.title":     "Who Am I?",
-    "about.role":      "Mangrove Conservationist & Geospatial Specialist",
+    "about.role":      "Mangrove Rehabilitation & Geospatial Practitioner",
     "about.bio":       "Hello, I'm Burhanuddien Robbani, S.P. — still learning and contributing in mangrove rehabilitation, geospatial mapping, and coastal community empowerment. Over the past few years I've had the chance to learn hands-on through the national mangrove restoration program, including with the Peatland and Mangrove Restoration Agency (BRGM) and the Ministry of Forestry of the Republic of Indonesia.",
     "about.bio2":      "From field surveys and UAV drone operations to GIS analysis and sitting with coastal communities — I try to connect knowledge with real action, though there's still much to learn, for the sake of Indonesia's coastal ecosystems.",
     "about.org":       "Institution",

@@ -30,7 +30,7 @@ Urutan eksekusi orchestrator: High → Medium → Low.
 * [x] Perbaiki UI hero (scroll-indicator tumpang tindih + readability light mode + tema switch). `[STYLIST]` → lihat HISTORY 2026-08-16
 
 ### Low Priority / Future Scope
-* [~] Tambahkan tautan Instagram & Github ke contact (data.js inject + index.js). `[CONTENT]` → SELESAI: handle `https://www.instagram.com/robbanib/` & `https://github.com/robbaniburhanuddien` sudah diisi di `data.js`, icon sosmed render di section Tentang (fix guard `PORTFOLIO_DATA.contact` di script.js). Lihat HISTORY 2026-08-16 batch 4.
+* [x] Tambahkan tautan Instagram & Github ke contact (data.js inject + index.js). `[CONTENT]` → SELESAI: handle `https://www.instagram.com/robbanib/` & `https://github.com/robbaniburhanuddien` sudah diisi di `data.js`, icon sosmed render di section Tentang (fix guard `PORTFOLIO_DATA.contact` di script.js). Lihat HISTORY 2026-08-16 batch 4.
 * [x] Caption lightbox galeri jadi bilingual (ikuti switch EN). `[STYLIST]`
 * [x] Fix bug i18n section #map — key map.tag/map.title/map.desc ditambah ke kamus id+en (sebelumnya undefined saat switch bahasa). `[CONTENT]`
 * [ ] Rancang modul peta interaktif mini (Leaflet.js/WebGIS) untuk lokasi kerja mangrove Sumatera. `[ARCH]` → NEEDS-PERMISSION (tambah library)
@@ -105,6 +105,9 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   **Rapiakan step push** di EXECUTOR.md (hanya jika PAT tersedia).
 
 ### Known Issues (jangan diulang)
+* **Verifier resmi**: `node scripts/verify-portfolio.cjs` (dibuat 2026-08-17) — cek 3 hal:
+  teks "undefined" di index.html, semua `data-i18n` ada di kamus id+en, semua `src="images/..."`
+  ada file-nya. Jalankan ini sebelum commit; jangan bikin script ad-hoc baru.
 * Tombol "Unduh CV" masih `href="#"` — `cv.pdf` belum ada; `data.js.cv.file_id` tak di-inject.
 * `data.js` BELUM menggerakkan halaman (projects/experience/gallery hardcode di HTML).
   Mengubah ini = breaking change → wajib minta izin (`AGENTS.md` §5).
