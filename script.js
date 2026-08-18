@@ -164,7 +164,7 @@ const i18n = {
     "form.sending":    "Mengirim...",
 
     // Footer
-    "footer.copy":     "© 2025 · Burhanuddien Robbani, S.P. — Mangrove Specialist Indonesia",
+    "footer.copy":     "© 2026 · Burhanuddien Robbani, S.P. — Mangrove Enthusiast",
 
     // Field Video
     "vid.tag":         "Dokumentasi Lapangan",
@@ -332,7 +332,7 @@ const i18n = {
     "form.sending":    "Sending...",
 
     // Footer
-    "footer.copy":     "© 2025 · Burhanuddien Robbani, S.P. — Mangrove Specialist Indonesia",
+    "footer.copy":     "© 2026 · Burhanuddien Robbani, S.P. — Mangrove Enthusiast",
 
     // Field Video
     "vid.tag":         "Field Documentation",
