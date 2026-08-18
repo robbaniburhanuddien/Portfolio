@@ -736,7 +736,6 @@ const i18n = {
 // APP STATE
 // =========================================
 let currentLang = 'id';
-let countersAnimated = false;
 
 // =========================================
 // LOADER
@@ -811,6 +810,7 @@ langToggle.addEventListener('click', () => {
     buildEducation();
     buildProjects();
     buildStats();
+    animateCounters(); // jalankan ulang counter ke target (EN/ID) setelah buildStats set data-target
     // Move switch knob
     langToggle.classList.toggle('is-alt', currentLang === 'en');
     document.documentElement.setAttribute('data-lang', currentLang);
@@ -870,7 +870,6 @@ revealEls.forEach(el => revealObserver.observe(el));
 // COUNTER ANIMATION (Hero Stats)
 // =========================================
 function animateCounters() {
-  if (countersAnimated) return;
   const nums = document.querySelectorAll('.stat-num .num');
   nums.forEach(el => {
     const target = parseInt(el.getAttribute('data-target'), 10);
@@ -886,7 +885,6 @@ function animateCounters() {
       }
     }, 20);
   });
-  countersAnimated = true;
 }
 
 // Trigger counters when hero is visible
