@@ -437,7 +437,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--clr-bg) 0%, transparent 40%);
+  background: linear-gradient(to top, var(--clr-bg) 0%, transparent 15%);
   z-index: 2;
 }
 
