@@ -583,49 +583,7 @@ let activeGalleryItem = null;
 
 // ---- Dynamic gallery: curated field-documentation photos ----
 // Each entry: { file, cat (plant/survey/gis/community/aerial/doc), id, en (bilingual caption) }
-const GALLERY_FILES = [
-  // Planting (Penanaman Mangrove)
-  { file: "IMG_9403~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
-  { file: "IMG_9410~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
-  { file: "IMG_9530~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
-  { file: "IMG_9536~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
-  { file: "IMG_9537~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
-  { file: "IMG_9543~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
-  { file: "IMG_9622~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
-  { file: "IMG_9436~photo.JPG",               cat: "plant",     id: "Penanaman Mangrove",          en: "Mangrove Planting" },
-  // UAV Survey (Survei UAV)
-  { file: "DJI_0379.JPG",                     cat: "survey",    id: "Survei UAV",                  en: "UAV Survey" },
-  { file: "DJI_0381.JPG",                     cat: "survey",    id: "Survei UAV",                  en: "UAV Survey" },
-  { file: "DJI_0382.JPG",                     cat: "survey",    id: "Survei UAV",                  en: "UAV Survey" },
-  { file: "GOPR0278.JPG",                     cat: "survey",    id: "Survei UAV",                  en: "UAV Survey" },
-  { file: "GOPR0321.JPG",                     cat: "survey",    id: "Survei UAV",                  en: "UAV Survey" },
-  { file: "GOPR0366.JPG",                     cat: "survey",    id: "Survei UAV",                  en: "UAV Survey" },
-  // GIS Mapping (Pemetaan GIS)
-  { file: "IMG_9401~photo.JPG",               cat: "gis",       id: "Pemetaan GIS",               en: "GIS Mapping" },
-  { file: "IMG_9402~photo.JPG",               cat: "gis",       id: "Pemetaan GIS",               en: "GIS Mapping" },
-  { file: "IMG_9404~photo.JPG",               cat: "gis",       id: "Pemetaan GIS",               en: "GIS Mapping" },
-  { file: "IMG_9405~photo.JPG",               cat: "gis",       id: "Pemetaan GIS",               en: "GIS Mapping" },
-  { file: "IMG_9406~photo.JPG",               cat: "gis",       id: "Pemetaan GIS",               en: "GIS Mapping" },
-  { file: "IMG_9518~photo.JPG",               cat: "gis",       id: "Pemetaan GIS",               en: "GIS Mapping" },
-  // Community Collaboration (Kolaborasi Komunitas)
-  { file: "KT Sejahtera_23112024_105851.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
-  { file: "KT Sejahtera_23112024_105855.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
-  { file: "KT Sejahtera_23112024_105859.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
-  { file: "KT Sejahtera_23112024_113852.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
-  { file: "KT Sejahtera_23112024_113900.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
-  { file: "KT Sejahtera_23112024_113906.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
-  { file: "KT Sejahtera_23112024_114030.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
-  { file: "KT Sejahtera_23112024_114040.jpg", cat: "community", id: "Kolaborasi Komunitas",       en: "Community Collaboration" },
-  // Aerial View (Tampak Udara)
-  { file: "DJI_0026.JPG",                     cat: "aerial",    id: "Tampak Udara",                en: "Aerial View" },
-  { file: "DJI_0030.JPG",                     cat: "aerial",    id: "Tampak Udara",                en: "Aerial View" },
-  { file: "DJI_0342.JPG",                     cat: "aerial",    id: "Tampak Udara",                en: "Aerial View" },
-  // Field Documentation (Dokumentasi Lapangan)
-  { file: "20231125_090745.jpg",              cat: "doc",       id: "Dokumentasi Lapangan",        en: "Field Documentation" },
-  { file: "20231125_090917.jpg",              cat: "doc",       id: "Dokumentasi Lapangan",        en: "Field Documentation" },
-  { file: "20230824_172149.jpg",              cat: "doc",       id: "Dokumentasi Lapangan",        en: "Field Documentation" },
-  { file: "TimePhoto_20240503_101405.jpg",    cat: "doc",       id: "Dokumentasi Lapangan",        en: "Field Documentation" }
-];
+const GALLERY_FILES = (PORTFOLIO_DATA.gallery || []);
 (function buildGallery() {
   const track  = document.getElementById('sliderTrack');
   const dotsBox= document.getElementById('sliderDots');
