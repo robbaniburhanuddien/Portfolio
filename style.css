@@ -295,16 +295,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--clr-text);
 }
 .logo-photo {
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  border: 1px dashed var(--clr-glass-border);
-  background: var(--clr-glass);
-  background-size: cover;
-  background-position: center;
+  width: 38px; height: 38px;
+  object-fit: contain;
   flex-shrink: 0;
   display: inline-block;
   margin-right: 14px;
-  /* placeholder: nanti diisi background-image(url foto/logo kamu) via inline style/JS */
+  /* logo R transparan */
 }
 .logo-accent { color: var(--clr-accent); }
 
@@ -410,7 +406,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: radial-gradient(ellipse at 30% 50%, rgba(27,67,50,0.6) 0%, transparent 60%),
               radial-gradient(ellipse at 80% 20%, rgba(64,145,108,0.15) 0%, transparent 50%),
               linear-gradient(160deg, #071a12 0%, #0a2218 50%, #071a12 100%);
-  padding-top: 80px;
+  padding-top: 56px;
 }
 
 .hero-particles {
@@ -468,7 +464,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: 50px;
   font-size: 0.85rem;
   color: var(--clr-accent);
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   font-family: var(--font-mono);
   letter-spacing: 1px;
 }
@@ -485,9 +481,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  line-height: 1.1;
-  margin-bottom: 24px;
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 1.05;
+  margin-bottom: 16px;
   color: var(--clr-white);
 }
 .title-line { display: block; }
@@ -562,7 +558,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-family: var(--font-display);
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--clr-accent);
+  color: var(--clr-primary);
   line-height: 1;
   margin-left: 2px;
   margin-top: 4px;
