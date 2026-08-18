@@ -805,6 +805,11 @@ langToggle.addEventListener('click', () => {
   currentLang = currentLang === 'id' ? 'en' : 'id';
   applyLanguage(currentLang);
   refreshGalleryLabels();
+  // Re-render section dinamis ke bahasa baru (build membaca currentLang)
+  buildExperience();
+  buildEducation();
+  buildProjects();
+  buildStats();
   // Move switch knob
   langToggle.classList.toggle('is-alt', currentLang === 'en');
   document.documentElement.setAttribute('data-lang', currentLang);
@@ -907,10 +912,12 @@ skillObserver.observe(skillSection);
 // PROJECT FILTER (attached after dynamic build)
 // =========================================
 function attachProjectFilter() {
+  if (attachProjectFilter._attached) return; // hanya attach sekali (aman saat re-render bahasa)
+  attachProjectFilter._attached = true;
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('#projectsRoot .project-card');
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+      const projectCards = document.querySelectorAll('#projectsRoot .project-card'); // query kartu terkini
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.getAttribute('data-filter');
