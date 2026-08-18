@@ -50,7 +50,7 @@ const i18n = {
     // Experience
     "exp.tag":         "Perjalanan Karir",
     "exp.title":       "Pengalaman Kerja",
-    "exp.desc":        "Perjalanan Karir yang luar biasa ikut berperan dalam Rehabilitasi Mangrove di indonesia",
+    "exp.desc":        "Perjalanan Karir yang luar biasa ikut berperan dalam Rehabilitasi Mangrove di Indonesia",
     "exp.full":        "Full-time",
     "exp1.pos":        "Technical Mangrove Rehabilitation Facilitator",
     "exp1.loc":        "Medan, Sumatera Utara",

@@ -291,4 +291,8 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   batch5 — itu hak pemilik, dicatat apa adanya. Tone `exp.desc` baru lebih formal/berat,
   agak berbeda dari hero "terus belajar". "indonesia" (huruf kecil) di `exp.desc` id
   mungkin typo kapitalisasi (EN benar "Indonesia"). Belum di-commit — menunggu review Robbani.
+* **EDIT MANUAL ROBBANI #2** — Robbani perbaiki sendiri kapitalisasi: `exp.desc` (id)
+  "di indonesia" → **"di Indonesia"** (sesuai konvensi nama negara). EN tidak berubah
+  ("in Indonesia" sudah benar). Tidak ada perubaan lain. Konteks humble dibiarkan apa
+  adanya per keputusan Robbani ("kali ini seperti itu dulu"). Status: sudah di-commit.
 
