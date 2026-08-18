@@ -1465,5 +1465,9 @@ function buildStats() {
   buildEducation();
   buildProjects();
   buildStats();
+  // Section di-render dinamis SETELAH revealObserver setup → item punya .reveal (opacity:0)
+  // tapi belum pernah di-observe. Tampilkan langsung agar tidak kosong di layar.
+  document.querySelectorAll('#timelineRoot .reveal, #eduRoot .reveal, #projectsRoot .reveal')
+    .forEach(el => el.classList.add('visible'));
   console.log('🌿 Mangrove Portfolio — Initialized');
 })();
