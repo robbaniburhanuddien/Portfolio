@@ -802,17 +802,25 @@ navLinks.querySelectorAll('a').forEach(a => {
 // =========================================
 const langToggle = document.getElementById('langToggle');
 langToggle.addEventListener('click', () => {
-  currentLang = currentLang === 'id' ? 'en' : 'id';
-  applyLanguage(currentLang);
-  refreshGalleryLabels();
-  // Re-render section dinamis ke bahasa baru (build membaca currentLang)
-  buildExperience();
-  buildEducation();
-  buildProjects();
-  buildStats();
-  // Move switch knob
-  langToggle.classList.toggle('is-alt', currentLang === 'en');
-  document.documentElement.setAttribute('data-lang', currentLang);
+  try {
+    currentLang = currentLang === 'id' ? 'en' : 'id';
+    applyLanguage(currentLang);
+    refreshGalleryLabels();
+    // Re-render section dinamis ke bahasa baru (build membaca currentLang)
+    buildExperience();
+    buildEducation();
+    buildProjects();
+    buildStats();
+    // Move switch knob
+    langToggle.classList.toggle('is-alt', currentLang === 'en');
+    document.documentElement.setAttribute('data-lang', currentLang);
+  } catch (err) {
+    var d = document.createElement('div');
+    d.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#b00020;color:#fff;padding:10px 14px;font:13px monospace;white-space:pre-wrap';
+    d.textContent = '⚠️ Language toggle error: ' + (err && err.stack ? err.stack : err);
+    (document.body || document.documentElement).appendChild(d);
+    console.error(err);
+  }
 });
 
 // ---- Theme toggle (light/dark) as estetik switch ----
@@ -946,7 +954,7 @@ function buildProjects() {
   const L = currentLang === 'en';
   PORTFOLIO_DATA.projects.forEach(p => {
     const card = document.createElement('div');
-    card.className = 'project-card glass-card reveal';
+    card.className = 'project-card glass-card reveal visible';
     card.setAttribute('data-category', p.category);
     const tags = (L ? p.tags_en : p.tags_id).map(t => `<span class="proj-tag">${t}</span>`).join('');
     const stats = p.stats.map(s => `<div class="proj-stat"><span class="proj-stat-num">${s.num}</span><span>${L ? s.label_en : s.label_id}</span></div>`).join('');
@@ -1370,7 +1378,7 @@ function buildExperience() {
   const L = currentLang === 'en';
   PORTFOLIO_DATA.experience.forEach((exp, i) => {
     const item = document.createElement('div');
-    item.className = 'timeline-item reveal' + (i % 2 === 1 ? ' right' : '');
+    item.className = 'timeline-item reveal visible' + (i % 2 === 1 ? ' right' : '');
     item.innerHTML = `
       <div class="timeline-dot"><span>${i + 1}</span></div>
       <div class="timeline-card glass-card">
@@ -1407,7 +1415,7 @@ function buildEducation() {
   const L = currentLang === 'en';
   const edu = PORTFOLIO_DATA.education[0];
   const eduCol = document.createElement('div');
-  eduCol.className = 'edu-col reveal';
+  eduCol.className = 'edu-col reveal visible';
   eduCol.innerHTML = `
     <h3 class="edu-col-title"><span>🎓</span> <span>${L ? 'Education' : 'Pendidikan'}</span></h3>
     <div class="edu-item glass-card">
@@ -1421,7 +1429,7 @@ function buildEducation() {
   root.appendChild(eduCol);
 
   const certCol = document.createElement('div');
-  certCol.className = 'edu-col reveal';
+  certCol.className = 'edu-col reveal visible';
   let certItems = '';
   PORTFOLIO_DATA.certifications.forEach(c => {
     certItems += `
