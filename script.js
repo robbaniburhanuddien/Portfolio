@@ -995,7 +995,45 @@ document.querySelectorAll('.gallery-item').forEach(item => {
 });
 
 // =========================================
+// BUILD EXPERIENCE (from data.js)
+// =========================================
+function buildExperience() {
+  const root = document.getElementById('timelineRoot');
+  if (!root || !PORTFOLIO_DATA.experience) return;
+  root.innerHTML = '';
+  const L = currentLang === 'en';
+  PORTFOLIO_DATA.experience.forEach((exp, i) => {
+    const item = document.createElement('div');
+    item.className = 'timeline-item reveal' + (i % 2 === 1 ? ' right' : '');
+    item.innerHTML = `
+      <div class="timeline-dot"><span>${i + 1}</span></div>
+      <div class="timeline-card glass-card">
+        <div class="tl-card-header">
+          <div class="tl-org-logo">
+            <img src="${exp.logo}" alt="Logo" />
+          </div>
+          <div class="tl-meta">
+            <span class="tl-period">${L ? exp.period_en : exp.period_id}</span>
+            <span class="tl-type">${L ? exp.type_en : exp.type_id}</span>
+          </div>
+        </div>
+        <h3 class="tl-position">${L ? exp.position_en : exp.position_id}</h3>
+        <p class="tl-org">${exp.org}</p>
+        <p class="tl-location">📍 ${L ? exp.location_en : exp.location_id}</p>
+        <ul class="tl-duties">
+          ${(L ? exp.duties_en : exp.duties_id).map(d => `<li>${d}</li>`).join('')}
+        </ul>
+        <div class="tl-tags">
+          ${exp.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+        </div>
+      </div>`;
+    root.appendChild(item);
+  });
+}
+
+// =========================================
 // INIT
 // =========================================
 applyLanguage(currentLang);
+buildExperience();
 console.log('🌿 Mangrove Portfolio — Initialized');
