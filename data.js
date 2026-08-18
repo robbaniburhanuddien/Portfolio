@@ -9,7 +9,7 @@
  * ============================================================
  */
 
-const PORTFOLIO_DATA = {
+var PORTFOLIO_DATA = {
 
   // ============================================================
   // IDENTITAS PRIBADI
@@ -363,5 +363,8 @@ function injectData() {
 }
 
 document.addEventListener('DOMContentLoaded', injectData);
+
+// Pastikan tersedia secara global lintas <script> (cross-browser safety)
+if (typeof window !== 'undefined') { window.PORTFOLIO_DATA = PORTFOLIO_DATA; }
 
 console.log('📋 Portfolio Data loaded:', PORTFOLIO_DATA.identity.displayName);
