@@ -26,7 +26,7 @@ const i18n = {
     "hero.title2":     "Rehabilitasi Mangrove",
     "hero.title3":     "Indonesia",
     "hero.subtitle":   "Rehabilitasi · GIS & Remote Sensing · UAV Pilot · Community Engagement",
-    "hero.desc":       "3 tahun belajar dan berkontribusi di lapangan rehabilitasi mangrove bersama BRGM dan M4CR–Kementerian Kehutanan RI. Masih terus mengeksplorasi cara baru — dan siap diajak kolaborasi untuk tantangan yang lebih besar.",
+    "hero.desc":       "3 tahun belajar dan berkontribusi dalam rehabilitasi mangrove bersama BRGM dan M4CR–Kementerian Kehutanan RI. Masih terus mengeksplorasi hal baru — dan siap berkolaborasi untuk tantangan yang lebih besar.",
     "hero.cta1":       "Lihat Pengalaman",
     "hero.cta2":       "Hubungi Saya",
     "hero.stat1":      "Tahun Pengalaman",
@@ -38,7 +38,7 @@ const i18n = {
     "about.tag":       "Tentang Saya",
     "about.title":     "Siapa Saya?",
     "about.role":      "Praktisi Rehabilitasi Mangrove & Geospasial",
-    "about.bio":       "Perkenalkan, saya Burhanuddien Robbani, S.P. — masih terus belajar dan ikut berkontribusi di bidang rehabilitasi mangrove, pemetaan geospasial, dan pemberdayaan masyarakat pesisir. Beberapa tahun ini saya berkesempatan belajar langsung lewat program restorasi mangrove nasional, antara lain bersama Badan Restorasi Gambut dan Mangrove (BRGM) dan Kementerian Kehutanan Republik Indonesia.",
+    "about.bio":       "Perkenalkan, saya Burhanuddien Robbani, S.P. — masih terus belajar dan ikut berkontribusi di bidang rehabilitasi mangrove, pemetaan geospasial, dan pemberdayaan masyarakat pesisir. Beberapa tahun ini saya berkesempatan belajar langsung lewat program restorasi mangrove nasional, antara lain bersama Badan Restorasi Gambut dan Mangrove (BRGM) dan M4CR-Kementerian Kehutanan Republik Indonesia.",
     "about.bio2":      "Dari survei lapangan, pengoperasian drone UAV, hingga analisis GIS dan duduk bersama masyarakat pesisir — saya mencoba menyambungkan ilmu dan aksi nyata, meski masih banyak yang harus dipelajari, demi ekosistem pesisir Indonesia yang lebih baik.",
     "about.org":       "Lembaga",
     "about.location":  "Lokasi",
@@ -52,13 +52,13 @@ const i18n = {
     "exp.title":       "Pengalaman Kerja",
     "exp.desc":        "3 tahun dedikasi di garis terdepan konservasi mangrove Indonesia",
     "exp.full":        "Full-time",
-    "exp1.pos":        "Technical Mangrove Rehabilitation Facilitator",
+    "exp1.pos":        "Fasilitator Lapangan Rehabilitasi Mangrove",
     "exp1.loc":        "Medan, Sumatera Utara",
-    "exp1.d1":         "Monitoring & evaluasi (M&E) rehabilitasi mangrove di daerah target rehabilitasi",
+    "exp1.d1":         "Monitoring & evaluasi (M&E) Rehabilitasi Mangrove di daerah target rehabilitasi",
     "exp1.d2":         "Survei hidrologi untuk menentukan perlu/tidaknya intervensi hidrologi pada kegiatan rehabilitasi",
-    "exp1.d3":         "Penyusunan administrasi kegiatan swakelola rehabilitasi mangrove bersama kelompok masyarakat (pokmas)",
-    "exp1.d4":         "Koordinasi dengan pemerintah daerah, masyarakat lokal, dan pemangku kepentingan",
-    "exp2.pos":        "Staf Rehabilitasi Mangrove — Deputi Pemberdayaan Masyarakat",
+    "exp1.d3":         "Penyusunan administrasi kegiatan swakelola rehabilitasi mangrove bersama kelompok masyarakat (Pokmas)",
+    "exp1.d4":         "Koordinasi dengan pemerintah daerah, masyarakat lokal, dan pemangku kawasan",
+    "exp2.pos":        "Staf Rehabilitasi Mangrove (GIS & Pemberdayaan Masyarakat)",
     "exp2.loc":        "Jakarta, Indonesia",
     "exp2.d1":         "Melaksanakan Percepatan Rehabilitasi Mangrove di wilayah Provinsi Kepulauan Riau dan Kepulauan Bangka Belitung",
     "exp2.d2":         "Pengolahan data spasial & operasional sebagai GIS Operator (ArcGIS, QGIS, GEE)",
@@ -194,7 +194,7 @@ const i18n = {
     "hero.title2":     "Mangrove Restoration",
     "hero.title3":     "Indonesia",
     "hero.subtitle":   "Rehabilitation · GIS & Remote Sensing · UAV Pilot · Community Engagement",
-    "hero.desc":       "3 years learning and contributing in mangrove rehabilitation with BRGM and M4CR–Ministry of Forestry RI. Still exploring new approaches — and ready to collaborate on bigger challenges ahead.",
+    "hero.desc":       "3 years learning and contributing in mangrove rehabilitation with BRGM and M4CR–Ministry of Forestry RI. Still exploring new things — and ready to collaborate on bigger challenges ahead.",
     "hero.cta1":       "View Experience",
     "hero.cta2":       "Get in Touch",
     "hero.stat1":      "Years Experience",
@@ -206,7 +206,7 @@ const i18n = {
     "about.tag":       "About Me",
     "about.title":     "Who Am I?",
     "about.role":      "Mangrove Rehabilitation & Geospatial Practitioner",
-    "about.bio":       "Hello, I'm Burhanuddien Robbani, S.P. — still learning and contributing in mangrove rehabilitation, geospatial mapping, and coastal community empowerment. Over the past few years I've had the chance to learn hands-on through the national mangrove restoration program, including with the Peatland and Mangrove Restoration Agency (BRGM) and the Ministry of Forestry of the Republic of Indonesia.",
+    "about.bio":       "Hello, I'm Burhanuddien Robbani, S.P. — still learning and contributing in mangrove rehabilitation, geospatial mapping, and coastal community empowerment. Over the past few years I've had the chance to learn hands-on through the national mangrove restoration program, including with the Peatland and Mangrove Restoration Agency (BRGM) and M4CR-the Ministry of Forestry of the Republic of Indonesia.",
     "about.bio2":      "From field surveys and UAV drone operations to GIS analysis and sitting with coastal communities — I try to connect knowledge with real action, though there's still much to learn, for the sake of Indonesia's coastal ecosystems.",
     "about.org":       "Institution",
     "about.location":  "Location",
@@ -220,13 +220,13 @@ const i18n = {
     "exp.title":       "Work Experience",
     "exp.desc":        "3 years at the forefront of mangrove conservation in Indonesia",
     "exp.full":        "Full-time",
-    "exp1.pos":        "Technical Mangrove Rehabilitation Facilitator",
+    "exp1.pos":        "Field Facilitator, Mangrove Rehabilitation",
     "exp1.loc":        "Medan, North Sumatra",
-    "exp1.d1":         "Monitoring & evaluation (M&E) of mangrove rehabilitation in target rehabilitation areas",
+    "exp1.d1":         "Monitoring & evaluation (M&E) of Mangrove Rehabilitation in target rehabilitation areas",
     "exp1.d2":         "Hydrological surveys to determine whether hydrological intervention is needed in rehabilitation activities",
-    "exp1.d3":         "Preparation of self-managed (swakelola) mangrove rehabilitation administration with local community groups (pokmas)",
+    "exp1.d3":         "Preparation of self-managed (swakelola) mangrove rehabilitation administration with local community groups (Pokmas)",
     "exp1.d4":         "Coordinating with local governments, communities, and stakeholders",
-    "exp2.pos":        "Mangrove Rehabilitation Officer — Community Empowerment Deputy",
+    "exp2.pos":        "Mangrove Rehabilitation Staff (GIS & Community Empowerment)",
     "exp2.loc":        "Jakarta, Indonesia",
     "exp2.d1":         "Implementing Accelerated Mangrove Rehabilitation across Riau Islands and Bangka Belitung Islands Provinces",
     "exp2.d2":         "Spatial data processing & operations as GIS Operator (ArcGIS, QGIS, GEE)",
@@ -619,7 +619,6 @@ const GALLERY_FILES = [
   const capSub   = document.getElementById('sliderCapSub');
   const prevBtn  = document.getElementById('sliderPrev');
   const nextBtn  = document.getElementById('sliderNext');
-  const filterBox= document.getElementById('galleryFilter');
   if (!track) return;
 
   const CAT_SUB = {
@@ -675,14 +674,6 @@ const GALLERY_FILES = [
 
   if (prevBtn) prevBtn.addEventListener('click', () => { prev(); restart(); });
   if (nextBtn) nextBtn.addEventListener('click', () => { next(); restart(); });
-  if (filterBox) filterBox.querySelectorAll('.filter-btn').forEach(b => {
-    b.addEventListener('click', () => {
-      filterBox.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      render(b.getAttribute('data-filter'));
-      restart();
-    });
-  });
 
   // pause on hover
   const slider = document.getElementById('gallerySlider');
