@@ -338,3 +338,40 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
     (humble tone hero, nama Robbani, footer "Mangrove Enthusiast 2026", logo R, dll)
     tetap utuh — migrasi hanya pindahkan sumber data, bukan mengubah isi.
 
+### [2026-08-18] — PELAJARAN KRITIS MIGRASI (jangan diulang)
+Setelah migrasi data.js, TIGA fitur rusak beruntun. Semua punya **pola sama**:
+elemen yang di-render **dinamis** (via JS) lupa di-handle di dua titik — (a) saat
+`init`, DAN (b) saat **ganti bahasa** — plus animasi/visibility yang cuma di-setup
+sekali di awal tidak memperhitungkan elemen yang dirender kemudian.
+
+* **Bug 1 — Section kosong total (global scope antar file).** Awalnya `data.js`
+  (`const PORTFOLIO_DATA`) & `script.js` terpisah; global dari `data.js` tak terbaca
+  di `script.js` di beberapa context → build gagal. **Fix**: gabung `data.js` ke
+  DALAM `script.js` (1 file, tanpa cross-script) — commit `fcc6b05`.
+* **Bug 2 — Section ada di DOM tapi TAK TERLIHAT (class `.reveal` opacity:0).**
+  Item dinamis (experience/edu/projects) di-render SETELAH `revealObserver` pasang
+  listener → dapat `opacity:0` tapi tak pernah dapat `.visible`. **Fix**: item
+  langsung `reveal visible` (terlihat) — commit `855e967`.
+* **Bug 3 — Mode English → stat jadi 0.** `buildStats` cuma di init; animasi counter
+  punya guard `if (countersAnimated) return` (cuma jalan sekali). Saat ganti bahasa
+  angka di-reset 0 tapi animasi tak jalan → tampil 0. **Fix**: panggil `buildStats()` +
+  `animateCounters()` ulang di handler `langToggle`, hapus guard — commit `44c1c64`.
+
+**3 ATURAN EMAS biar tidak terulang (WAJIB dicek tiap kali ubah render dinamis):**
+1. **Semua teks/angka yang di-render JS harus ikut `applyLanguage` + re-render saat
+   toggle bahasa.** Jangan hanya andalkan `data-i18n` (itu cuma untuk elemen STATIS
+   HTML). Tiap fungsi `buildX()` harus dipanggil ulang di handler `langToggle`.
+2. **Jangan pakai class visibility (`.reveal`/`opacity:0`) pada elemen dinamis**
+   tanpa memastikan ia dapat `.visible` SETELAH render. Lebih baik langsung terlihat.
+3. **Hindari guard "sekali jalan" (`countersAnimated`, observer disconnect sekali)
+   untuk hal yang bisa berubah** (bahasa, re-render). Kalau mau animasi, TRIGGER ULANG,
+   bukan lock.
+
+**Cara verifikasi yang benar (penting):** jsdom (`runScripts:'dangerously'`) adalah
+engine peniru browser yang AKURAT untuk cek render + visibility + ganti bahasa +
+counter. Node `vm` dengan stub DOM SEDERHANA TIDAK akurat (innerHTML stub tak parse
+node, querySelectorAll kosong → text/stat-check gagal padahal children benar).
+Pakai jsdom, bukan vm-stub, untuk verifikasi akhir. CATATAN: `scripts/verify-portfolio.cjs`
+(di CHANGELOG Known Issues) hanya cek undefined/i18n-key/src-file — TIDAK menangkap
+bug render/visibility/ganti-bahasa di atas. Untuk itu butuh jsdom end-to-end.
+
