@@ -308,3 +308,33 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   ditambah ke kamus id+en. node --check OK; simulasi applyLanguage('id') render exp3 benar;
   verify PASS. Status: menunggu preview visual.
 
+* **MIGRASI KE data.js SEBAGAI SUMBER TUNGGAL (B + C1–C5)** — Robbani minta
+  `data.js` disinkronkan & auto-sinkron dengan konten halaman. Izin ubah struktur
+  (breaking) diberikan Robbani ("ubah izin per AGENTS.md selama tidak mengganggu
+  task lain"). Dilakukan bertahap + verifikasi tiap langkah:
+  - **B** (`89eb998`): `data.js` ditulis ulang jadi database lengkap (identity,
+    contact, education 2018–2023, certifications, stats 3/10/11, experience 3 item +
+    field `logo`, projects 6, gallery 28) — **tanpa ubah tampilan** (render masih
+    hardcode).
+  - **C1** (`04d8c96`): Experience timeline render dari `data.js` via `buildExperience()`
+    + `#timelineRoot`. Logo M4CR/BRGM/Kementan dari field `exp.logo`. Simulasi PASS.
+  - **C2** (`91a7c9e`): Education + Sertifikasi render dari `data.js` via
+    `buildEducation()` + `#eduRoot`. Simulasi PASS (degree 2018–2023, 3 sertifikat).
+  - **C3** (`8df57e4`): Gallery sumber `data.js` — `GALLERY_FILES` dijadikan alias
+    `(PORTFOLIO_DATA.gallery || [])`. (Simulasi berat hang karena setInterval timer,
+    tapi node --check + served terbukti.)
+  - **C4** (`bf7a1ba`): Projects render dari `data.js` via `buildProjects()` +
+    `#projectsRoot`; filter kategori tetap jalan (`attachProjectFilter` di-query
+    setelah build). Simulasi 6 card PASS.
+  - **C5** (`c2e36c7`): Hero stats counter dari `data.js` via `buildStats()`
+    (set `data-target` 3/10/11 dari `stats`). Simulasi PASS.
+  - **STATUS**: semua section sekarang di-render dari `data.js`. `index.html` tinggal
+    wadah (`#timelineRoot`/`#eduRoot`/`#projectsRoot`/`#sliderTrack`/hero-stats `data-stat`).
+    **BLOCKED**: update `.agents/AGENTS.md` section 3 (fakta "data.js hanya kontak"
+    → "sumber tunggal") **ditolak oleh izin sistem** (file instruksi agen terproteksi).
+    Catatan ini di CHANGELOG sebagai pengganti. Robbani perlu ubah AGENTS.md manual
+    bila ingin dokumentasi resmi terbaru.
+  - **TIDAK BERUBAH dari diskusi sebelumnya**: teks/phrasing yang sudah disepakati
+    (humble tone hero, nama Robbani, footer "Mangrove Enthusiast 2026", logo R, dll)
+    tetap utuh — migrasi hanya pindahkan sumber data, bukan mengubah isi.
+
