@@ -533,29 +533,59 @@ const skillObserver = new IntersectionObserver((entries) => {
 skillObserver.observe(skillSection);
 
 // =========================================
-// PROJECT FILTER
+// PROJECT FILTER (attached after dynamic build)
 // =========================================
-const filterBtns = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.getAttribute('data-filter');
-    projectCards.forEach(card => {
-      const cats = card.getAttribute('data-category') || '';
-      if (filter === 'all' || cats.includes(filter)) {
-        card.classList.remove('hidden-filter');
-        card.style.animation = 'none';
-        card.offsetHeight; // reflow
-        card.style.animation = '';
-      } else {
-        card.classList.add('hidden-filter');
-      }
+function attachProjectFilter() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('#projectsRoot .project-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      projectCards.forEach(card => {
+        const cats = card.getAttribute('data-category') || '';
+        if (filter === 'all' || cats.includes(filter)) {
+          card.classList.remove('hidden-filter');
+          card.style.animation = 'none';
+          card.offsetHeight; // reflow
+          card.style.animation = '';
+        } else {
+          card.classList.add('hidden-filter');
+        }
+      });
     });
   });
-});
+}
+
+// =========================================
+// BUILD PROJECTS (from data.js)
+// =========================================
+function buildProjects() {
+  const root = document.getElementById('projectsRoot');
+  if (!root || !PORTFOLIO_DATA.projects) return;
+  root.innerHTML = '';
+  const L = currentLang === 'en';
+  PORTFOLIO_DATA.projects.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'project-card glass-card reveal';
+    card.setAttribute('data-category', p.category);
+    const tags = (L ? p.tags_en : p.tags_id).map(t => `<span class="proj-tag">${t}</span>`).join('');
+    const stats = p.stats.map(s => `<div class="proj-stat"><span class="proj-stat-num">${s.num}</span><span>${L ? s.label_en : s.label_id}</span></div>`).join('');
+    card.innerHTML = `
+      <div class="project-img">
+        <img src="${p.image}" alt="${L ? p.title_en : p.title_id}" loading="lazy" />
+      </div>
+      <div class="project-body">
+        <div class="project-tags">${tags}</div>
+        <h3>${L ? p.title_en : p.title_id}</h3>
+        <p>${L ? p.desc_en : p.desc_id}</p>
+        <div class="project-stats">${stats}</div>
+      </div>`;
+    root.appendChild(card);
+  });
+  attachProjectFilter();
+}
 
 // =========================================
 // GALLERY LIGHTBOX
@@ -1038,4 +1068,5 @@ function buildEducation() {
 applyLanguage(currentLang);
 buildExperience();
 buildEducation();
+buildProjects();
 console.log('🌿 Mangrove Portfolio — Initialized');
