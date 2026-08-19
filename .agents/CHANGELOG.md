@@ -308,6 +308,16 @@ Format: `[YYYY-MM-DD]` — deskripsi singkat.
   ditambah ke kamus id+en. node --check OK; simulasi applyLanguage('id') render exp3 benar;
   verify PASS. Status: menunggu preview visual.
 
+* **PINDAH RUMAH PORTFOLIO KE CLOUD DRIVE** — folder `portfolio` dipindah dari
+  `C:\Users\burha\Downloads\portfolio` ke `C:\Users\burha\OneDrive\Desktop\1 project\portfolio`
+  (OneDrive → otomatis backup + akses lintas device). Folder `Downloads/portfolio` lama
+  sudah kosong (0 file, tidak ada .git) sehingga tidak ada duplikat konten; OneDrive
+  menjadi **sumber tunggal**. Server preview di-restart ke path baru:
+  `cd "C:\Users\burha\OneDrive\Desktop\1 project\portfolio" && python -m http.server 8123`
+  (buka `http://localhost:8123`). Catatan: skill `portfolio-migration-pitfalls` tersimpan
+  di `C:\Users\burha\AppData\Local\hermes\skills\` (DI LUAR folder portfolio, tidak ikut
+  OneDrive, tidak auto-sync akun) — perlu backup manual jika mau portable.
+
 * **MIGRASI KE data.js SEBAGAI SUMBER TUNGGAL (B + C1–C5)** — Robbani minta
   `data.js` disinkronkan & auto-sinkron dengan konten halaman. Izin ubah struktur
   (breaking) diberikan Robbani ("ubah izin per AGENTS.md selama tidak mengganggu
