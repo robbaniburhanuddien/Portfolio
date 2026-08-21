@@ -475,9 +475,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1.05;
   color: var(--clr-accent);
 }
-.hero-name .name-base { color: var(--clr-accent); }
+.hero-name .name-base { color: var(--clr-primary); }
 .hero-name .name-accent {
-  color: var(--clr-text);
+  color: var(--clr-accent);
   font-weight: 800;
 }
 .hero-statement {
