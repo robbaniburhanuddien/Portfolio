@@ -407,9 +407,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(ellipse at 30% 50%, rgba(27,67,50,0.6) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 20%, rgba(64,145,108,0.15) 0%, transparent 50%),
-              linear-gradient(160deg, #071a12 0%, #0a2218 50%, #071a12 100%);
+  background:
+    radial-gradient(ellipse at 30% 50%, var(--clr-primary-glow) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(64,145,108,0.10) 0%, transparent 50%),
+    linear-gradient(160deg, var(--clr-bg) 0%, var(--clr-bg-2) 50%, var(--clr-bg) 100%);
   padding-top: 56px;
 }
 
