@@ -385,3 +385,45 @@ Pakai jsdom, bukan vm-stub, untuk verifikasi akhir. CATATAN: `scripts/verify-por
 (di CHANGELOG Known Issues) hanya cek undefined/i18n-key/src-file — TIDAK menangkap
 bug render/visibility/ganti-bahasa di atas. Untuk itu butuh jsdom end-to-end.
 
+---
+
+## HISTORY — Redesign Minimalis "Simple but Significant" (branch `redesign-minimalis`)
+
+### 2026-08-21 — Ronde 2: Hero & Contact final (commit `5b77c49`)
+**Tujuan:** sesuaikan hero & contact verbatim ala Brittany Chiang, pakai template warna/font kita.
+
+**Perubahan Hero (`index.html` + `style.css`):**
+- Baris di bawah nama "Burhanuddien **Robbani**" diubah jadi STATEMENT persis:
+  `Translating Spatial Data into Ecological Action.`
+  - Font & ukuran **SAMA PERSIS** dengan nama (class `.hero-statement`, font-display
+    weight 800, clamp 2.4–4rem) — BUKAN teks kecil.
+- 4 key competencies (`.hero-competencies`) **DIHAPUS**.
+- Diganti 1 kalimat subline kecil (`.hero-subline`, 0.95rem, opacity 0.82):
+  `Leveraging GIS, Remote Sensing, and UAV Technology for precision mangrove rehabilitation and community empowerment.`
+- `hero.desc` (3 years...) ikut dihapus dari hero (data tetap di `script.js`, tidak dipakai).
+- Class `.hero-role` lama dihapus dari CSS.
+
+**Perubahan Contact (`index.html` + `script.js`):**
+- Layout ala Brittany: heading "Get In Touch" (EN) / "Hubungi Saya" (ID) + blurb +
+  **email besar** (`mailto:`) + **social icons**.
+- Social icons (`#lcSocials`) sekarang pakai **SVG sama persis dengan halaman About**
+  (linkedin, instagram, github) — konsisten visual. Tidak lagi teks "in/IG/GH".
+- Warna & font mengikuti template porto kita (emerald), bukan copy paste Brittany.
+
+**Verifikasi:** jsdom ad-hoc (prefix `hermes-verify-`) → 7 pass, 0 JS error.
+Konfirmasi: statement/subline persis, competencies removed, contact 3 svg icons.
+
+### 2026-08-21 — Ronde 1: Baseline redesign + arsip (commit `5cb893c`)
+- Opsi A "Kalem Emerald": blur glass 16→8px, gradient-text solid emerald, orbs
+  dikurangi glow, section padding 120→150px.
+- Hero: rata kiri di container tengah (ala Brittany), `name-accent` untuk "Robbani".
+- Gallery + Map **DIARSIP** ke `archive.html` (di-gitignore, tidak di-push) — bisa
+  dipulihkan nanti.
+- FIX JS crash: `contactForm` null → guard `if (contactForm && formSuccess)`.
+- `.gitignore` ditambah (node_modules, archive.html, *.log).
+
+### Catatan push (BLOKIR)
+- Push gagal (exit 128): `cannot spawn git-askpass` + `could not read Username` —
+  tidak ada PAT di environment headless. Butuh PAT dari user (jalankan di PC sendiri).
+- Semua commit aman di lokal branch `redesign-minimalis`. Belum di GitHub.
+
