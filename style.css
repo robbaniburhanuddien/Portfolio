@@ -478,13 +478,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--clr-accent);
   font-weight: 800;
 }
-.hero-role {
-  font-size: clamp(1.05rem, 2.2vw, 1.4rem);
-  font-weight: 500;
-  color: #dce8e0;
-  max-width: 640px;
+.hero-statement {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1.05;
+  color: #f0f6f2;
+  margin: 8px 0 0;
+}
+.hero-subline {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--clr-primary-light);
+  max-width: 560px;
   margin: 22px 0 0;
-  line-height: 1.5;
+  line-height: 1.55;
+  opacity: 0.82;
 }
 .hero-competencies {
   display: flex;
