@@ -773,7 +773,7 @@ const i18n = {
 // =========================================
 // APP STATE
 // =========================================
-let currentLang = 'id';
+let currentLang = 'en';
 
 // =========================================
 // LOADER
@@ -1414,16 +1414,27 @@ function buildExperience() {
   if (!root || !PORTFOLIO_DATA.experience) return;
   root.innerHTML = '';
   const L = currentLang === 'en';
+  // Tabs (left) + panel (right)
+  const tabs = document.createElement('div');
+  tabs.className = 'exp-tabs';
+  const panel = document.createElement('div');
+  panel.className = 'exp-panel';
   PORTFOLIO_DATA.experience.forEach((exp, i) => {
-    const item = document.createElement('div');
-    item.className = 'timeline-item reveal visible' + (i % 2 === 1 ? ' right' : '');
-    item.innerHTML = `
-      <div class="timeline-dot"><span>${i + 1}</span></div>
-      <div class="timeline-card glass-card">
+    const tab = document.createElement('button');
+    tab.className = 'exp-tab' + (i === 0 ? ' active' : '');
+    tab.setAttribute('data-idx', i);
+    tab.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    tab.innerHTML = `<span class="exp-tab-org">${exp.org}</span><span class="exp-tab-pos">${L ? exp.position_en : exp.position_id}</span>`;
+    tabs.appendChild(tab);
+  });
+  root.appendChild(tabs);
+  root.appendChild(panel);
+  const renderPanel = (i) => {
+    const exp = PORTFOLIO_DATA.experience[i];
+    panel.innerHTML = `
+      <div class="exp-card glass-card">
         <div class="tl-card-header">
-          <div class="tl-org-logo">
-            <img src="${exp.logo}" alt="Logo" />
-          </div>
+          <div class="tl-org-logo"><img src="${exp.logo}" alt="Logo" /></div>
           <div class="tl-meta">
             <span class="tl-period">${L ? exp.period_en : exp.period_id}</span>
             <span class="tl-type">${L ? exp.type_en : exp.type_id}</span>
@@ -1435,11 +1446,16 @@ function buildExperience() {
         <ul class="tl-duties">
           ${(L ? exp.duties_en : exp.duties_id).map(d => `<li>${d}</li>`).join('')}
         </ul>
-        <div class="tl-tags">
-          ${exp.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-        </div>
+        <div class="tl-tags">${exp.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
       </div>`;
-    root.appendChild(item);
+  };
+  renderPanel(0);
+  tabs.querySelectorAll('.exp-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.querySelectorAll('.exp-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('active'); tab.setAttribute('aria-selected','true');
+      renderPanel(parseInt(tab.getAttribute('data-idx'), 10));
+    });
   });
 }
 
@@ -1518,6 +1534,9 @@ function buildStats() {
   buildEducation();
   buildProjects();
   buildStats();
+  // Sync <html> lang/data-lang agar konsisten dengan currentLang (default = en)
+  document.documentElement.setAttribute('data-lang', currentLang);
+  document.documentElement.setAttribute('lang', currentLang);
   // Section di-render dinamis SETELAH revealObserver setup → item punya .reveal (opacity:0)
   // tapi belum pernah di-observe. Tampilkan langsung agar tidak kosong di layar.
   document.querySelectorAll('#timelineRoot .reveal, #eduRoot .reveal, #projectsRoot .reveal')
