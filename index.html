@@ -114,41 +114,24 @@
         </g>
       </svg>
     </div>
-    <div class="hero-content">
-      <div class="hero-badge reveal">
-        <span class="badge-dot"></span>
-        <span data-i18n="hero.badge">Tersedia untuk Kolaborasi</span>
-      </div>
+    <div class="hero-content hero-left">
+      <p class="hero-intro reveal" data-i18n="hero.intro">Hi, my name is</p>
       <h1 class="hero-title reveal">
-        <span class="title-line" data-i18n="hero.title1">Praktisi</span>
-        <span class="title-line gradient-text" data-i18n="hero.title2">Rehabilitasi Mangrove</span>
-        <span class="title-line" data-i18n="hero.title3">Indonesia</span>
+        <span class="title-line hero-name">Burhanuddien <strong class="name-accent">Robbani</strong></span>
       </h1>
-      <p class="hero-sub reveal" data-i18n="hero.subtitle">
-        Rehabilitasi · <strong class="hl">GIS &amp; Remote Sensing</strong> · <strong class="hl">UAV Pilot</strong> · <strong class="hl">Community Engagement</strong>
+      <p class="hero-role reveal" data-i18n="hero.role">I restore Indonesia's mangrove ecosystems with geospatial science, drones, and community action.</p>
+      <p class="hero-desc reveal" data-i18n="hero.desc">
+        3 years learning and contributing in mangrove rehabilitation with BRGM and M4CR–Ministry of Forestry RI. Still exploring new things — and ready to collaborate on bigger challenges ahead.
       </p>
-      <p class="hero-desc" data-i18n="hero.desc">
-        3 tahun mendedikasikan diri untuk pemulihan ekosistem mangrove Indonesia bersama BRGM dan Kementerian Kehutanan RI
-      </p>
-      <div class="hero-ctas reveal">
-        <a href="#experience" class="btn btn-primary" data-i18n="hero.cta1">Lihat Pengalaman</a>
-        <a href="#contact" class="btn btn-outline" data-i18n="hero.cta2">Hubungi Saya</a>
+      <div class="hero-competencies reveal">
+        <span class="hc-item" data-i18n="skill1.title">Mangrove and Coastal Rehabilitation</span>
+        <span class="hc-item" data-i18n="skill2.title">GIS and Remote Sensing</span>
+        <span class="hc-item" data-i18n="skill3.title">UAV / Drone Operation &amp; Mapping</span>
+        <span class="hc-item" data-i18n="skill4.title">Community Engagement &amp; Social Forestry</span>
       </div>
-      <div class="hero-stats">
-        <div class="stat-item" title="Pengalaman di garis depan rehabilitasi mangrove" aria-label="3+ tahun pengalaman">
-          <span class="stat-num"><span class="num" data-stat="years" data-target="0">0</span><span class="plus">+</span></span>
-          <span class="stat-label" data-i18n="hero.stat1">Tahun Pengalaman</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item" title="Total jam terbang drone survei UAV" aria-label="10+ total jam terbang UAV">
-          <span class="stat-num"><span class="num" data-stat="uav" data-target="0">0</span><span class="plus">+</span></span>
-          <span class="stat-label" data-i18n="hero.stat2">Jam Terbang UAV</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item" title="Kabupaten/Kota pelaksanaan rehabilitasi mangrove" aria-label="11 Kab/Kota pelaksanaan">
-          <span class="stat-num"><span class="num" data-stat="regions" data-target="0">0</span></span>
-          <span class="stat-label" data-i18n="hero.stat3">Kab/Kota Pelaksanaan</span>
-        </div>
+      <div class="hero-ctas reveal">
+        <a href="#experience" class="btn btn-primary" data-i18n="hero.cta1">View Experience</a>
+        <a href="#contact" class="btn btn-outline" data-i18n="hero.cta2">Get in Touch</a>
       </div>
     </div>
     <div class="hero-scroll">
@@ -315,90 +298,6 @@
     </div>
   </section>
 
-  <!-- ============================
-       GALLERY SECTION
-  ============================= -->
-  <section id="gallery" class="section gallery">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag" data-i18n="gal.tag">Dokumentasi</span>
-        <h2 data-i18n="gal.title">Galeri Lapangan</h2>
-        <p class="section-desc" data-i18n="gal.desc">Momen nyata dari lapangan — rehabilitasi, survei, dan kolaborasi komunitas</p>
-      </div>
-
-      <div class="gallery-slider reveal" id="gallerySlider">
-        <button class="slider-nav slider-prev" id="sliderPrev" aria-label="Sebelumnya">&#10094;</button>
-        <div class="slider-viewport">
-          <div class="slider-track" id="sliderTrack"></div>
-        </div>
-        <button class="slider-nav slider-next" id="sliderNext" aria-label="Berikutnya">&#10095;</button>
-      </div>
-
-      <div class="slider-caption" id="sliderCaption">
-        <h3 class="slider-cap-title" id="sliderCapTitle"></h3>
-        <p class="slider-cap-sub" id="sliderCapSub"></p>
-      </div>
-
-      <div class="slider-dots" id="sliderDots"></div>
-
-    </div>
-  </section>
-
-  <!-- ============================
-       MAP / SEBARAN DOKUMENTASI
-       ============================= -->
-  <section id="map" class="section map-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag" data-i18n="map.tag">Sebaran Lapangan</span>
-        <h2 class="section-title" data-i18n="map.title">Di Mana Saya Bekerja?</h2>
-        <p class="section-desc" data-i18n="map.desc">Dokumentasi kegiatan mangrove tersebar di beberapa wilayah. Klik titik untuk melihat foto dari lokasi tersebut.</p>
-      </div>
-      <div class="map-wrap reveal">
-        <div class="map-canvas" id="mapCanvas">
-          <!-- SVG outline Indonesia (recognizable, zero-dep) -->
-          <svg class="map-svg" viewBox="0 0 800 440" preserveAspectRatio="xMidYMid meet" aria-label="Peta Indonesia">
-            <defs>
-              <linearGradient id="mapGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="var(--clr-primary-light)"/>
-                <stop offset="100%" stop-color="var(--clr-primary)"/>
-              </linearGradient>
-            </defs>
-            <g class="map-land" fill="url(#mapGrad)" opacity="0.9" stroke="var(--clr-accent)" stroke-width="0.8">
-              <!-- Sumatra (termasuk Aceh di utara, ujung selatan dekat Selat Sunda) -->
-              <path d="M120 60 L150 50 L175 70 L200 90 L230 130 L255 175 L250 215 L235 250 L220 260 L210 235 L200 195 L175 150 L150 110 L130 85 Z"/>
-              <!-- Jawa -->
-              <path d="M255 285 L300 270 L350 265 L400 272 L435 285 L440 300 L410 305 L360 300 L310 302 L275 308 L258 300 Z"/>
-              <!-- Kalimantan (Borneo) -->
-              <path d="M430 175 L500 160 L560 175 L585 210 L575 250 L540 270 L500 262 L470 240 L445 205 L430 185 Z"/>
-              <!-- Sulawesi -->
-              <path d="M560 245 L585 235 L600 255 L590 285 L605 315 L590 335 L575 320 L578 290 L560 270 Z"/>
-              <!-- Papua -->
-              <path d="M650 235 L720 225 L775 245 L780 290 L740 315 L690 310 L660 280 L650 255 Z"/>
-              <!-- Bali & Nusa Tenggara (garis kecil) -->
-              <path d="M448 315 L460 312 L468 322 L455 326 Z"/>
-              <path d="M478 330 L520 332 L545 348 L505 352 L482 342 Z"/>
-            </g>
-          </svg>
-          <!-- markers (positioned by % — disesuaikan dgn outline di atas) -->
-          <button class="map-marker" data-region="jakarta"   style="left:35%; top:65%" aria-label="Jakarta"><span class="dot"></span><span class="pin-label">Jakarta</span></button>
-          <button class="map-marker" data-region="kepri"     style="left:50%; top:32%" aria-label="Kepulauan Riau"><span class="dot"></span><span class="pin-label">Kepri</span></button>
-          <button class="map-marker" data-region="babel"     style="left:55%; top:55%" aria-label="Kepulauan Bangka Belitung"><span class="dot"></span><span class="pin-label">Babel</span></button>
-          <button class="map-marker" data-region="sumut"     style="left:23%; top:22%" aria-label="Sumatera Utara"><span class="dot"></span><span class="pin-label">Sumut</span></button>
-        </div>
-        <!-- popup -->
-        <div class="map-popup" id="mapPopup" hidden>
-          <button class="map-popup-close" id="mapPopupClose" aria-label="Tutup">×</button>
-          <h3 class="map-popup-title" id="mapPopupTitle"></h3>
-          <p class="map-popup-sub" id="mapPopupSub"></p>
-          <div class="map-popup-grid" id="mapPopupGrid"></div>
-        </div>
-      </div>
-
-      <!-- Grid foto tiap wilayah (langsung terlihat) -->
-      <div class="map-photos reveal" id="mapPhotos"></div>
-    </div>
-  </section>
 
   <!-- ============================
        EDUCATION & CERTS
@@ -414,79 +313,21 @@
   </section>
 
   <!-- ============================
-       CONTACT SECTION
-  ============================= -->
-  <section id="contact" class="section contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag" data-i18n="contact.tag">Mari Terhubung</span>
-        <h2 data-i18n="contact.title">Hubungi Saya</h2>
-        <p class="section-desc" data-i18n="contact.desc">Terbuka untuk kolaborasi riset, konsultasi, atau peluang proyek mangrove</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info reveal">
-          <div class="contact-card glass-card">
-            <div class="contact-item">
-              <span class="contact-icon">✉️</span>
-              <div>
-                <span class="contact-label" data-i18n="contact.email">Email</span>
-                <a data-db="email" href="mailto:burhanuddienrobbani@gmail.com" class="contact-value">burhanuddienrobbani@gmail.com</a>
-              </div>
-            </div>
-            <div class="contact-item">
-              <span class="contact-icon">💼</span>
-              <div>
-                <span class="contact-label">LinkedIn</span>
-                <a data-db="linkedin" href="https://linkedin.com/in/robbanib" class="contact-value" target="_blank">linkedin.com/in/robbanib</a>
-              </div>
-            </div>
-            <div class="contact-item">
-              <span class="contact-icon">📱</span>
-              <div>
-                <span class="contact-label" data-i18n="contact.wa">WhatsApp</span>
-                <a data-db="whatsapp" href="https://wa.me/6281226768040" class="contact-value" target="_blank">+62 812-2676-8040</a>
-              </div>
-            </div>
-            <div class="contact-item">
-              <span class="contact-icon">📍</span>
-              <div>
-                <span class="contact-label" data-i18n="contact.loc">Lokasi</span>
-                <span data-db="location" class="contact-value">Medan, Sumatera Utara</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="contact-form-wrap reveal">
-          <form class="contact-form glass-card" id="contactForm">
-            <div class="form-group">
-              <label for="contact-name" data-i18n="form.name">Nama</label>
-              <input type="text" id="contact-name" name="name" required placeholder="Nama Anda" />
-            </div>
-            <div class="form-group">
-              <label for="contact-email">Email</label>
-              <input type="email" id="contact-email" name="email" required placeholder="email@anda.com" />
-            </div>
-            <div class="form-group">
-              <label for="contact-subject" data-i18n="form.subject">Subjek</label>
-              <input type="text" id="contact-subject" name="subject" placeholder="Topik pesan" />
-            </div>
-            <div class="form-group">
-              <label for="contact-message" data-i18n="form.message">Pesan</label>
-              <textarea id="contact-message" name="message" rows="5" required placeholder="Tulis pesan Anda di sini..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-full" data-i18n="form.send">Kirim Pesan</button>
-            <div class="form-success hidden" id="formSuccess">
-              <span>✅</span> <span data-i18n="form.success">Pesan terkirim! Terima kasih.</span>
-            </div>
-          </form>
-        </div>
-      </div>
+       CONTACT SECTION (ala Brittany)
+       ============================= -->
+  <section id="contact" class="section contact contact-brittany">
+    <div class="container contact-wrap">
+      <span class="section-tag reveal" data-i18n="contact.tag">Let's Connect</span>
+      <h2 class="contact-h reveal" data-i18n="contact.title">Get In Touch</h2>
+      <p class="contact-blurb reveal" data-i18n="contact.blurb">My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+      <a class="contact-big-email reveal" data-db="email" href="mailto:burhanuddienrobbani@gmail.com">burhanuddienrobbani@gmail.com</a>
+      <div class="contact-socials reveal" id="lcSocials"></div>
     </div>
   </section>
 
   <!-- ============================
        FOOTER
-  ============================= -->
+       ============================= -->
   <footer class="footer">
     <div class="footer-glow"></div>
     <div class="container footer-inner">

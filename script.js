@@ -360,6 +360,19 @@ function injectData() {
 
   const locEls = document.querySelectorAll('[data-db="location"]');
   locEls.forEach(el => { el.textContent = PORTFOLIO_DATA.contact.location; });
+
+  // Let's Connect social links (ala Brittany)
+  const lc = document.getElementById('lcSocials');
+  if (lc) {
+    const links = [
+      { href: PORTFOLIO_DATA.contact.linkedin, label: 'in', title: 'LinkedIn' },
+      { href: PORTFOLIO_DATA.contact.instagram, label: 'IG', title: 'Instagram' },
+      { href: PORTFOLIO_DATA.contact.github, label: 'GH', title: 'GitHub' },
+    ];
+    lc.innerHTML = links.map(l =>
+      `<a href="${l.href}" target="_blank" rel="noopener" title="${l.title}" aria-label="${l.title}">${l.label}</a>`
+    ).join('');
+  }
 }
 
 document.addEventListener('DOMContentLoaded', injectData);
@@ -391,18 +404,12 @@ const i18n = {
     "nav.video":       "Video",
     "nav.contact":     "Kontak",
 
-    // Hero
-    "hero.badge":      "Terus Belajar · Siap Berkolaborasi",
-    "hero.title1":     "Praktisi",
-    "hero.title2":     "Rehabilitasi Mangrove",
-    "hero.title3":     "Indonesia",
-    "hero.subtitle":   "Rehabilitasi · GIS & Remote Sensing · UAV Pilot · Community Engagement",
+    // Hero (minimalis ala Brittany — rata kiri)
+    "hero.intro":      "Halo, nama saya",
+    "hero.role":       "Saya memulihkan ekosistem mangrove Indonesia dengan sains geospasial, drone, dan aksi komunitas.",
     "hero.desc":       "3 tahun belajar dan berkontribusi dalam rehabilitasi mangrove bersama BRGM dan M4CR–Kementerian Kehutanan RI. Masih terus mengeksplorasi hal baru — dan siap berkolaborasi untuk tantangan yang lebih besar.",
     "hero.cta1":       "Lihat Pengalaman",
     "hero.cta2":       "Hubungi Saya",
-    "hero.stat1":      "Tahun Pengalaman",
-    "hero.stat2":      "Proyek Selesai",
-    "hero.stat3":      "Wilayah Kerja",
     "hero.scroll":     "Scroll ke bawah",
 
     // About
@@ -544,6 +551,7 @@ const i18n = {
     "contact.tag":     "Mari Terhubung",
     "contact.title":   "Hubungi Saya",
     "contact.desc":    "Terbuka untuk kolaborasi riset, konsultasi, atau peluang proyek mangrove",
+    "contact.blurb":   "Kotak masuk saya selalu terbuka. Punya pertanyaan atau sekadar menyapa, saya usahakan membalasnya!",
     "contact.email":   "Email",
     "contact.wa":      "WhatsApp",
     "contact.loc":     "Lokasi",
@@ -580,18 +588,12 @@ const i18n = {
     "nav.video":       "Video",
     "nav.contact":     "Contact",
 
-    // Hero
-    "hero.badge":      "Always Learning · Open to Collaborate",
-    "hero.title1":     "Practitioner",
-    "hero.title2":     "Mangrove Restoration",
-    "hero.title3":     "Indonesia",
-    "hero.subtitle":   "Rehabilitation · GIS & Remote Sensing · UAV Pilot · Community Engagement",
+    // Hero (minimalis ala Brittany — rata kiri)
+    "hero.intro":      "Hi, my name is",
+    "hero.role":       "I restore Indonesia's mangrove ecosystems with geospatial science, drones, and community action.",
     "hero.desc":       "3 years learning and contributing in mangrove rehabilitation with BRGM and M4CR–Ministry of Forestry RI. Still exploring new things — and ready to collaborate on bigger challenges ahead.",
     "hero.cta1":       "View Experience",
     "hero.cta2":       "Get in Touch",
-    "hero.stat1":      "Years Experience",
-    "hero.stat2":      "Projects Done",
-    "hero.stat3":      "Work Regions",
     "hero.scroll":     "Scroll down",
 
     // About
@@ -731,8 +733,9 @@ const i18n = {
 
     // Contact
     "contact.tag":     "Let's Connect",
-    "contact.title":   "Contact Me",
+    "contact.title":   "Get In Touch",
     "contact.desc":    "Open for research collaboration, consultation, or mangrove project opportunities",
+    "contact.blurb":   "My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
     "contact.email":   "Email",
     "contact.wa":      "WhatsApp",
     "contact.loc":     "Location",
@@ -1195,35 +1198,37 @@ function refreshGalleryLabels() {
 }
 
 // =========================================
-// CONTACT FORM (Simulated)
+// CONTACT FORM (Simulated) — guarded: form removed in Brittany-style contact
 // =========================================
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
 
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const btn = contactForm.querySelector('[type="submit"]');
-  btn.textContent = i18n[currentLang]['form.sending'];
-  btn.disabled = true;
+if (contactForm && formSuccess) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = contactForm.querySelector('[type="submit"]');
+    btn.textContent = i18n[currentLang]['form.sending'];
+    btn.disabled = true;
 
-  setTimeout(() => {
-    const name = (contactForm.querySelector('#contact-name').value || '').trim();
-    const successSpan = formSuccess.querySelector('[data-i18n]');
-    const key = name ? 'form.success_name' : 'form.success';
-    if (successSpan) {
-      successSpan.removeAttribute('data-i18n');
-      successSpan.textContent = i18n[currentLang][key].replace('{name}', name);
-    }
-    formSuccess.classList.remove('hidden');
-    contactForm.reset();
-    btn.textContent = i18n[currentLang]['form.send'];
-    btn.disabled = false;
     setTimeout(() => {
-      formSuccess.classList.add('hidden');
-      if (successSpan) successSpan.setAttribute('data-i18n', 'form.success');
-    }, 5000);
-  }, 1200);
-});
+      const name = (contactForm.querySelector('#contact-name').value || '').trim();
+      const successSpan = formSuccess.querySelector('[data-i18n]');
+      const key = name ? 'form.success_name' : 'form.success';
+      if (successSpan) {
+        successSpan.removeAttribute('data-i18n');
+        successSpan.textContent = i18n[currentLang][key].replace('{name}', name);
+      }
+      formSuccess.classList.remove('hidden');
+      contactForm.reset();
+      btn.textContent = i18n[currentLang]['form.send'];
+      btn.disabled = false;
+      setTimeout(() => {
+        formSuccess.classList.add('hidden');
+        if (successSpan) successSpan.setAttribute('data-i18n', 'form.success');
+      }, 5000);
+    }, 1200);
+  });
+}
 
 // ---- Map / Sebaran Dokumentasi: marker -> popup foto ----
 const MAP_REGIONS = {

@@ -1,0 +1,12 @@
+# Dependencies (jsdom only used for local verification)
+node_modules/
+package.json
+package-lock.json
+
+# Archived sections kept out of version control
+archive.html
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
