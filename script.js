@@ -111,8 +111,9 @@ var PORTFOLIO_DATA = {
   experience: [
     {
       id:         "exp1",
-      period_id:  "Jan 2025 – Sekarang",
+      period_id:  "Jan 2025 – Present",
       period_en:  "Jan 2025 – Present",
+      duration:   "1y 7m",
       position_id:"Technical Mangrove Rehabilitation Facilitator",
       position_en:"Technical Mangrove Rehabilitation Facilitator",
       org:        "PPIU M4CR Sumatera Utara — Proyek M4CR (World Bank × Kementerian LHK)",
@@ -137,8 +138,9 @@ var PORTFOLIO_DATA = {
     },
     {
       id:         "exp2",
-      period_id:  "Jul 2023 – Des 2025",
-      period_en:  "Jul 2023 – Dec 2025",
+      period_id:  "Jul 2023 – Dec 2024",
+      period_en:  "Jul 2023 – Dec 2024",
+      duration:   "1y 6m",
       position_id:"Staf Rehabilitasi Mangrove (Teknis dan GIS)",
       position_en:"Mangrove Rehabilitation Staff (Technical and GIS)",
       org:        "BRGM (Badan Restorasi Gambut dan Mangrove)",
@@ -165,6 +167,7 @@ var PORTFOLIO_DATA = {
       id:         "exp3",
       period_id:  "Jan 2021 – Mar 2021",
       period_en:  "Jan 2021 – Mar 2021",
+      duration:   "3m",
       position_id:"Intern Research Analyst",
       position_en:"Research Analyst Intern",
       org:        "Balai Besar Karantina Pertanian Tanjung Priok — Kementerian Pertanian RI",
@@ -456,8 +459,8 @@ const i18n = {
     "exp3.d2":         "Berhasil melakukan deteksi dan identifikasi biomolekuler menggunakan PCR dan metode lain pada komoditas karantina hama & penyakit impor-ekspor (kentang, anggrek, dll).",
     "exp3.d3":         "Berpartisipasi dalam seluruh agenda balai seperti inspeksi instalasi karantina tumbuhan di pelabuhan dan gudang penyimpanan.",
     "exp.internship":  "Magang",
-    "exp1.period":     "Jan 2025 – Sekarang",
-    "exp2.period":     "Jul 2023 – Des 2025",
+    "exp1.period":     "Jan 2025 – Present",
+    "exp2.period":     "Jul 2023 – Dec 2024",
 
     // Skills
     "skills.tag":      "Kompetensi",
@@ -641,7 +644,7 @@ const i18n = {
     "exp3.d3":         "Participated in every Balai's agenda like inspection of plant quarantine installations at ports and storage warehouses.",
     "exp.internship":  "Internship",
     "exp1.period":     "Jan 2025 – Present",
-    "exp2.period":     "Jul 2023 – Dec 2025",
+    "exp2.period":     "Jul 2023 – Dec 2024",
 
     // Skills
     "skills.tag":      "Competencies",
@@ -1436,7 +1439,7 @@ function buildExperience() {
         <div class="tl-card-header">
           <div class="tl-org-logo"><img src="${exp.logo}" alt="Logo" /></div>
           <div class="tl-meta">
-            <span class="tl-period">${L ? exp.period_en : exp.period_id}</span>
+            <span class="tl-period">${L ? exp.period_en : exp.period_id} (${exp.duration})</span>
             <span class="tl-type">${L ? exp.type_en : exp.type_id}</span>
           </div>
         </div>
