@@ -1,0 +1,11 @@
+# Netlify configuration for Burhanuddien Robbani portfolio
+# Static site, no build step. Deploys from the PRODUCTION BRANCH set in the
+# Netlify dashboard (must be `main`, NOT `developing`).
+# Pushes to `developing` create deploy PREVIEWS only and never touch production.
+
+[build]
+  publish = "."
+  command = ""
+
+[dev]
+  publish = "."
