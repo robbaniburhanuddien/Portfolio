@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Vertex//CareerReview//EN
+BEGIN:VEVENT
+UID:career-review-vertex@20260825
+DTSTAMP:20260825T233745Z
+DTSTART:20260901T020000Z
+DTEND:20260901T030000Z
+RRULE:FREQ=MONTHLY;BYMONTHDAY=1;COUNT=12
+SUMMARY:Monthly Career Review with Vertex
+DESCRIPTION:Evaluasi lowongan, audit LinkedIn, update tracker lamaran. Jalankan di Hermes profil portfolio.
+END:VEVENT
+END:VCALENDAR
