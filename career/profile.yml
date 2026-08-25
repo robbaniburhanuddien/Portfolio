@@ -1,0 +1,46 @@
+# Structured profile — consumed by portfolio-career-ops for automated evaluation
+name: Burhanuddien Robbani
+display_name: Burhanuddien Robbani, S.P.
+headline_en: Technical Mangrove Rehabilitation Facilitator | GIS & UAV Operator | M4CR (World Bank × KLHK)
+location: Medan, North Sumatra, Indonesia
+email: burhanuddienrobbani@gmail.com
+linkedin: https://www.linkedin.com/in/robbanib
+languages:
+  - Indonesian: Native or Bilingual
+  - English: Limited Working
+experience:
+  - org_short: Mangrove for Coastal Resilience (M4CR)
+    period: Jan 2025 – Present
+    duration: 1y 7m
+    role: Technical Mangrove Rehabilitation Facilitator
+    metrics: []
+  - org_short: Badan Restorasi Gambut dan Mangrove (BRGM)
+    period: Jul 2023 – Dec 2024
+    duration: 1y 6m
+    role: Mangrove Rehabilitation Staff (Technical & GIS)
+    metrics:
+      - "~1,786 Ha rehabilitated (Kepri 2023: 703+197; 2024: 69+584+229; + Bangka Belitung)"
+      - "5 provinces touched (Kepri, Babel, Sumut, Jakarta)"
+  - org_short: Balai Besar Karantina Pertanian (BBKP) Tanjung Priok
+    period: Jan 2021 – Mar 2021
+    duration: 3m
+    role: Research Analyst Intern
+    metrics:
+      - "PCR biomolecular detection of bacterial OPTK on potato seeds"
+skills:
+  gis:
+    - ArcGIS Pro
+    - QGIS
+    - Google Earth Engine
+    - ArcGIS Field Maps
+    - GNSS/GPS (Garmin/Trimble)
+    - KoboToolbox/ODK
+  domain:
+    - Mangrove Rehabilitation
+    - Hydrological Survey
+    - UAV/Drone Piloting
+    - Plant Protection
+    - Stakeholder Coordination
+  coding:
+    - JavaScript (web)
+    - Python (basic)
