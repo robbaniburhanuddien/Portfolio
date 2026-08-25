@@ -117,6 +117,7 @@ var PORTFOLIO_DATA = {
       position_id:"Technical Mangrove Rehabilitation Facilitator",
       position_en:"Technical Mangrove Rehabilitation Facilitator",
       org:        "PPIU M4CR Sumatera Utara — Proyek M4CR (World Bank × Kementerian LHK)",
+      org_short:   "Mangrove for Coastal Resilience (M4CR)",
       location_id:"Medan, Sumatera Utara",
       location_en:"Medan, North Sumatra",
       type_id:    "Full-time",
@@ -144,6 +145,7 @@ var PORTFOLIO_DATA = {
       position_id:"Staf Rehabilitasi Mangrove (Teknis dan GIS)",
       position_en:"Mangrove Rehabilitation Staff (Technical and GIS)",
       org:        "BRGM (Badan Restorasi Gambut dan Mangrove)",
+      org_short:   "Badan Restorasi Gambut dan Mangrove (BRGM)",
       location_id:"Jakarta, Indonesia",
       location_en:"Jakarta, Indonesia",
       type_id:    "Full-time",
@@ -173,6 +175,7 @@ var PORTFOLIO_DATA = {
       position_id:"Intern Research Analyst",
       position_en:"Research Analyst Intern",
       org:        "Balai Besar Karantina Pertanian Tanjung Priok — Kementerian Pertanian RI",
+      org_short:   "Balai Besar Karantina Pertanian (BBKP) Tanjung Priok",
       location_id:"Jakarta, Indonesia",
       location_en:"Jakarta, Indonesia",
       type_id:    "Magang",
@@ -470,17 +473,17 @@ const i18n = {
     "skills.tools":    "Tools & Teknologi",
     "skill1.title":    "Mangrove and Coastal Rehabilitation",
     "skill1.tools_label": "Peralatan & Perangkat Lunak:",
-    "skill1.tools":    "GNSS/GPS Receiver (Garmin/Trimble), ArcGIS Field Maps, KoboToolbox/ODK, Pita Ukur/Haglof",
+    "skill1.tools":    "GNSS/GPS Receiver (Garmin/Trimble), ArcGIS Field Maps, KoboToolbox/ODK, Measuring Tape/Haglof",
     "skill1.s1":       "Pelaksanaan survei lapangan presisi tinggi dan Ground Truthing (validasi titik sampel) menggunakan instrumen GNSS dan ArcGIS Field Maps.",
     "skill1.s2":       "Desain spasial dan perencanaan zonasi rehabilitasi berbasis analisis Kesesuaian Lahan (Land Suitability).",
     "skill1.s3":       "Pemantauan Tingkat Kelulushidupan (Survival Rate) dan inventarisasi kesehatan tegakan mangrove secara berkala.",
     "skill1.s4":       "Identifikasi taksonomi flora pesisir dan perancangan intervensi restorasi ekologi yang tepat guna.",
     "skill2.title":    "GIS and Remote Sensing",
     "skill2.tools_label": "Peralatan & Perangkat Lunak:",
-    "skill2.tools":    "ArcGIS Pro, QGIS, dan GEE",
+    "skill2.tools":    "ArcGIS Pro, QGIS, and GEE",
     "skill2.s1":       "Akuisisi dan pra-pemrosesan citra satelit resolusi menengah (Sentinel-2/Landsat 8 & 9) berbasis cloud computing menggunakan Google Earth Engine (GEE), mencakup koreksi atmosferik dan cloud masking.",
     "skill2.s2":       "Ekstraksi fitur dan klasifikasi kerapatan tajuk mangrove menggunakan analisis Indeks Vegetasi (NDVI/MDI) serta algoritma Machine Learning (misal: Random Forest/CART) di ArcGIS Pro/QGIS.",
-    "skill2.s3":       "Analisis multitemporal Perubahan Tutupan Lahan (LULC) untuk memantau dinamika deforestasi dan degradasi ekosistem mangrove selama periode [Sebutkan Tahun, misal: 2015-2025].",
+    "skill2.s3":       "Analisis multitemporal Perubahan Tutupan Lahan (LULC) untuk memantau dinamika deforestasi dan degradasi ekosistem mangrove selama periode 2015-2025.",
     "skill2.s4":       "Desain kartografi tingkat lanjut dan visualisasi data spasial interaktif untuk mendukung pengambilan keputusan (Decision Support) dalam strategi rehabilitasi mangrove.",
     "skill3.title":    "UAV / Drone Operation & Mapping",
     "skill3.tools_label": "Peralatan & Perangkat Lunak:",
@@ -664,7 +667,7 @@ const i18n = {
     "skill2.tools":    "ArcGIS Pro, QGIS, and GEE",
     "skill2.s1":       "Acquisition and pre-processing of medium-resolution satellite imagery (Sentinel-2/Landsat 8 & 9) using cloud computing via Google Earth Engine (GEE), including atmospheric correction and cloud masking.",
     "skill2.s2":       "Feature extraction and mangrove canopy density classification using Vegetation Indices (NDVI/MDI) and Machine Learning algorithms (e.g., Random Forest/CART) in ArcGIS Pro/QGIS.",
-    "skill2.s3":       "Multitemporal Land Use/Cover Change (LULC) analysis to monitor deforestation dynamics and mangrove ecosystem degradation during the period [State the Years, e.g.: 2015-2025].",
+    "skill2.s3":       "Multitemporal Land Use/Cover Change (LULC) analysis to monitor deforestation dynamics and mangrove ecosystem degradation during the period 2015-2025.",
     "skill2.s4":       "Advanced cartographic design and interactive spatial data visualization to support decision-making (Decision Support) in mangrove rehabilitation strategy.",
     "skill3.title":    "UAV / Drone Operation & Mapping",
     "skill3.tools_label": "Equipment & Software:",
@@ -1429,7 +1432,7 @@ function buildExperience() {
     tab.className = 'exp-tab' + (i === 0 ? ' active' : '');
     tab.setAttribute('data-idx', i);
     tab.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-    tab.innerHTML = `<span class="exp-tab-org">${exp.org}</span><span class="exp-tab-pos">${L ? exp.position_en : exp.position_id}</span>`;
+    tab.innerHTML = `<span class="exp-tab-org">${exp.org_short}</span><span class="exp-tab-pos">${L ? exp.position_en : exp.position_id}</span>`;
     tabs.appendChild(tab);
   });
   root.appendChild(tabs);
