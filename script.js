@@ -1312,10 +1312,10 @@ const MAP_REGIONS = {
 // =========================================
 // Foto profil (dari folder images/profil tentang saya). Ganti/urutkan di sini.
 const ABOUT_PHOTOS = [
-  'images/profil tentang saya/1000263706.jpg.jpeg',
-  'images/profil tentang saya/DJI_0382.JPG',
-  'images/profil tentang saya/WhatsApp Image 2026-08-16 at 9.57.30 PM.jpeg',
-  'images/profil tentang saya/WhatsApp Image 2026-08-16 at 9.58.35 PM.jpeg'
+  'images/profil_tentang_saya/1000263706.jpg.jpeg',
+  'images/profil_tentang_saya/DJI_0382.JPG',
+  'images/profil_tentang_saya/WhatsApp_Image_2026-08-16_at_9.57.30_PM.jpeg',
+  'images/profil_tentang_saya/WhatsApp_Image_2026-08-16_at_9.58.35_PM.jpeg'
 ];
 
 (function buildAboutSlider() {
