@@ -269,27 +269,32 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    ========================================= */
 .navbar {
   position: fixed;
-  top: 0; left: 50%; transform: translateX(-50%);
-  width: 100%; max-width: 1200px;
+  top: 0; left: 0; right: 0;
+  width: 100%;
   z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
   background: rgba(7, 26, 18, 0.55);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  border-radius: 0 0 14px 14px;
   transition: var(--transition);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .navbar.scrolled {
   background: rgba(7, 26, 18, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  padding: 14px 24px;
   border-bottom: 1px solid var(--clr-glass-border);
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.navbar.scrolled .nav-inner {
+  padding: 14px 24px;
 }
 
 .nav-logo {

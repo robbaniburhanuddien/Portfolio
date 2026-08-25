@@ -247,7 +247,7 @@ var PORTFOLIO_DATA = {
     {
       id: "p4",
       category: "community",
-      image: "images/KT Sejahtera_23112024_105851.jpg",
+      image: "images/KT_Sejahtera_23112024_105851.jpg",
       title_id: "Pemberdayaan Masyarakat Pesisir",
       title_en: "Coastal Community Empowerment",
       desc_id:  "Program pendampingan dan pelatihan masyarakat nelayan dan petani pesisir dalam pengelolaan mangrove berbasis komunitas berkelanjutan.",
@@ -277,7 +277,7 @@ var PORTFOLIO_DATA = {
     {
       id: "p6",
       category: "uav gis",
-      image: "images/WhatsApp Image 2024-06-24 at 12.55.17 AM.jpeg",
+      image: "images/WhatsApp_Image_2024-06-24_at_12.55.17_AM.jpeg",
       title_id: "Validasi Lapangan via Drone & GIS",
       title_en: "Field Validation via Drone & GIS",
       desc_id:  "Integrasi data drone dan analisis GIS untuk validasi tutupan mangrove dan identifikasi area prioritas restorasi secara akurat.",
@@ -1432,7 +1432,7 @@ function buildExperience() {
     tab.className = 'exp-tab' + (i === 0 ? ' active' : '');
     tab.setAttribute('data-idx', i);
     tab.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-    tab.innerHTML = `<span class="exp-tab-org">${exp.org_short}</span><span class="exp-tab-pos">${L ? exp.position_en : exp.position_id}</span>`;
+    tab.innerHTML = `<span class="exp-tab-org">${exp.org_short}</span>`;
     tabs.appendChild(tab);
   });
   root.appendChild(tabs);
