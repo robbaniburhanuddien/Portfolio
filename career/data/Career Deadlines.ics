@@ -1,0 +1,30 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Vertex Career//EN
+BEGIN:VEVENT
+UID:abt-deadline-2026@vertex
+DTSTAMP:20260826T110000Z
+DTSTART:20260830T165900Z
+DTEND:20260830T175900Z
+SUMMARY:DEADLINE: Lamaran GIS Analyst - PT Alam Bukit Tigapuluh
+DESCRIPTION:Kirim CV+Surat Lamaran+IJazah+Portofolio ke recruitment@alambukit30.co.id | Subject: Application - GIS Analyst - Burhanuddien Robbani | Skor A (prioritas #1)
+BEGIN:VALARM
+TRIGGER:-P3D
+ACTION:DISPLAY
+DESCRIPTION:Reminder: DEADLINE: Lamaran GIS Analyst - PT Alam Bukit Tigapuluh
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bpdlh-review-2026@vertex
+DTSTAMP:20260826T110000Z
+DTSTART:20260902T020000Z
+DTEND:20260902T030000Z
+SUMMARY:Follow-up / Review: Tenaga Pendukung BPDLH
+DESCRIPTION:Cek status lamaran BPDLH (Skor B). Kirim jika belum.
+BEGIN:VALARM
+TRIGGER:-P3D
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Follow-up / Review: Tenaga Pendukung BPDLH
+END:VALARM
+END:VEVENT
+END:VCALENDAR
