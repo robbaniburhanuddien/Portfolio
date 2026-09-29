@@ -1,0 +1,6 @@
+{
+  "token": "8997727181:AAHISJb2FCQwpBrTfQijGqbDZnA4ba2Ustk",
+  "data_root": "C:\\Users\\burha\\OneDrive\\Desktop\\1 project\\portfolio\\career",
+  "admin_chat_id": null,
+  "welcome_message": "🤖 *Vertex Career Bot*\n\nBot ini terhubung dengan Vertex (agent portfolio kamu). Kamu bisa:\n\n• _/_status_ — Cek status semua lowongan\n• _/_jobs_ — Daftar semua lowongan\n• _/_job <nama>_ — Detail lowongan (misal: /job BPDLH)\n• _/_skor_ — Lihat semua skor A-G\n• _/_help_ — Daftar perintah\n\nHalo! Siap bantu persiapan karir kamu."
+}

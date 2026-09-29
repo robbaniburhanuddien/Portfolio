@@ -274,7 +274,21 @@ var PORTFOLIO_DATA = {
         { num: "Semi-annual", label_id: "Siklus Data",    label_en: "Data Cycle" },
       ],
     },
-
+    {
+      id: "p6",
+      category: "uav gis",
+      image: "images/WhatsApp_Image_2024-06-24_at_12.55.17_AM.jpeg",
+      title_id: "Validasi Lapangan via Drone & GIS",
+      title_en: "Field Validation via Drone & GIS",
+      desc_id:  "Integrasi data drone dan analisis GIS untuk validasi tutupan mangrove dan identifikasi area prioritas restorasi secara akurat.",
+      desc_en:  "Integration of drone data and GIS analysis for accurate validation of mangrove cover and identification of priority restoration areas.",
+      tags_id: ["UAV", "GIS", "BRGM"],
+      tags_en: ["UAV", "GIS", "BRGM"],
+      stats: [
+        { num: "95%", label_id: "Akurasi", label_en: "Accuracy" },
+        { num: "3",   label_id: "Kawasan", label_en: "Regions" },
+      ],
+    },
   ],
 
   // ============================================================
@@ -302,11 +316,11 @@ var PORTFOLIO_DATA = {
     { file: "IMG_9405~photo.JPG", cat: "gis", id: "Pemetaan GIS", en: "GIS Mapping" },
     { file: "IMG_9406~photo.JPG", cat: "gis", id: "Pemetaan GIS", en: "GIS Mapping" },
     { file: "IMG_9518~photo.JPG", cat: "gis", id: "Pemetaan GIS", en: "GIS Mapping" },
-    { file: "KT_Sejahtera_23112024_105851.jpg", cat: "community", id: "Kolaborasi Komunitas", en: "Community Collaboration" },
-        { file: "KT_Sejahtera_23112024_105855.jpg", cat: "community", id: "Kolaborasi Komunitas", en: "Community Collaboration" },
-        { file: "KT_Sejahtera_23112024_105859.jpg", cat: "community", id: "Kolaborasi Komunitas", en: "Community Collaboration" },
-        { file: "KT_Sejahtera_23112024_113852.jpg", cat: "community", id: "Kolaborasi Komunitas", en: "Community Collaboration" },
-        { file: "KT_Sejahtera_23112024_113900.jpg", cat: "community", id: "Kolaborasi Komunitas", en: "Community Collaboration" },
+    { file: "KT Sejahtera_23112024_105851.jpg", cat: "community", id: "Kolaborasi Komunitas", en: "Community Collaboration" },
+    { file: "KT Sejahtera_23112024_105855.jpg", cat: "community", id: "Kolaborasi Komunitas", en: "Community Collaboration" },
+    { file: "KT Sejahtera_23112024_105859.jpg", cat: "community", id: "Kolaborasi Komunitas", en: "Community Collaboration" },
+    { file: "KT Sejahtera_23112024_113852.jpg", cat: "community", id: "Kolaborasi Komunitas", en: "Community Collaboration" },
+    { file: "KT Sejahtera_23112024_113900.jpg", cat: "community", id: "Kolaborasi Komunitas", en: "Community Collaboration" },
     { file: "DJI_0382.JPG", cat: "aerial", id: "Tampak Udara", en: "Aerial View" },
     { file: "IMG_9401~photo.JPG", cat: "aerial", id: "Tampak Udara", en: "Aerial View" },
     { file: "20260416_034518537_iOS.jpg", cat: "doc", id: "Dokumentasi Lapangan", en: "Field Documentation" },
@@ -1234,7 +1248,7 @@ if (contactForm && formSuccess) {
 // ---- Map / Sebaran Dokumentasi: marker -> popup foto ----
 const MAP_REGIONS = {
   jakarta: { title: 'Jakarta', sub: 'Pusat BRGM — Deputi Pemberdayaan Masyarakat',
-    photos: ['20260416_034518537_iOS.jpg', '20260416_033920743_iOS.jpg', 'KT_Sejahtera_23112024_105851.jpg'] },
+    photos: ['20260416_034518537_iOS.jpg', '20260416_033920743_iOS.jpg', 'KT Sejahtera_23112024_105851.jpg'] },
   kepri:   { title: 'Kepulauan Riau', sub: 'Rehabilitasi mangrove & operasional GIS',
     photos: ['DJI_0379.JPG', 'DJI_0381.JPG', '20230824_172149.jpg', 'IMG_9403~photo.JPG', 'IMG_9410~photo.JPG', 'IMG_9530~photo.JPG'] },
   babel:   { title: 'Kepulauan Bangka Belitung', sub: 'Rehabilitasi mangrove & pemberdayaan masyarakat',
