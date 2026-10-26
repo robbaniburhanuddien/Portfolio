@@ -413,7 +413,7 @@ const i18n = {
     "about.tag":       "Tentang Saya",
     "about.title":     "Siapa Saya?",
     "about.role":      "Praktisi Rehabilitasi Mangrove & Geospasial",
-    "about.bio":       "Halo, saya masih terus belajar dan berkontribusi dalam rehabilitasi mangrove, pemetaan geospasial, dan pemberdayaan masyarakat pesisir. Beberapa tahun terakhir saya berkesempatan belajar langsung melalui program restorasi mangrove nasional, termasuk bersama Badan Restorasi Gambut dan Mangrove serta M4CR–Kementerian Kehutanan.",
+    "about.bio":       "Halo, saya masih belajar dan berkontribusi dalam rehabilitasi mangrove, pemetaan geospasial, dan pemberdayaan masyarakat pesisir. Selama beberapa tahun terakhir, saya berkesempatan belajar langsung melalui program restorasi mangrove nasional, termasuk bersama Badan Restorasi Gambut dan Mangrove (BRGM) serta M4CR–Kementerian Kehutanan.",
     "about.bio2":      "Analis spasial yang teliti dengan 3 tahun pengalaman mendukung proyek ekosistem pesisir skala besar melalui pemetaan UAV dan perencanaan GIS. Terampil menerjemahkan citra drone dan data hidrologi menjadi cetak biru yang jelas dan dapat diterapkan oleh tim pelaksana. Saya pekerja tim yang kolaboratif, dengan semangat belajar tinggi untuk mempertajam keterampilan teknis dan mendukung pengambilan keputusan berbasis data dalam kehutanan berkelanjutan serta inisiatif karbon biru. — Saya berusaha menghubungkan pengetahuan dengan tindakan nyata, meski masih banyak yang harus dipelajari, demi ekosistem pesisir Indonesia.",
     "about.org":       "Lembaga",
     "about.location":  "Lokasi",
@@ -1346,11 +1346,11 @@ const ABOUT_PHOTOS = [
     whatsapp: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2zm5.8 14.24c-.24.68-1.4 1.31-1.92 1.36-.5.05-.94.23-3.2-.66-2.7-1.06-4.4-3.78-4.53-3.96-.13-.18-1.06-1.41-1.06-2.69s.67-1.91.91-2.17c.24-.26.52-.33.7-.33.18 0 .36 0 .51.01.17.01.39-.06.6.46.24.57.81 1.97.88 2.11.07.14.12.3.02.48-.1.18-.15.3-.3.46-.15.16-.31.36-.45.48-.15.15-.3.3-.13.59.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.19.72-.84 1-1.13.26-.29.53-.24.89-.14.36.1 2.3.85 2.7 1 .39.15.66.22.76.34.1.12.1.71-.14 1.39z"/></svg>'
   };
   const ORDER = [
-    ['instagram', c.instagram, 'Instagram'],
     ['linkedin', c.linkedin, 'LinkedIn'],
-    ['github', c.github, 'GitHub'],
     ['email', c.email, 'Email'],
-    ['whatsapp', c.whatsapp, 'WhatsApp']
+    ['whatsapp', c.whatsapp, 'WhatsApp'],
+    ['github', c.github, 'GitHub'],
+    ['instagram', c.instagram, 'Instagram']
   ];
   ORDER.forEach(([key, val, label]) => {
     if (!val) return;
