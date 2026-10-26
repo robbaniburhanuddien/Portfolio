@@ -769,9 +769,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    ========================================= */
 .about-grid {
   display: grid;
-  grid-template-columns: 380px 1fr;
-  gap: 64px;
-  align-items: center;
+  grid-template-columns: 320px 1fr;
+  gap: 48px;
+  align-items: start;
 }
 
 .about-photo-wrap {
@@ -937,8 +937,85 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* =========================================
-   EXPERIENCE TIMELINE
+   ABOUT — PHOTO WINDOW (foto sebagai jendela)
    ========================================= */
+
+/* Bingkai foto: persegi, sudut membulat, shadow halus */
+.about-photo-window {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--clr-glass-border);
+  background: var(--clr-glass);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+}
+
+.about-photo-window img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Gradasi tipis di bawah supaya caption terbaca */
+.about-photo-window::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 26, 18, 0.6), transparent 55%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.about-photo-caption {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Konten teks di sebelah foto */
+.about-grid .about-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Jarak paragraf bio terakhir sebelum social icons */
+.about-bio:last-of-type {
+  margin-bottom: 24px;
+}
+
+/* Tombol Download CV — lebarnya mengikuti panjang teks */
+.about-cv {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  white-space: nowrap;
+  margin-top: 8px;
+}
+.about-cv svg {
+  vertical-align: -3px;
+  margin-right: 7px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .about-photo-window {
+    aspect-ratio: auto;
+    height: 280px;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+}
+
 .timeline {
   position: relative;
   max-width: 900px;
@@ -1876,6 +1953,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-photo-frame { width: 100%; max-width: 320px; margin: 0 auto; }
   .about-photo-wrap { display: flex; justify-content: center; }
+  .about-photo-window { max-width: 380px; margin: 0 auto; }
+  .about-photo-caption { display: none; }
 
   .timeline::before { left: 24px; }
   .timeline-item,
