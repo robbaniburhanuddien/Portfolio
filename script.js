@@ -198,13 +198,16 @@ var PORTFOLIO_DATA = {
     {
       id: "p1",
       category: "rehabilitasi",
+      year: "2025",
       image: "images/IMG_9403~photo.JPG",
       title_id: "Penanaman Mangrove Skala Besar",
       title_en: "Large-Scale Mangrove Planting",
+      tldr_id: "Rehabilitasi 500+ ha mangrove pesisir dengan pendekatan ekologi dan pemantauan spasial.",
+      tldr_en: "Restored 500+ ha of coastal mangrove through ecology-based planting and spatial monitoring.",
       desc_id:  "Program penanaman dan pemulihan ekosistem mangrove di wilayah pesisir target nasional dengan pendekatan berbasis ekologi.",
       desc_en:  "Mangrove planting and ecosystem restoration program in national target coastal areas using an ecology-based approach.",
-      tags_id: ["Rehabilitasi", "BRGM"],
-      tags_en: ["Rehabilitation", "BRGM"],
+      tags_id: ["Rehabilitation"],
+      tags_en: ["Rehabilitation"],
       stats: [
         { num: "500+", label_id: "ha Area", label_en: "ha Area" },
         { num: "10K+", label_id: "Bibit",   label_en: "Seedlings" },
@@ -213,9 +216,12 @@ var PORTFOLIO_DATA = {
     {
       id: "p2",
       category: "gis",
+      year: "2024",
       image: "images/DJI_0381.JPG",
       title_id: "Pemetaan Distribusi Mangrove Nasional",
       title_en: "National Mangrove Distribution Mapping",
+      tldr_id: "Pemetaan tutupan mangrove multi-temporal dengan GIS dan citra satelit untuk mendukung kebijakan restorasi.",
+      tldr_en: "Multi-temporal mangrove cover mapping with GIS and satellite imagery to support restoration policy.",
       desc_id:  "Pemetaan dan analisis perubahan tutupan mangrove menggunakan citra satelit multi-temporal untuk mendukung kebijakan restorasi.",
       desc_en:  "Mapping and analysis of mangrove cover changes using multi-temporal satellite imagery to support restoration policy.",
       tags_id: ["GIS", "Remote Sensing"],
@@ -228,13 +234,16 @@ var PORTFOLIO_DATA = {
     {
       id: "p3",
       category: "uav",
+      year: "2023",
       image: "images/DJI_0379.JPG",
       title_id: "Survei Aerial Kawasan Mangrove",
       title_en: "Aerial Survey of Mangrove Areas",
+      tldr_id: "Survei drone untuk orthophoto dan DSM resolusi tinggi sebagai basis peta kerja lapangan.",
+      tldr_en: "Drone surveys producing high-resolution orthophotos and DSMs as the basis for field work maps.",
       desc_id:  "Pelaksanaan survei menggunakan drone untuk menghasilkan orthophoto dan DSM beresolusi tinggi sebagai basis peta kerja lapangan.",
       desc_en:  "Drone-based surveys to produce high-resolution orthophotos and DSMs as the basis for field work maps.",
-      tags_id: ["UAV", "Fotogrametri"],
-      tags_en: ["UAV", "Photogrammetry"],
+      tags_id: ["Remote Sensing"],
+      tags_en: ["Remote Sensing"],
       stats: [
         { num: "20+", label_id: "Misi Terbang", label_en: "Flight Missions" },
         { num: "2cm", label_id: "Resolusi GSD", label_en: "GSD Resolution" },
@@ -243,13 +252,16 @@ var PORTFOLIO_DATA = {
     {
       id: "p4",
       category: "community",
+      year: "2024",
       image: "images/KT_Sejahtera_23112024_105851.jpg",
       title_id: "Pemberdayaan Masyarakat Pesisir",
       title_en: "Coastal Community Empowerment",
+      tldr_id: "Pendampingan dan pelatihan masyarakat pesisir untuk pengelolaan mangrove berbasis komunitas.",
+      tldr_en: "Coastal community mentoring and training for community-based mangrove management.",
       desc_id:  "Program pendampingan dan pelatihan masyarakat nelayan dan petani pesisir dalam pengelolaan mangrove berbasis komunitas berkelanjutan.",
       desc_en:  "Assistance and training program for fishing and farming communities in sustainable community-based mangrove management.",
-      tags_id: ["Komunitas", "Pemberdayaan"],
-      tags_en: ["Community", "Empowerment"],
+      tags_id: ["Community"],
+      tags_en: ["Community"],
       stats: [
         { num: "500+", label_id: "Peserta", label_en: "Participants" },
         { num: "15+", label_id: "Desa",    label_en: "Villages" },
@@ -258,13 +270,16 @@ var PORTFOLIO_DATA = {
     {
       id: "p5",
       category: "gis rehabilitasi",
+      year: "2026",
       image: "images/20260416_034518537_iOS.jpg",
       title_id: "Sistem Monitoring Mangrove Terpadu",
       title_en: "Integrated Mangrove Monitoring System",
+      tldr_id: "Sistem pemantauan mangrove berkala yang memadukan data lapangan, GIS, dan penginderaan jauh.",
+      tldr_en: "Periodic mangrove monitoring system combining field data, GIS, and remote sensing.",
       desc_id:  "Pengembangan sistem pemantauan kondisi mangrove secara berkala menggunakan integrasi data lapangan, GIS, dan penginderaan jauh.",
       desc_en:  "Development of a periodic mangrove condition monitoring system integrating field data, GIS, and remote sensing.",
-      tags_id: ["Monitoring", "GIS"],
-      tags_en: ["Monitoring", "GIS"],
+      tags_id: ["GIS", "Remote Sensing"],
+      tags_en: ["GIS", "Remote Sensing"],
       stats: [
         { num: "12",         label_id: "Plot Monitoring", label_en: "Monitoring Plots" },
         { num: "Semi-annual", label_id: "Siklus Data",    label_en: "Data Cycle" },
@@ -358,12 +373,14 @@ function injectData() {
       linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"/></svg>',
       instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',
       github:   '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>',
-      email:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>'
+      email:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
+      whatsapp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>'
     };
     const LINKS = [
       { key:'linkedin', href: PORTFOLIO_DATA.contact.linkedin, title:'LinkedIn' },
       { key:'instagram', href: PORTFOLIO_DATA.contact.instagram, title:'Instagram' },
       { key:'github', href: PORTFOLIO_DATA.contact.github, title:'GitHub' },
+      { key:'whatsapp', href: 'https://wa.me/6281226768040', title:'WhatsApp' },
       { key:'email', href: 'mailto:' + PORTFOLIO_DATA.contact.email, title:'Email' },
     ];
     lc.innerHTML = LINKS.map(l =>
@@ -491,6 +508,9 @@ const i18n = {
     "proj.filter_gis": "GIS & Pemetaan",
     "proj.filter_uav": "UAV",
     "proj.filter_comm":"Community",
+    "proj.filter_year": "Tahun",
+    "proj.filter_clear": "Clear",
+    "proj.all_years": "Semua Tahun",
     "proj.tag_rehab":  "Rehabilitasi",
     "proj.tag_comm":   "Komunitas",
     "p1.title":        "Penanaman Mangrove Skala Besar",
@@ -675,6 +695,9 @@ const i18n = {
     "proj.filter_gis": "GIS & Mapping",
     "proj.filter_uav": "UAV",
     "proj.filter_comm":"Community",
+    "proj.filter_year": "Year",
+    "proj.filter_clear": "Clear",
+    "proj.all_years": "All Years",
     "proj.tag_rehab":  "Rehabilitation",
     "proj.tag_comm":   "Community",
     "p1.title":        "Large-Scale Mangrove Planting",
@@ -851,25 +874,6 @@ langToggle.addEventListener('click', () => {
   }
 });
 
-// ---- Theme toggle (light/dark) as estetik switch ----
-const themeToggle = document.getElementById('themeToggle');
-function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  if (themeToggle) themeToggle.classList.toggle('is-alt', theme === 'dark');
-  try { localStorage.setItem('portfolio-theme', theme); } catch (e) {}
-}
-if (themeToggle) {
-  themeToggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    applyTheme(current);
-  });
-}
-// restore saved preference (default light)
-try {
-  const saved = localStorage.getItem('portfolio-theme');
-  if (saved === 'dark' || saved === 'light') applyTheme(saved);
-} catch (e) {}
-
 function applyLanguage(lang) {
   const dict = i18n[lang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -945,34 +949,310 @@ skillObserver.observe(skillSection);
 // =========================================
 // PROJECT FILTER (attached after dynamic build)
 // =========================================
-function attachProjectFilter() {
-  if (attachProjectFilter._attached) return; // hanya attach sekali (aman saat re-render bahasa)
-  attachProjectFilter._attached = true;
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const projectCards = document.querySelectorAll('#projectsRoot .project-card'); // query kartu terkini
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.getAttribute('data-filter');
-      projectCards.forEach(card => {
-        const cats = card.getAttribute('data-category') || '';
-        if (filter === 'all' || cats.includes(filter)) {
-          card.classList.remove('hidden-filter');
-          card.style.animation = 'none';
-          card.offsetHeight; // reflow
-          card.style.animation = '';
-        } else {
-          card.classList.add('hidden-filter');
-        }
-      });
-    });
+const PROJECT_TAG_SET = ['Rehabilitation', 'GIS', 'Remote Sensing', 'Community'];
+let activeProjectTags = new Set();
+
+function getSelectedYears() {
+  return Array.from(document.querySelectorAll('#yearPanel input[type="checkbox"]:checked'))
+    .map(cb => cb.value);
+}
+
+function updateYearToggleLabel() {
+  const btn = document.getElementById('yearToggle');
+  if (!btn) return;
+  const years = getSelectedYears();
+  const L = currentLang === 'en';
+  btn.textContent = years.length ? years.join(', ') : (L ? 'All Years' : 'Semua Tahun');
+}
+
+const FILTER_EASE = 'cubic-bezier(0.22, 0.61, 0.36, 1)';
+let filterPendingFinish = null;
+
+function prefersReducedMotion() {
+  return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function applyProjectFilters() {
+  const grid = document.getElementById('projectsRoot');
+  if (!grid) return;
+  const cards = Array.from(grid.querySelectorAll('.project-card'));
+  if (!cards.length) return;
+
+  const selectedYears = getSelectedYears();
+  const keep = [];
+  const drop = [];
+
+  cards.forEach(card => {
+    const tags = (card.getAttribute('data-tags') || '').split('|').filter(Boolean);
+    const year = card.getAttribute('data-year') || '';
+    const tagOK = activeProjectTags.size === 0 || tags.some(t => activeProjectTags.has(t));
+    const yearOK = selectedYears.length === 0 || selectedYears.indexOf(year) !== -1;
+    (tagOK && yearOK ? keep : drop).push(card);
   });
+
+  // Finish any filter still mid-animation so rapid clicks never stack.
+  if (filterPendingFinish) {
+    clearTimeout(filterPendingFinish.timer);
+    filterPendingFinish.run();
+    filterPendingFinish = null;
+  }
+
+  const first = new Map();
+  cards.forEach(c => {
+    if (!c.classList.contains('hidden-filter')) first.set(c, c.getBoundingClientRect());
+  });
+
+  const leaving = drop.filter(c => !c.classList.contains('hidden-filter'));
+
+  const commit = () => {
+    drop.forEach(c => { c.classList.remove('is-leaving'); c.classList.add('hidden-filter'); });
+    keep.forEach(c => c.classList.remove('hidden-filter'));
+
+    if (prefersReducedMotion()) return;
+
+    cards.forEach(c => {
+      if (c.classList.contains('hidden-filter')) return;
+      const from = first.get(c);
+      const to = c.getBoundingClientRect();
+
+      if (!from || from.width === 0) {
+        c.animate(
+          [{ opacity: 0, transform: 'scale(0.96)' }, { opacity: 1, transform: 'none' }],
+          { duration: 320, easing: FILTER_EASE }
+        );
+        return;
+      }
+      const dx = from.left - to.left;
+      const dy = from.top - to.top;
+      if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+      c.animate(
+        [{ transform: `translate(${dx}px, ${dy}px)` }, { transform: 'none' }],
+        { duration: 380, easing: FILTER_EASE }
+      );
+    });
+  };
+
+  if (!leaving.length || prefersReducedMotion()) {
+    commit();
+    return;
+  }
+
+  leaving.forEach(c => c.classList.add('is-leaving'));
+  const timer = setTimeout(() => {
+    filterPendingFinish = null;
+    commit();
+  }, 200);
+  filterPendingFinish = { timer, run: commit };
+}
+
+function buildProjectFilterControls() {
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    const tag = chip.getAttribute('data-tag');
+    chip.classList.toggle('active', activeProjectTags.has(tag));
+    chip.onclick = () => {
+      if (activeProjectTags.has(tag)) activeProjectTags.delete(tag);
+      else activeProjectTags.add(tag);
+      chip.classList.toggle('active', activeProjectTags.has(tag));
+      applyProjectFilters();
+    };
+  });
+
+  const panel = document.getElementById('yearPanel');
+  const toggle = document.getElementById('yearToggle');
+  if (panel && !panel.dataset.built) {
+    const years = Array.from(new Set((PORTFOLIO_DATA.projects || [])
+      .map(p => String(p.year || '')).filter(Boolean)))
+      .sort((a, b) => String(b).localeCompare(String(a)));
+    panel.innerHTML = years.map(y =>
+      '<label class="year-check"><input type="checkbox" value="' + y + '"><span>' + y + '</span></label>'
+    ).join('');
+    panel.dataset.built = '1';
+    panel.addEventListener('change', () => { updateYearToggleLabel(); applyProjectFilters(); });
+  }
+  if (toggle) {
+    toggle.onclick = (e) => {
+      e.stopPropagation();
+      const open = !panel.hidden;
+      panel.hidden = open;
+      toggle.setAttribute('aria-expanded', String(!open));
+    };
+  }
+  if (panel && !panel.dataset.outside) {
+    panel.dataset.outside = '1';
+    document.addEventListener('click', (e) => {
+      if (panel.hidden) return;
+      if (!e.target.closest('.filter-year')) {
+        panel.hidden = true;
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  updateYearToggleLabel();
+
+  const clearBtn = document.getElementById('filterClear');
+  if (clearBtn) {
+    clearBtn.onclick = () => {
+      activeProjectTags.clear();
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('#yearPanel input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+      updateYearToggleLabel();
+      applyProjectFilters();
+    };
+  }
+}
+
+function openProjectDialog(p) {
+  const dlg = document.getElementById('projectDialog');
+  if (!dlg || !p) return;
+  const L = currentLang === 'en';
+  const q = sel => dlg.querySelector(sel);
+  const body = dlg.querySelector('.proj-dialog-body');
+
+  // ---- isi konten ----
+  q('[data-dialog="title"]').textContent = L ? p.title_en : p.title_id;
+  q('[data-dialog="short"]').textContent = L ? (p.short_en || p.desc_en || '') : (p.short_id || p.desc_id || '');
+
+  // meta = tag chips lalu year (urutan sama dengan v3)
+  const tg = (L ? p.tags_en : p.tags_id) || [];
+  let metaHtml = tg.map(t => '<span class="proj-dialog-tag">' + t + '</span>').join('');
+  if (p.year) metaHtml += '<span class="proj-dialog-year">' + p.year + '</span>';
+  q('[data-dialog="meta"]').innerHTML = metaHtml;
+
+  // TL;DR
+  q('[data-dialog="tldr"]').textContent = L ? (p.tldr_en || '') : (p.tldr_id || '');
+  const bs = L ? (p.bullets_en || []) : (p.bullets_id || []);
+  const ul = q('[data-dialog="bullets"]');
+  ul.innerHTML = bs.map(b => '<li>' + b + '</li>').join('');
+  ul.style.display = bs.length ? '' : 'none';
+
+  // Full stories: Context / Roles / Process / Impact
+  const bl = L ? (p.blocks_en || []) : (p.blocks_id || []);
+  q('[data-dialog="blocks"]').innerHTML = bl.map(b =>
+    '<div class="proj-dialog-block"><dt>' + b.label + '</dt><dd>' + b.text + '</dd></div>').join('');
+
+  // ---- galeri ----
+  const track   = document.getElementById('projectDialogTrack');
+  const prevBtn = document.getElementById('projectDialogPrev');
+  const nextBtn = document.getElementById('projectDialogNext');
+  const dotsBox = document.getElementById('projectDialogDots');
+  const counter = document.getElementById('projectDialogCount');
+  const gal     = document.getElementById('projectDialogGallery');
+  const images  = (p.images && p.images.length) ? p.images : (p.image ? [p.image] : []);
+
+  track.innerHTML = images.map(src =>
+    '<div class="proj-dialog-slide"><img src="' + src + '" alt="" decoding="async" /></div>').join('');
+  dotsBox.innerHTML = images.map((_, i) =>
+    '<button class="proj-dialog-dot' + (i === 0 ? ' on' : '') + '" role="tab" aria-selected="' +
+    (i === 0) + '" aria-label="Foto ' + (i + 1) + '"></button>').join('');
+
+  // ---- carousel (persis v3) ----
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let index = 0, timer = null, hovered = false, manual = false;
+
+  function render() {
+    track.style.transform = 'translateX(' + (-index * 100) + '%)';
+    Array.from(dotsBox.children).forEach((d, i) => {
+      d.classList.toggle('on', i === index);
+      d.setAttribute('aria-selected', String(i === index));
+    });
+    counter.textContent = (index + 1) + ' / ' + images.length;
+  }
+  function goTo(i) { index = (i + images.length) % images.length; render(); }
+  function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
+  function startAuto() {
+    if (reduce || manual || images.length < 2) return;
+    stopAuto();
+    timer = setInterval(() => { if (!hovered && !document.hidden) goTo(index + 1); }, 5000);
+  }
+  function userNav(i) { manual = true; stopAuto(); goTo(i); }
+
+  prevBtn.onclick = () => userNav(index - 1);
+  nextBtn.onclick = () => userNav(index + 1);
+  Array.from(dotsBox.children).forEach((d, i) => { d.onclick = () => userNav(i); });
+
+  gal.onmouseenter = () => { hovered = true; };
+  gal.onmouseleave = () => { hovered = false; };
+  gal.onfocusin = () => { hovered = true; };
+  gal.onfocusout = () => { hovered = false; };
+  gal.onkeydown = (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); userNav(index - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); userNav(index + 1); }
+  };
+  let touchX = null;
+  gal.ontouchstart = (e) => { touchX = e.touches[0].clientX; };
+  gal.ontouchend = (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) userNav(index + (dx < 0 ? 1 : -1));
+    touchX = null;
+  };
+
+  // ---- tabs (tanpa resize; body yang scroll) ----
+  const tabTldr   = document.getElementById('projTabTldr');
+  const tabFull   = document.getElementById('projTabFull');
+  const panelTldr = document.getElementById('projPanelTldr');
+  const panelFull = document.getElementById('projPanelFull');
+
+  function selectTab(which) {
+    const isTldr = which === 'tldr';
+    tabTldr.setAttribute('aria-selected', String(isTldr));
+    tabFull.setAttribute('aria-selected', String(!isTldr));
+    panelTldr.hidden = !isTldr;
+    panelFull.hidden = isTldr;
+
+    const active = isTldr ? panelTldr : panelFull;
+    active.style.animation = 'none';
+    void active.offsetWidth;
+    active.style.animation = '';
+
+    body.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  }
+  tabTldr.onclick = () => selectTab('tldr');
+  tabFull.onclick = () => selectTab('full');
+  selectTab('tldr');
+
+  // ---- state awal galeri (persis v3) ----
+  render();
+  if (images.length < 2) {
+    prevBtn.hidden = nextBtn.hidden = dotsBox.hidden = counter.hidden = true;
+  } else {
+    prevBtn.hidden = nextBtn.hidden = dotsBox.hidden = counter.hidden = false;
+    startAuto();
+  }
+
+  // ---- buka ----
+  if (typeof dlg.showModal === 'function') {
+    if (dlg.open) dlg.close();
+    body.scrollTo({ top: 0, behavior: 'auto' });
+    document.body.style.overflow = 'hidden';
+    dlg.showModal();
+  } else {
+    dlg.setAttribute('open', '');
+  }
+}
+
+function initProjectDialog() {
+  const dlg = document.getElementById('projectDialog');
+  if (!dlg) return;
+  const closeBtn = document.getElementById('projectDialogClose');
+  if (closeBtn) closeBtn.addEventListener('click', () => { if (dlg.close) dlg.close(); });
+  dlg.addEventListener('click', e => {
+    if (e.target === dlg) { if (dlg.close) dlg.close(); }
+  });
+  dlg.addEventListener('close', () => { document.body.style.overflow = ''; });
 }
 
 // =========================================
 // BUILD PROJECTS (from data.js)
 // =========================================
+// Ambil maksimal N kalimat pertama (dipakai kartu proyek)
+function firstSentences(text, max) {
+  const clean = String(text || '').replace(/\s+/g, ' ').trim();
+  const parts = clean.match(/[^.!?]+[.!?]+/g);
+  if (!parts || !parts.length) return clean;
+  return parts.slice(0, max || 2).join(' ').trim();
+}
+
 function buildProjects() {
   const root = document.getElementById('projectsRoot');
   if (!root || !PORTFOLIO_DATA.projects) return;
@@ -981,22 +1261,36 @@ function buildProjects() {
   PORTFOLIO_DATA.projects.forEach(p => {
     const card = document.createElement('div');
     card.className = 'project-card glass-card reveal visible';
-    card.setAttribute('data-category', p.category);
+    card.setAttribute('data-category', p.category || '');
+    card.setAttribute('data-year', p.year || '');
+    card.setAttribute('data-tags', (L ? p.tags_en : p.tags_id).join('|'));
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', (L ? 'Open details: ' : 'Buka detail: ') + (L ? p.title_en : p.title_id));
     const tags = (L ? p.tags_en : p.tags_id).map(t => `<span class="proj-tag">${t}</span>`).join('');
-    const stats = p.stats.map(s => `<div class="proj-stat"><span class="proj-stat-num">${s.num}</span><span>${L ? s.label_en : s.label_id}</span></div>`).join('');
+    const yearChip = p.year ? `<span class="project-year">${p.year}</span>` : '';
+    const stats = p.stats.map(st => `<div class="proj-stat"><span class="proj-stat-num">${st.num}</span><span class="proj-stat-lbl">${L ? st.label_en : st.label_id}</span></div>`).join('');
+    const desc = firstSentences(L ? p.desc_en : p.desc_id, 2);
     card.innerHTML = `
       <div class="project-img">
         <img src="${p.image}" alt="${L ? p.title_en : p.title_id}" loading="lazy" />
       </div>
       <div class="project-body">
-        <div class="project-tags">${tags}</div>
+        <div class="project-meta">${tags}${yearChip}</div>
         <h3>${L ? p.title_en : p.title_id}</h3>
-        <p>${L ? p.desc_en : p.desc_id}</p>
+        <p>${desc}</p>
         <div class="project-stats">${stats}</div>
+        <button type="button" class="project-open">${L ? 'More Detail' : 'Detail Proyek'} <span>&rarr;</span></button>
       </div>`;
+    card.addEventListener('click', () => openProjectDialog(p));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProjectDialog(p); }
+    });
     root.appendChild(card);
   });
-  attachProjectFilter();
+  buildProjectFilterControls();
+  applyProjectFilters();
+  initProjectDialog();
 }
 
 // =========================================
