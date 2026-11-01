@@ -10,3 +10,7 @@ archive.html
 .DS_Store
 Thumbs.db
 *.log
+# Local backups & scratch files (not for version control)
+.backup/
+*.bak
+*.before-restore
