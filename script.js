@@ -146,8 +146,8 @@ var PORTFOLIO_DATA = {
       org_short:   "Peatland and Mangrove Restoration Agency",
       location_id:"Jakarta, Indonesia",
       location_en:"Jakarta, Indonesia",
-      type_id:    "Full-time",
-      type_en:    "Full-time",
+      type_id:    "Contract",
+      type_en:    "Contract",
       logo:       "images/logo/brgm-logo.png",
       duties_id: [
         "Menyusun pemetaan UAV dengan pengolahan orthomosaic untuk mengidentifikasi, menginventarisasi, dan mengevaluasi lokasi rehabilitasi mangrove di Provinsi Kepulauan Riau.",
@@ -174,8 +174,8 @@ var PORTFOLIO_DATA = {
       org_short:   "Agricultural Quarantine Center of Tanjung Priok",
       location_id:"Jakarta, Indonesia",
       location_en:"Jakarta, Indonesia",
-      type_id:    "Magang",
-      type_en:    "Internship",
+      type_id:    "Contract",
+      type_en:    "Contract",
       logo:       "images/logo/kementan-logo.png",
       duties_id: [
         "Melaksanakan deteksi dan identifikasi biomolekuler (PCR) OPTK bakteri pada komoditas ekspor-impor, memastikan kepatuhan biosekuriti yang ketat pada bibit kentang Skotlandia dan anggrek.",
