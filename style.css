@@ -1431,8 +1431,9 @@ dialog.proj-dialog:not([open]){display:none}
 }
 
 /* ---- PROJECT SECTION DIFFERENT BG ---- */
-.section-alt {
-  background: linear-gradient(180deg, #f7f3ec 0%, #f5f1e8 100%);
+/* Projects: sengaja beda tone dari Experience (sand) -> sage/cool green */
+#projects.section-alt {
+  background: linear-gradient(180deg, #e6efe8 0%, #dae7de 100%);
 }
 
 /* ---- NAV RESUME ---- */
