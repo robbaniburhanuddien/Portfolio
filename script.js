@@ -158,7 +158,7 @@ var PORTFOLIO_DATA = {
       duties_en: [
         "Produced UAV drone mapping and orthomosaic processing to accurately identify, inventory, and assess potential mangrove rehabilitation sites across the Riau Islands Province.",
         "Analyzed spatial data to author targeted planting direction maps, serving as the primary operational blueprint for local implementing groups.",
-        "Executed the acceleration of mangrove rehabilitation (2023–2024), overseeing the successful planting of 772 hectares and the maintenance of over 1,000+ hectares at Riau Islands Province.",
+        "Executed the acceleration of mangrove rehabilitation (2023–2024), overseeing the successful planting of 772 hectares and the maintenance of over 1,000 hectares at Riau Islands Province.",
         "Facilitated strategic stakeholder socialization, ensuring local implementing groups fully understood operational workflows, SOPs, and project targets from initiation to completion.",
       ],
       tags: ["UAV", "GIS", "Rehabilitation", "Stakeholder"],
@@ -171,7 +171,7 @@ var PORTFOLIO_DATA = {
       position_id:"Intern Research Analyst",
       position_en:"Research Analyst Intern",
       org:        "Agricultural Quarantine Center of Tanjung Priok — Ministry of Agriculture",
-      org_short:   "Agricultural Quarantine Center of Tanjung Priok (MOA)",
+      org_short:   "Agricultural Quarantine Center of Tanjung Priok",
       location_id:"Jakarta, Indonesia",
       location_en:"Jakarta, Indonesia",
       type_id:    "Magang",
@@ -1660,23 +1660,6 @@ const ABOUT_PHOTOS = [
 })();
 
 // =========================================
-const sections = document.querySelectorAll('section[id]');
-const navAnchors = document.querySelectorAll('.nav-links a');
-
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(sec => {
-    const top = sec.offsetTop - 120;
-    if (window.scrollY >= top) current = sec.getAttribute('id');
-  });
-  navAnchors.forEach(a => {
-    a.style.color = '';
-    if (a.getAttribute('href') === '#' + current) {
-      a.style.color = 'var(--clr-white)';
-    }
-  });
-}, { passive: true });
-
 // =========================================
 // GALLERY OVERLAY LABELS
 // =========================================
