@@ -28,11 +28,17 @@ var s2 = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
   .filterDate('2015-01-01', '2026-12-31')
   .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20));
 
-// Cloud mask: QA_PIXEL bit 0 (opaque) + bit 1 (cirrus) + bit 2 (cloud shadow)
+// Cloud mask via SCL (Scene Classification Layer)
+// PENTING (terverifikasi 21 Okt 2026):
+// - QA60 berlubang 25 Jan 2022 - 28 Feb 2024 -> data 2022-2024 tanpa cloud mask
+// - QA_PIXEL TIDAK ADA di Sentinel-2 (itu band Landsat) -> script lama error
+// - SCL tersedia penuh 2015-2026 -> WAJIB dipakai untuk timeline panjang
+// SCL classes kept (vegetation & non-vegetated, clear): 4=vegetation, 5=bare soil,
+// 6=water, 7=unclassified. Excluded: 0=dark, 1=saturated, 3=shadow, 8=cloud,
+// 9=cirrus, 10=snow, 11=water (flagged).
 var cloudMaskS2 = function(image) {
-  var clear = image.select('QA_PIXEL')
-                      .bitwiseAnd(parseInt('111', 2))
-                      .eq(0);
+  var scl = image.select('SCL');
+  var clear = scl.eq(4).or(scl.eq(5)).or(scl.eq(6)).or(scl.eq(7));
   return image.updateMask(clear)
             .multiply(0.0001)
             .copyProperties(image, ['system:time_start']);

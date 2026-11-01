@@ -11,7 +11,8 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, HRFlowable
 from reportlab.lib.enums import TA_LEFT
 
-out = r"C:\Users\burha\OneDrive\Desktop\1 project\portfolio\career\data\CV_BurhanuddienRobbani_ATS.pdf"
+import os
+out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "CV_BurhanuddienRobbani_ATS.pdf")
 doc = SimpleDocTemplate(out, pagesize=A4, leftMargin=15*mm, rightMargin=15*mm,
                         topMargin=15*mm, bottomMargin=15*mm,
                         title="CV - Burhanuddien Robbani", author="Burhanuddien Robbani")
@@ -31,14 +32,15 @@ bullet  = st("bul", fontSize=9, leading=12, leftIndent=10, bulletIndent=2, space
 
 story = []
 story += [Paragraph("BURHANUDDIEN ROBBANI, S.P.", name_s),
-          Paragraph("Technical Mangrove Rehabilitation Facilitator | GIS &amp; UAV Operator | M4CR (World Bank x KLHK)", head_s),
-          Paragraph("Email: burhanuddienrobbani@gmail.com &nbsp;|&nbsp; LinkedIn: linkedin.com/in/robbanib &nbsp;|&nbsp; Lokasi: Medan, Sumatera Utara, Indonesia", contact),
+          Paragraph("Technical Mangrove Rehabilitation Facilitator | GIS &amp; UAV Operator | M4CR (World Bank x Ministry of Forestry of Indonesia)", head_s),
+          Paragraph("Email: burhanuddienrobbani@gmail.com &nbsp;|&nbsp; LinkedIn: linkedin.com/in/robbanib &nbsp;|&nbsp; Portofolio: <link href=\"https://burhans-portfolio.netlify.app/\" color=\"#26794A\">burhans-portfolio.netlify.app</link>", contact),
+          Paragraph("Lokasi: Medan, Sumatera Utara, Indonesia &nbsp;|&nbsp; Diperbarui: Oktober 2026", contact),
           HRFlowable(width="100%", thickness=1, color=GREEN, spaceAfter=6)]
 def sec(t): story.append(Paragraph(t, sec_s))
 def b(t): story.append(Paragraph("&bull; "+t, bullet))
 
 sec("EXPERIENCE")
-story += [Paragraph("Technical Mangrove Rehabilitation Facilitator - PPIU M4CR Sumatera Utara (World Bank x KLHK)", h3_s),
+story += [Paragraph("Technical Mangrove Rehabilitation Facilitator - PPIU M4CR Sumatera Utara (World Bank x Ministry of Forestry of Indonesia)", h3_s),
           Paragraph("Jan 2025 - Present &nbsp;|&nbsp; 1y 7m &nbsp;|&nbsp; Medan, North Sumatra", meta_s)]
 for x in ["Monitoring &amp; evaluation (M&amp;E) rehabilitasi mangrove di area target",
           "Survei hidrologi untuk menentukan perlu/tidaknya intervensi",

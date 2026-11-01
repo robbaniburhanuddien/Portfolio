@@ -1,0 +1,376 @@
+# 10 Proyek GIS, Remote Sensing & Rehabilitasi
+## Portofolio Karir 3 Tahun — Burhanuddien Robbani, S.P.
+
+**Periode karir:** Juli 2023 – Oktober 2026 (± 3 tahun 3 bulan)
+**Organisasi:**
+- **BRGM** (Badan Restorasi Gambut dan Mangrove) — Jul 2023 – Des 2024 · *Mangrove Rehabilitation Staff (Technical & GIS)*
+- **M4CR Sumatera Utara** (World Bank × Kementerian Kehutanan/KLHK) — Jan 2025 – sekarang · *Technical Mangrove Rehabilitation Facilitator*
+
+**Struktur dokumen:**
+- **Bagian A — 5 Proyek Saat Bekerja** (deliverable organisasi, ada mandat & stakeholder)
+- **Bagian B — 5 Proyek Pribadi** (inisiatif sendiri untuk pengembangan karir)
+
+> Catatan: angka luas, jumlah plot, dan periode diambil dari data proyek yang tersimpan (CV, STAR bank, GeoPackage M4CR). Angka yang bersifat estimasi ditandai *(estimasi)*.
+
+---
+---
+
+# BAGIAN A — PROYEK SAAT BEKERJA
+
+---
+
+## A1. Verifikasi Spasial Rehabilitasi Mangrove 1.786 Ha — Kepulauan Riau & Bangka Belitung
+
+**Tipe:** Proyek kerja · **Organisasi:** BRGM · **Periode:** Jul 2023 – Des 2024
+**Tools:** ArcGIS Pro, QGIS, Google Earth Engine, Sentinel-2, Landsat 8/9, GNSS (Garmin/Trimble)
+
+### 1. Deskripsi Singkat
+
+Proyek verifikasi spasial atas realisasi rehabilitasi mangrove seluas ± 1.786 Ha yang tersebar di Kepulauan Riau dan Bangka Belitung. Saya berperan sebagai GIS Analyst yang mengubah laporan lapangan menjadi bukti spasial yang bisa diaudit: poligon tanam, klasifikasi kerapatan tajuk, dan peta progres per tahun anggaran. Hasilnya menjadi lampiran teknis untuk pelaporan program ke mitra pembangunan dan pemerintah daerah.
+
+### 2. TL;DR
+
+- Memverifikasi realisasi tanam **± 1.786 Ha** di **5 provinsi** (Kepri: 703+197 Ha pada 2023; 69+584+229 Ha pada 2024; plus Bangka Belitung).
+- Membangun alur kerja **lapangan → GIS → peta audit** menggunakan ArcGIS Pro, QGIS, dan GEE.
+- Menggunakan **Sentinel-2/Landsat** untuk cross-check klaim luas tanam terhadap kondisi tutupan aktual.
+- Menghasilkan **peta progres per tahun anggaran** yang dipakai untuk rapat koordinasi dan pelaporan.
+- Menemukan gap antara luas administratif dan luas efektif tanam, yang memicu perbaikan metodologi pencatatan.
+
+### 3. Full Story
+
+**Konteks.** BRGM memiliki mandat restorasi mangrove skala nasional, dan salah satu kendala terbesar program sebesar ini bukanlah menanam, melainkan *membuktikan* bahwa penanaman benar-benar terjadi di lokasi yang dilaporkan. Data lapangan datang dari banyak pihak — kelompok masyarakat, penyedia, dan tim teknis daerah — dengan format yang tidak seragam. Pada 2023–2024, target realisasi di Kepulauan Riau dan Bangka Belitung mencapai ± 1.786 Ha dengan sebaran per tahun anggaran yang berbeda. Tanpa verifikasi spasial, angka ini hanya bisa dipercaya berdasarkan laporan kertas.
+
+**Peran.** Saya masuk sebagai *Mangrove Rehabilitation Staff (Technical & GIS)* — posisi yang duduk di antara tim teknis lapangan dan manajemen program. Tanggung jawab utama saya adalah memastikan setiap hektar yang diklaim punya jejak spasial yang bisa dipertanggungjawabkan: koordinat, poligon, tanggal, dan bukti visual. Saya juga menjadi penerjemah antara bahasa lapangan ("sudah tanam di blok A") dan bahasa peta ("poligon 12,4 Ha dengan kerapatan sedang, terverifikasi pada citra Oktober 2024").
+
+**Proses.** Alur kerja saya terdiri dari empat lapis. Pertama, konsolidasi: mengumpulkan shapefile/GeoJSON hasil survei, merapikan atribut, dan menyamakan sistem koordinat ke satu CRS proyek. Kedua, verifikasi silang: memotong poligon klaim dengan citra Sentinel-2 dan Landsat yang sudah dibersihkan dari awan di Google Earth Engine, lalu memeriksa apakah piksel di dalam poligon memang menunjukkan vegetasi mangrove (bukan tambak aktif, bukan laut terbuka). Ketiga, klasifikasi: menghitung indeks vegetasi (NDVI) dan indeks mangrove untuk membagi area ke kelas kerapatan jarang–sedang–lebat. Keempat, produksi: menyusun peta progres per tahun anggaran di QGIS/ArcGIS Pro, lengkap dengan tabel rekapitulasi luas per kabupaten.
+
+Bagian tersulit bukanlah teknis, melainkan disiplin dokumentasi. Saya membiasakan mencatat asumsi setiap kali melakukan interpretasi citra — misalnya tanggal akuisisi, tutupan awan, dan batas ambiguitas antara mangrove muda dan semak pesisir. Tanpa catatan ini, peta yang sama bisa ditafsirkan berbeda oleh dua orang, dan pada program berskala ribuan hektar perbedaan tafsir berarti perbedaan anggaran.
+
+**Dampak.** Peta verifikasi menjadi lampiran teknis dalam pelaporan program dan bahan rapat koordinasi dengan pemerintah daerah. Yang lebih penting, proses ini memunculkan kesadaran internal bahwa luas administratif dan luas efektif tanam tidak selalu sama — sebagian poligon tumpang tindih, sebagian berada di area yang secara hidrologis tidak sesuai. Temuan ini mendorong perbaikan metodologi pencatatan pada siklus berikutnya, dan menjadi salah satu alasan mengapa di M4CR saya menaruh perhatian besar pada kualitas data sejak titik input.
+
+---
+
+## A2. Baseline & Deteksi Perubahan Tutupan Mangrove Multi-temporal dengan Google Earth Engine
+
+**Tipe:** Proyek kerja · **Organisasi:** BRGM · **Periode:** 2024
+**Tools:** Google Earth Engine (JavaScript API), Sentinel-2 SR, Landsat 8/9 Collection 2, QGIS, Python
+
+### 1. Deskripsi Singkat
+
+Membangun baseline tutupan mangrove dan analisis perubahan multi-temporal untuk mendukung penentuan prioritas lokasi restorasi. Saya mengembangkan skrip GEE yang melakukan cloud masking, komposit tahunan, dan klasifikasi tutupan menjadi beberapa kelas, lalu mengekspor hasilnya ke QGIS untuk validasi dan kartografi. Pekerjaan ini menjawab pertanyaan sederhana yang sulit dijawab: *di lokasi mana mangrove benar-benar hilang, dan sejak kapan?*
+
+### 2. TL;DR
+
+- Membangun **komposit tahunan bebas awan** Sentinel-2/Landsat di GEE untuk wilayah pesisir Kepri & Babel.
+- Menyusun **rangkaian baseline tutupan mangrove** beberapa tahun sebagai pembanding sebelum intervensi.
+- Menerapkan **NDVI + indeks mangrove + klasifikasi Random Forest** untuk memisahkan mangrove dari non-mangrove.
+- Melakukan **validasi groundtruth** dengan titik GNSS dan interpretasi visual citra resolusi tinggi.
+- Menghasilkan **peta perubahan** yang menjadi dasar penentuan prioritas site restorasi.
+
+### 3. Full Story
+
+**Konteks.** Program restorasi tanpa baseline ibarat menimbang tanpa titik nol. BRGM perlu tahu kondisi awal mangrove sebelum intervensi agar bisa mengukur keberhasilan, dan perlu tahu laju kehilangan mangrove agar bisa memprioritaskan lokasi yang paling mendesak. Masalahnya, wilayah pesisir Kepulauan Riau dan Bangka Belitung punya dua karakteristik yang menyulitkan analisis citra: tutupan awan yang tinggi sepanjang tahun, dan garis pantai yang sangat dinamis dengan tambak, muara, serta sedimentasi.
+
+**Peran.** Saya bertanggung jawab merancang alur pengolahan citra di Google Earth Engine dan mengubah output komputasi awan itu menjadi peta yang bisa dibaca oleh pengambil keputusan non-teknis. Dalam praktiknya saya berperan ganda: sebagai analis (memilih indeks, mengatur threshold, mengevaluasi akurasi) dan sebagai kartografer (memastikan legenda, skala, dan narasi peta tidak menyesatkan).
+
+**Proses.** Tahap pertama adalah membangun komposit. Saya menulis fungsi cloud masking untuk Sentinel-2 (menggunakan band QA60 dan Scene Classification Layer) dan Landsat (menggunakan bitmask QA_PIXEL), lalu membuat median composite per tahun. Pendekatan median dipilih karena lebih tahan terhadap sisa awan dan bayangan dibanding mean. Tahap kedua adalah klasifikasi: saya menggabungkan NDVI, indeks mangrove berbasis rasio SWIR-NIR, dan beberapa band spektral sebagai input Random Forest dengan training sample yang saya ambil dari interpretasi visual. Tahap ketiga adalah validasi: membandingkan hasil klasifikasi dengan titik groundtruth GNSS dari survei lapangan, lalu menghitung confusion matrix. Tahap keempat adalah ekspor dan kartografi di QGIS.
+
+Pelajaran terbesar dari proyek ini adalah betapa besar pengaruh pemilihan tanggal akuisisi terhadap hasil akhir. Dua komposit dari tahun yang sama bisa menghasilkan luas mangrove berbeda cukup signifikan hanya karena perbedaan musim dan tutupan awan. Karena itu saya akhirnya selalu menyertakan metadata tanggal dan tingkat kepercayaan pada setiap output — kebiasaan yang terasa merepotkan saat itu, tetapi menyelamatkan banyak diskusi di kemudian hari.
+
+**Dampak.** Peta baseline dan perubahan menjadi dasar penentuan prioritas lokasi restorasi, serta kerangka pembanding untuk evaluasi tahun berikutnya. Secara metodologis, proyek ini meninggalkan satu aset yang lebih tahan lama: pemahaman internal bahwa klasifikasi mangrove di wilayah tropis basah harus selalu disertai ketidakpastian, bukan disajikan sebagai angka tunggal yang pasti.
+
+---
+
+## A3. Survei Hidrologi & Zonasi Keputusan Intervensi Site Rehabilitasi
+
+**Tipe:** Proyek kerja · **Organisasi:** M4CR Sumatera Utara · **Periode:** 2025 – sekarang
+**Tools:** ArcGIS Pro, QGIS, GNSS, alat ukur kualitas air (salinitas, pH), data pasang surut, KoboToolbox
+
+### 1. Deskripsi Singkat
+
+Sebagian lokasi rehabilitasi mangrove mengalami tingkat kelangsungan hidup (survival rate) rendah meskipun penanaman dilakukan sesuai prosedur. Proyek ini menyelidiki penyebabnya melalui survei hidrologi — salinitas, pH, kondisi hidrologi, dan pola pasang — lalu menerjemahkannya menjadi rekomendasi spasial: lanjutkan, intervensi, atau relokasi site. Ini adalah contoh bagaimana data lapangan seharusnya mendahului desain, bukan mengikutinya.
+
+### 2. TL;DR
+
+- Menyelidiki penyebab **kegagalan tumbuh** pada beberapa site rehabilitasi di Sumatera Utara.
+- Mengukur **salinitas, pH, kondisi hidrologi, dan pola pasang** di titik-titik sampel yang dipilih secara spasial.
+- Menggabungkan data lapangan dengan **atribut spasial plot** (fungsi kawasan, tipologi, blok tanam) di QGIS.
+- Merumuskan **tiga opsi keputusan**: lanjutkan, intervensi hidrologi, atau relokasi.
+- Mengubah praktik internal dari "tanam sesuai target" menjadi "tanam setelah site layak".
+
+### 3. Full Story
+
+**Konteks.** Rehabilitasi mangrove sering dibicarakan sebagai persoalan jumlah bibit dan luas area. Kenyataannya, mangrove adalah tanaman yang sangat sensitif terhadap kondisi hidrologi: salinitas yang terlalu tinggi, drainase yang buruk, atau terputusnya pasokan air pasang dapat membuat tanaman bertahan hidup secara vegetatif beberapa bulan lalu mati perlahan. Di M4CR Sumatera Utara, pola ini muncul sebagai anomali: beberapa site dengan bibit dan prosedur serupa menunjukkan hasil yang jauh berbeda.
+
+**Peran.** Sebagai *Technical Mangrove Rehabilitation Facilitator*, saya memimpin penyelidikan teknis di tingkat site. Peran saya mencakup tiga hal: merancang titik sampel agar mewakili variasi kondisi (bukan sekadar titik yang mudah dijangkau), mengumpulkan dan memvalidasi data lapangan, serta menerjemahkan hasilnya menjadi rekomendasi yang bisa dieksekusi tim lapangan dan dipahami pemangku kepentingan.
+
+**Proses.** Saya mulai dengan memetakan seluruh plot terverifikasi di tiga kabupaten — Asahan, Labuhanbatu Utara, dan Langkat — lalu mengelompokkannya berdasarkan tipologi dan kondisi hidrologi yang tercatat. Dari pengelompokan itu saya memilih titik survei yang mewakili kondisi terbaik hingga terburuk. Di lapangan, tim mengukur salinitas dan pH, mencatat kondisi drainase, mengamati pola pasang, serta mengambil koordinat GNSS untuk setiap titik.
+
+Data lapangan kemudian diolah di QGIS dan digabungkan dengan atribut plot yang sudah ada: fungsi kawasan, tipologi, blok tanam, pelaksana, dan catatan kondisi hidrologi. Dari penggabungan ini muncul pola yang tidak terlihat di tabel lapangan: site dengan nilai survival baik cenderung berada pada zona dengan fluktuasi pasang yang masih aktif dan salinitas moderat, sementara site bermasalah cenderung berada di area yang terisolasi dari pasokan air pasang. Pola ini saya sajikan dalam bentuk peta zonasi dengan tiga kelas rekomendasi, bukan sebagai tabel angka mentah.
+
+**Dampak.** Rekomendasi zonasi mengubah cara site dipilih: dari pendekatan "semua area target ditanami" menjadi "area target dinilai dulu kelayakannya". Untuk site yang sudah ditanami, rekomendasi intervensi hidrologi memberi tim lapangan tindakan konkret selain menambah bibit. Yang paling penting, proyek ini memindahkan pusat gravitasi keputusan dari ruang rapat ke data lapangan — dan itu adalah perubahan budaya yang jauh lebih sulit daripada perubahan teknis.
+
+---
+
+## A4. Pipeline M&E Digital: KoboToolbox → Quality Control → GeoPackage → Peta
+
+**Tipe:** Proyek kerja · **Organisasi:** M4CR Sumatera Utara · **Periode:** 2025 – sekarang
+**Tools:** KoboToolbox/ODK, Python, GDAL/OGR, QGIS (PyQGIS), GeoPackage, YAML
+
+### 1. Deskripsi Singkat
+
+Membangun alur kerja digital yang mengubah data survei lapangan dari formulir KoboToolbox menjadi basis data spasial yang bersih dan siap dipetakan. Proyek ini menangani 50 plot terverifikasi di 3 kabupaten dengan lebih dari 30 atribut per plot — mulai dari fungsi kawasan, pelaksana, pola tanam, hingga parameter biofisik. Intinya bukan sekadar mengumpulkan data, melainkan memastikan data itu konsisten, dapat dilacak, dan bisa direproduksi.
+
+### 2. TL;DR
+
+- Membangun pipeline **4 tahap**: ingest → quality check → processing → output.
+- Mengonsolidasikan **50 plot** dari **3 kabupaten** (Asahan 36 plot/178,05 Ha; Labuhanbatu Utara 10 plot/98,81 Ha; Langkat 4 plot/55,02 Ha) — total ± **331,88 Ha**.
+- Menstandarkan **30+ atribut** per plot (fungsi kawasan, tipologi, salinitas, pH, kondisi hidrologi, dsb.).
+- Menerapkan **quality control otomatis** untuk geometri, duplikasi, dan nilai kosong.
+- Menghasilkan **GeoPackage + GeoJSON + ringkasan YAML** yang reproducible, bukan file Excel yang saling bertentangan versi.
+
+### 3. Full Story
+
+**Konteks.** Pada program rehabilitasi, data lapangan biasanya hidup di banyak tempat sekaligus: formulir KoboToolbox di ponsel enumerator, spreadsheet rekap di laptop koordinator, shapefile di komputer GIS analyst, dan PDF laporan di folder bersama. Ketika jumlah plot bertambah, versi-versi ini mulai berbeda satu sama lain, dan pertanyaan sederhana seperti "berapa luas yang sudah diverifikasi?" berubah menjadi perdebatan. Di M4CR Sumatera Utara, saya memutuskan untuk menghentikan pola itu dengan membangun satu jalur data resmi.
+
+**Peran.** Saya merancang dan mengimplementasikan keseluruhan pipeline: struktur folder, skema atribut, aturan validasi, skrip pengolahan, sampai format output. Saya juga bertindak sebagai penjaga kualitas — memutuskan record mana yang boleh masuk ke basis data final dan mana yang harus dikembalikan ke lapangan untuk diverifikasi ulang.
+
+**Proses.** Pipeline terdiri dari empat tahap yang saling bergantung. **Ingest** mengambil data mentah dari KoboToolbox dan sumber spreadsheet, lalu menormalkan nama kolom, tipe data, dan sistem koordinat (target CRS: EPSG:32647 — UTM zona 47N, karena lokasi Sumatera Utara bagian timur). **Quality check** menjalankan serangkaian uji otomatis: geometri valid atau tidak, poligon duplikat, luas nol, atribut wajib yang kosong, dan koordinat yang jatuh di luar batas kabupaten yang diklaim. **Processing** menggabungkan, memotong, dan menghitung atribut turunan seperti luas hektar dan panjang keliling. **Output** menghasilkan GeoPackage (`m4cr_unified.gpkg`), GeoJSON untuk pertukaran data, dan berkas ringkasan YAML yang mencatat waktu pembuatan, jumlah fitur input/output, sumber data, dan CRS target.
+
+Bagian yang paling saya banggakan bukan skripnya, melainkan file ringkasan YAML itu. Dengan satu file kecil, siapa pun bisa tahu persis dari mana angka yang dia lihat berasal, kapan dibuat, dan dengan parameter apa. Ini mengubah pertanyaan "datanya benar nggak?" menjadi "datanya versi kapan?" — pertanyaan yang jauh lebih mudah dijawab.
+
+**Dampak.** Pipeline ini menjadi satu sumber kebenaran (*single source of truth*) untuk data plot M4CR di Sumatera Utara. Waktu yang sebelumnya habis untuk merekonsiliasi versi file sekarang dipakai untuk analisis. Dan ketika data perlu dipresentasikan ke pemangku kepentingan, peta yang dihasilkan bisa langsung ditelusuri kembali ke record lapangan aslinya — sesuatu yang tidak mungkin dilakukan dengan spreadsheet manual.
+
+---
+
+## A5. Atlas Rehabilitasi & Template Layout QGIS untuk Pelaporan Multistakeholder
+
+**Tipe:** Proyek kerja · **Organisasi:** M4CR Sumatera Utara · **Periode:** 2025 – sekarang
+**Tools:** QGIS (Print Layout, PyQGIS, template PAGX), ArcGIS Pro, Python, PDF/PNG export
+
+### 1. Deskripsi Singkat
+
+Merancang atlas peta rehabilitasi dan template tata letak (layout) QGIS yang dapat dipakai ulang untuk pelaporan rutin ke pemerintah daerah, mitra pembangunan, dan masyarakat. Proyek ini mengubah proses pembuatan peta dari pekerjaan manual berjam-jam per peta menjadi produksi setengah-otomatis dengan standar visual yang konsisten. Fokusnya bukan estetika semata, melainkan kredibilitas: peta resmi harus terlihat dan terbaca sama setiap kali diterbitkan.
+
+### 2. TL;DR
+
+- Membangun **template layout A4 landscape** terstandar (judul, legenda, skala, grid, inset, sumber data).
+- Mengembangkan **skrip PyQGIS** untuk memproduksi peta secara batch dari data plot yang sama.
+- Menetapkan **standar kartografi** internal: palet warna, hierarki label, dan format metadata peta.
+- Menghasilkan **atlas per kabupaten** (Asahan, Labuhanbatu Utara, Langkat) plus peta ringkasan provinsi.
+- Memangkas waktu produksi peta dari hitungan jam menjadi hitungan menit per lembar.
+
+### 3. Full Story
+
+**Konteks.** Dalam program yang melibatkan banyak pihak, peta adalah dokumen komunikasi utama — tetapi juga sumber masalah ketika setiap unit membuat peta dengan gaya berbeda. Di M4CR, kebutuhan peta datang dari beberapa arah sekaligus: lampiran laporan bulanan, bahan paparan ke pemerintah kabupaten, dokumen serah terima ke kelompok masyarakat, dan materi konsultasi publik. Sebelum ada standar, setiap permintaan peta berarti membuka QGIS dari nol dan mengulang pekerjaan yang sama.
+
+**Peran.** Saya mengambil inisiatif untuk memperlakukan kartografi sebagai sistem, bukan pekerjaan seni per peta. Peran saya: merancang template, menulis skrip otomasi, menetapkan aturan visual, dan melatih rekan tim agar bisa memproduksi peta sendiri tanpa harus memahami PyQGIS.
+
+**Proses.** Saya mulai dengan membedah komponen peta yang selalu berulang: judul dan subjudul, legenda, skala bar dan skala angka, grid koordinat, panah utara, inset lokasi, kolom sumber data, dan blok metadata (tanggal, pembuat, versi). Semua ini saya susun dalam satu layout QGIS, lalu menyimpannya sebagai template yang bisa dipakai ulang.
+
+Tahap berikutnya adalah otomasi. Dengan PyQGIS, saya menulis skrip yang membaca GeoPackage hasil pipeline M&E, memfilter per kabupaten, mengatur extent peta agar sesuai batas administrasi, menerapkan gaya simbologi standar, dan mengekspor langsung ke PDF dan PNG. Skrip ini juga menulis metadata peta secara otomatis — sesuatu yang sering terlupa ketika dikerjakan manual, padahal justru itu yang menentukan apakah peta bisa diaudit.
+
+Salah satu keputusan desain yang paling berpengaruh adalah menolak menambah elemen hanya karena "terlihat bagus". Setiap komponen harus punya alasan fungsional. Legenda yang terlalu banyak kategori, misalnya, saya pecah menjadi dua peta tematik terpisah karena satu peta dengan delapan kelas warna tidak terbaca di kertas A4.
+
+**Dampak.** Waktu produksi peta turun drastis, dan yang lebih penting, semua peta yang keluar dari tim M4CR sekarang berbicara dalam bahasa visual yang sama. Ini mengurangi kebingungan saat rapat, mempercepat revisi (karena perubahan dilakukan di satu template, bukan di sepuluh file), dan memberi kesan profesional yang sepadan dengan skala program yang didanai lembaga internasional.
+
+---
+---
+
+# BAGIAN B — PROYEK PRIBADI UNTUK PENGEMBANGAN KARIR
+
+---
+
+## B1. Paper "Citra Satelit": Panduan Praktis Landsat & Sentinel
+
+**Tipe:** Proyek pribadi · **Periode:** 2025 – 2026
+**Tools:** Python, ReportLab, Markdown, QGIS, literatur ilmiah
+
+### 1. Deskripsi Singkat
+
+Menulis panduan teknis 30 halaman tentang cara membaca dan menggunakan citra satelit Landsat dan Sentinel untuk pekerjaan penginderaan jauh, mulai dari fisika sensor sampai pemilihan indeks. Dokumen ini lahir dari frustrasi saya sendiri: referensi yang ada biasanya terlalu akademis untuk dipakai, atau terlalu dangkal untuk dipercaya. Paper ini adalah upaya menutup celah itu untuk diri saya sendiri dan untuk praktisi lain dengan latar belakang serupa.
+
+### 2. TL;DR
+
+- Menulis **panduan 30 halaman** berbahasa Indonesia tentang Landsat & Sentinel.
+- Mencakup **fisika sensor, karakteristik misi, produk (L1/L2, SR/TOA), dan pemilihan indeks**.
+- Dilengkapi **glosarium** dan **daftar pustaka APA 7** agar bisa dipakai sebagai rujukan kerja.
+- Disusun mengikuti struktur **IMRaD** sehingga bisa dikembangkan menjadi artikel ilmiah.
+- Menjadi **basis pengetahuan pribadi** yang saya pakai ulang saat onboarding rekan kerja.
+
+### 3. Full Story
+
+**Konteks.** Selama bekerja di BRGM dan M4CR, saya berulang kali diminta menjelaskan hal yang sama: apa bedanya Landsat 8 dan Sentinel-2, kapan pakai surface reflectance dan kapan top-of-atmosphere, mengapa NDVI saya terlihat aneh, mengapa ada garis-garis di citra. Jawaban atas pertanyaan-pertanyaan ini tersebar di dokumentasi USGS, ESA, paper metodologis, dan forum. Tidak ada satu dokumen yang menyusunnya dalam urutan yang masuk akal untuk orang yang harus menyelesaikan pekerjaan minggu ini.
+
+**Peran.** Proyek ini murni inisiatif pribadi — tidak ada mandat organisasi di belakangnya. Peran saya: penulis, penyunting, sekaligus pembaca pertama yang kritis. Saya menetapkan aturan untuk diri sendiri: setiap klaim teknis harus bisa dilacak ke sumber primer, dan setiap konsep harus dijelaskan dengan contoh yang bisa saya temui di pekerjaan nyata.
+
+**Proses.** Saya mulai dengan memetakan pertanyaan yang paling sering muncul di pekerjaan, lalu menyusun kerangka yang bergerak dari fisik ke praktik: bagaimana satelit "melihat", siapa menyediakan data apa, bagaimana scene diperiksa sebelum diolah, dan bagaimana kanal diubah menjadi ukuran (indeks). Setiap bab ditulis di Markdown, lalu dibangun menjadi PDF dengan skrip Python.
+
+Menyusun daftar pustaka ternyata menjadi bagian tersulit sekaligus paling bermanfaat. Ada beberapa klaim yang saya yakin benar tetapi tidak menemukan sumber primer yang memadai, dan dalam kasus itu saya memilih menghapus atau melunakkan klaim tersebut daripada mempertahankannya. Disiplin ini mengubah cara saya menulis secara umum: saya jadi jauh lebih berhati-hati membedakan antara "saya pernah membaca" dan "saya bisa tunjukkan sumbernya".
+
+**Dampak.** Dokumen ini menjadi referensi kerja pribadi yang saya buka berulang kali, dan beberapa kali saya bagikan ke rekan yang baru masuk ke bidang penginderaan jauh. Yang lebih berdampak bagi karir: proses menulisnya memaksa saya merapikan pengetahuan yang sebelumnya tersimpan sebagai intuisi menjadi kerangka yang bisa diajarkan — keterampilan yang persis dibutuhkan untuk peran yang lebih senior.
+
+---
+
+## B2. QGIS MCP Server: Otomasi Produksi Peta lewat Agen AI
+
+**Tipe:** Proyek pribadi · **Periode:** 2026
+**Tools:** Python, QGIS 3.40, PyQGIS, qgis_process CLI, JSON-RPC 2.0, MCP (Model Context Protocol), GDAL/OGR
+
+### 1. Deskripsi Singkat
+
+Membangun server MCP (Model Context Protocol) yang memungkinkan agen AI memanggil fungsi QGIS secara terprogram — membaca layer, memeriksa metadata proyek, mengatur CRS, membuat layout, dan mengekspor peta. Tujuannya bukan menggantikan analis GIS, melainkan menghilangkan pekerjaan berulang yang menyita waktu analis: perintah-perintah yang sama, diulang setiap kali ada permintaan peta baru. Ini adalah eksperimen pribadi untuk memahami bagaimana agen bisa masuk ke alur kerja geospasial tanpa merusak apa pun.
+
+### 2. TL;DR
+
+- Membangun **MCP server** dengan 7 tool: `list_layers`, `get_project`, `set_crs`, `create_layout`, `add_map_item`, `export_pdf`, `export_png`.
+- Menggunakan **JSON-RPC 2.0 via STDIO** dengan jembatan `qgis_process` CLI (QGIS 3.40.15).
+- Menangani **dua kelas file berbeda**: `.gpkg` (via `ogrinfo`) dan `.qgz` (dibongkar sebagai kontainer zip, dibaca XML `.qgs`-nya).
+- Divalidasi dengan **data nyata**: 50 plot M4CR, 3 kabupaten, proyek mangrove Asahan.
+- Mendokumentasikan **batasan** secara jujur: beberapa operasi layout masih butuh QGIS GUI.
+
+### 3. Full Story
+
+**Konteks.** Pekerjaan GIS punya lapisan pekerjaan yang membosankan tetapi tidak bisa diabaikan: membuka file, memeriksa apakah layer-nya lengkap, memastikan CRS-nya benar, membuat layout dengan ukuran kertas yang tepat, dan mengekspor ke PDF. Ketika saya mengerjakan proyek M4CR, saya menyadari bahwa sebagian besar interaksi saya dengan QGIS adalah pengulangan pola yang sama. Pertanyaan yang muncul: bisakah bagian yang berulang ini didelegasikan ke agen, sehingga waktu saya habis untuk berpikir, bukan mengklik?
+
+**Peran.** Proyek ini saya kerjakan sendiri dari nol — riset, desain protokol, implementasi, dan pengujian. Saya juga berperan sebagai penguji yang skeptis: setiap tool harus dibuktikan bekerja pada data nyata, bukan pada data mainan, sebelum saya menganggapnya selesai.
+
+**Proses.** Saya mulai dengan memahami MCP: protokol berbasis JSON-RPC 2.0 di mana klien mengirim permintaan dan server mengembalikan konten. Struktur ini cocok karena QGIS punya CLI (`qgis_process`) yang bisa dipanggil sebagai subprocess dan mengembalikan output teks yang bisa diparse.
+
+Implementasinya melalui beberapa iterasi yang gagal. Versi pertama error karena urutan definisi fungsi di Python salah. Versi kedua gagal membaca `.qgz` karena saya mengira file itu berisi `.gpkg`, padahal isinya `.qgs` (XML) dan file style. Setelah saya membongkar `.qgz` sebagai zip dan membaca struktur XML-nya, barulah metadata proyek bisa diekstrak: CRS, daftar sumber data layer, dan jumlah elemen layer.
+
+Pengujian dilakukan pada data asli M4CR: `m4cr_unified.gpkg` (50 fitur, 30+ atribut), proyek mangrove Asahan (`.qgz` dengan 3 sumber data layer), dan satu permintaan pembuatan layout A4. Semua tool utama berhasil, dengan satu catatan jujur: operasi yang membutuhkan state GUI penuh (misalnya benar-benar menambahkan map item ke layout aktif) belum bisa dilakukan sepenuhnya tanpa jembatan tambahan.
+
+**Dampak.** Proyek ini memberi saya pemahaman praktis tentang cara agen AI bisa diintegrasikan ke perangkat lunak desktop geospasial — bukan secara teoretis, tetapi dengan kode yang benar-benar berjalan dan gagal di titik-titik yang nyata. Bagi karir, ini adalah bukti bahwa saya bisa bergerak dari "pengguna alat" menjadi "pembangun jembatan antar alat", yang merupakan arah yang jelas menuju peran GIS engineer/technical lead.
+
+---
+
+## B3. Paper GeoLibre, Rust GIS & GeoAI: Horizon Scanning untuk Praktisi ArcGIS/QGIS
+
+**Tipe:** Proyek pribadi · **Periode:** Oktober 2026
+**Tools:** riset literatur, GitHub, dokumentasi resmi, Markdown
+
+### 1. Deskripsi Singkat
+
+Menulis kajian yang memetakan tiga arah perkembangan geospasial — GeoLibre (GIS cloud-native), Rust GIS (ekosistem performa tinggi), dan GeoAI (kecerdasan buatan untuk data spasial) — dari sudut pandang praktisi yang sudah lama memakai ArcGIS Pro dan QGIS. Tujuannya bukan mempromosikan alat baru, melainkan memberi peta mental: kapan tetap di alat lama, kapan mulai mempertimbangkan yang baru, dan mengapa.
+
+### 2. TL;DR
+
+- Memetakan **tiga lini perkembangan**: cloud-native GIS, performa bahasa sistem, dan AI geospasial.
+- Menyusun **tabel perbandingan fungsional** ArcGIS Pro vs QGIS vs GeoLibre vs Rust GIS.
+- Menjelaskan **ekosistem GeoRust** (`geo`, `rstar`, `gdal`, `proj`, `geozero`) secara teknis tetapi terbaca.
+- Menjelaskan **GeoAI di tiga ekosistem**: ArcGIS GeoAI Toolbox, plugin QGIS, dan Python package.
+- Menutup dengan **rekomendasi alokasi alat per jenis pekerjaan**, bukan klaim "yang baru selalu lebih baik".
+
+### 3. Full Story
+
+**Konteks.** Praktisi GIS yang sudah nyaman dengan ArcGIS Pro dan QGIS sering menghadapi dua tekanan berlawanan. Di satu sisi, ekosistem baru terus muncul — GIS berbasis browser, pustaka performa tinggi, model AI siap pakai. Di sisi lain, berpindah alat punya biaya nyata: kurva belajar, hilangnya produktivitas sementara, dan risiko hasil kerja yang tidak kompatibel. Tanpa peta yang jernih, respons yang umum adalah mengabaikan yang baru sampai terpaksa, atau sebaliknya melompat ke setiap tren baru tanpa alasan yang jelas.
+
+**Peran.** Saya menulis kajian ini sebagai praktisi, bukan sebagai vendor atau akademisi murni. Posisi saya jelas: saya perlu terus mengerjakan pekerjaan rehabilitasi mangrove dengan alat yang stabil, tetapi saya juga perlu tahu ke arah mana keterampilan saya harus berkembang dalam tiga sampai lima tahun ke depan.
+
+**Proses.** Saya mengumpulkan sumber primer: dokumentasi GeoLibre di GitHub, situs ekosistem GeoRust dan crates.io, dokumentasi paket GeoAI beserta paper JOSS-nya, dan materi ArcGIS GeoAI Toolbox. Untuk konteks perbandingan ArcGIS–QGIS, saya menggunakan sumber industri terkini yang membahas migrasi dan kesetaraan fungsional.
+
+Kemudian saya menyusun kerangka tiga bagian: (1) arsitektur masing-masing sistem, (2) tabel perbandingan berbasis jenis pekerjaan, bukan berbasis fitur, dan (3) rekomendasi alokasi. Yang paling menantang adalah bagian rekomendasi, karena di situlah saya harus berpendapat. Saya memilih pendekatan konservatif: alat baru diusulkan untuk pekerjaan spesifik di mana keunggulannya jelas (publikasi web untuk GeoLibre, batch raster besar untuk Rust), bukan sebagai pengganti menyeluruh.
+
+**Dampak.** Paper ini menjadi dokumen yang saya pakai untuk merencanakan arah belajar sendiri: apa yang layak dipelajari tahun ini, apa yang cukup dipantau, dan apa yang bisa diabaikan. Bagi karir, posisi sebagai orang yang bisa menilai teknologi secara jernih — bukan sekadar memakai atau menolak — adalah nilai jual yang berbeda dari sekadar menguasai satu alat.
+
+---
+
+## B4. Portfolio & Career-Ops Site (Netlify + Git)
+
+**Tipe:** Proyek pribadi · **Periode:** 2024 – 2026
+**Tools:** HTML/CSS/JavaScript, Git, GitHub, Netlify, Markdown
+
+### 1. Deskripsi Singkat
+
+Membangun dan memelihara situs portofolio pribadi yang bukan sekadar etalase, tetapi sistem dokumentasi karir: CV terstruktur, catatan proyek, bank cerita wawancara, dan pelacakan peluang. Situs ini dikelola dengan alur kerja yang sama seperti proyek perangkat lunak — version control, branch, dan deploy otomatis. Tujuannya: ketika ada peluang datang, materi presentasi diri sudah siap, terverifikasi, dan terkini.
+
+### 2. TL;DR
+
+- Membangun situs portofolio **deploy otomatis ke Netlify** melalui Git (branch `developing` untuk preview, `main` untuk produksi).
+- Menyusun **CV terstruktur dalam Markdown** sebagai *source of truth*, terpisah dari CV desain untuk recruiter.
+- Membangun **STAR+R story bank** dari proyek nyata untuk persiapan wawancara.
+- Mengumpulkan **aset proyek terpusat**: peta, PDF laporan, data pendukung.
+- Menjadi **sistem operasi karir**, bukan hanya halaman web.
+
+### 3. Full Story
+
+**Konteks.** Sebagai praktisi yang bekerja di lapangan dan di depan komputer, dokumentasi karir saya sebelumnya tersebar: CV di folder unduhan, foto kegiatan di ponsel, file peta di laptop kerja, catatan pencapaian di kepala. Ketika ada peluang atau permintaan portofolio, saya harus merakit ulang semuanya dari nol — dan hasilnya selalu kurang lengkap dibanding apa yang sebenarnya sudah saya kerjakan.
+
+**Peran.** Saya berperan sebagai pemilik produk sekaligus pengembang. Saya memutuskan apa yang perlu didokumentasikan, bagaimana strukturnya, dan bagaimana memeliharanya agar tidak menjadi proyek sekali jadi yang terbengkalai.
+
+**Proses.** Fondasinya adalah Git: setiap perubahan pada situs tercatat, dan setiap eksperimen dilakukan di branch terpisah. Deploy dilakukan otomatis lewat Netlify dengan pemisahan branch — `developing` untuk pratinjau dan `main` untuk produksi — sehingga saya bisa bereksperimen tanpa merusak versi yang dilihat orang lain.
+
+Kontennya saya susun berlapis. Lapisan pertama adalah CV terstruktur dalam Markdown yang menjadi rujukan tunggal; CV desain untuk recruiter dibuat manual berdasarkan file ini. Lapisan kedua adalah bank cerita: setiap kompetensi punya cerita berbasis struktur STAR (Situation, Task, Action, Result) ditambah refleksi. Lapisan ketiga adalah aset proyek — peta, laporan, dan data pendukung yang membuktikan klaim.
+
+Pelajaran yang paling berguna: menulis STAR bank memaksa saya mengingat detail yang biasanya terlupakan — bukan hanya hasil, tetapi keputusan di tengah jalan dan kesalahan yang harus diperbaiki. Ternyata bagian itu justru yang paling meyakinkan saat diceritakan.
+
+**Dampak.** Situs ini mengubah persiapan melamar kerja dari pekerjaan panik semalam menjadi pengambilan materi dari sistem yang sudah terpelihara. Bagi karir jangka panjang, ini adalah infrastruktur: nilainya bertambah seiring waktu karena setiap proyek baru tinggal dimasukkan ke dalam sistem yang sudah ada.
+
+---
+
+## B5. UAV Mapping Pilot: Orthomosaic Mangrove & Validasi Tutupan
+
+**Tipe:** Proyek pribadi · **Periode:** 2025 – 2026
+**Tools:** UAV/drone, fotogrametri (structure-from-motion), QGIS, ArcGIS Pro, GNSS, Python
+
+### 1. Deskripsi Singkat
+
+Eksperimen mandiri untuk membangun alur kerja pemetaan UAV skala kecil: akuisisi foto udara, pengolahan fotogrametri menjadi orthomosaic, dan analisis tutupan mangrove di atasnya. Tujuannya adalah menutup celah resolusi antara citra satelit (10 meter) dan pengamatan lapangan (titik), karena banyak keputusan rehabilitasi berada di skala di antaranya. Proyek ini juga menjadi cara saya menjaga keterampilan terbang dan pengolahan data udara tetap tajam.
+
+### 2. TL;DR
+
+- Membangun **alur UAV end-to-end**: perencanaan terbang → akuisisi → orthomosaic → analisis.
+- Menghasilkan **orthomosaic resolusi sentimeter** untuk area uji mangrove skala kecil.
+- Membandingkan **hasil UAV dengan citra Sentinel-2** untuk menguji konsistensi klasifikasi tutupan.
+- Menggunakan **ground control point (GCP)** dan GNSS untuk kontrol geometrik.
+- Menghasilkan **SOP pribadi** yang bisa dipakai ulang untuk pemetaan site rehabilitasi.
+
+### 3. Full Story
+
+**Konteks.** Dalam pekerjaan rehabilitasi, ada jarak yang mengganggu antara dua dunia data. Citra satelit memberi gambaran luas dengan resolusi 10 meter — cukup untuk melihat pola umum, tetapi tidak cukup untuk membedakan mangrove muda yang baru ditanam dari semak atau tambak yang belum ditanami. Pengamatan lapangan memberi detail, tetapi hanya pada titik-titik yang bisa dijangkau, dan tidak memberi gambaran bentuk. Keputusan tentang site yang gagal, misalnya, sering berada tepat di zona buta ini.
+
+**Peran.** Proyek ini sepenuhnya inisiatif pribadi. Saya berperan sebagai perencana misi, pilot, pengolah data, sekaligus analis. Karena tidak ada tim, setiap kesalahan menjadi pelajaran yang tidak bisa dilempar ke orang lain — dan itu justru membuat proses belajarnya cepat.
+
+**Proses.** Alurnya dimulai dari perencanaan terbang: menentukan area, ketinggian, overlap foto, dan waktu akuisisi agar bayangan tidak mengganggu. Saya menggunakan pola terbang grid dengan overlap depan dan samping yang cukup tinggi, karena area mangrove dengan tajuk rapat sangat rentan terhadap kegagalan rekonstruksi di area yang kurang tumpang tindih.
+
+Akuisisi dilakukan dengan memperhatikan dua hal yang sering diremehkan: pencahayaan (mendung tipis lebih baik daripada matahari langsung) dan keberadaan ground control point. Untuk GCP, saya menempatkan penanda di lokasi yang koordinatnya diukur dengan GNSS, sehingga orthomosaic bisa dikoreksi secara geometrik terhadap dunia nyata — tanpa GCP, orthomosaic terlihat bagus tetapi bisa meleset beberapa meter.
+
+Pengolahan fotogrametri menghasilkan orthomosaic yang kemudian saya analisis di QGIS: delineasi tutupan mangrove, perhitungan luas, dan perbandingan visual terhadap citra Sentinel-2 pada periode yang sama. Perbandingan ini biasanya tidak menghasilkan angka yang identik — dan justru di situlah pelajarannya: perbedaan skala resolusi mengubah cara objek dikenali, dan memahami perbedaan itu lebih penting daripada memaksa angka menjadi sama.
+
+**Dampak.** Proyek ini menghasilkan SOP pribadi untuk pemetaan UAV yang bisa dipakai ulang pada site rehabilitasi nyata, serta pemahaman yang jauh lebih dalam tentang mengapa citra satelit dan data lapangan kadang "tidak cocok". Bagi karir, kombinasi keterampilan terbang, pengolahan fotogrametri, dan analisis GIS menempatkan saya di kategori yang relatif jarang: orang yang bisa menutup rantai dari udara sampai peta keputusan.
+
+---
+---
+
+## Ringkasan Komposisi Portofolio
+
+| No | Proyek | Jenis | Pilar |
+|---|---|---|---|
+| A1 | Verifikasi Rehabilitasi 1.786 Ha (Kepri & Babel) | Kerja | RS + GIS + Rehabilitasi |
+| A2 | Baseline & Change Detection Mangrove (GEE) | Kerja | Remote Sensing |
+| A3 | Survei Hidrologi & Zonasi Intervensi | Kerja | Rehabilitasi + GIS |
+| A4 | Pipeline M&E: Kobo → QC → GeoPackage | Kerja | GIS Engineering |
+| A5 | Atlas Rehabilitasi & Template Layout | Kerja | Kartografi + Otomasi |
+| B1 | Paper "Citra Satelit" | Pribadi | Knowledge Product |
+| B2 | QGIS MCP Server | Pribadi | GIS Engineering + AI |
+| B3 | Paper GeoLibre/Rust/GeoAI | Pribadi | Horizon Scanning |
+| B4 | Portfolio & Career-Ops Site | Pribadi | Personal Branding |
+| B5 | UAV Mapping Pilot | Pribadi | Remote Sensing Baru |
+
+**Pola yang terlihat dari 10 proyek ini:**
+1. **Sumbu utama** adalah rehabilitasi mangrove — bukan sekadar "GIS umum", tetapi GIS yang diarahkan pada satu masalah nyata.
+2. **Progresi keterampilan** bergerak dari *pengguna alat* (A1–A2) → *perancang sistem* (A4–A5) → *pembangun jembatan* (B2–B3).
+3. **Kekuatan pembeda** ada di kombinasi lapangan + GIS + kemampuan menulis/mendokumentasikan (A3, B1, B3, B4).
+4. **Celah yang masih terbuka** untuk 1–2 tahun ke depan: sertifikasi teknis formal (mis. UAV, GIS professional), publikasi ilmiah peer-reviewed, dan portofolio kode publik yang lebih matang.
+
+---
+
+## Catatan Verifikasi
+
+Angka dan detail yang digunakan dalam dokumen ini bersumber dari:
+- `portfolio/career/cv.md` dan `portfolio/career/profile.yml` — periode, peran, metrik BRGM (1.786 Ha; 5 provinsi).
+- `portfolio/career/star-bank.md` — narasi GEE/NDVI/Random Forest, hidrologi, fasilitasi swakelola.
+- `gis analyst/processed/m4cr_unified.gpkg` dan `m4cr_processing_summary.yml` — 50 fitur, 3 kabupaten (Asahan 36/178,05 Ha; Labuhanbatu Utara 10/98,81 Ha; Langkat 4/55,02 Ha), CRS EPSG:32647, sumber Pelaksanaan_P0_2025.
+
+Beberapa bagian bersifat naratif-interpretatif (terutama di bagian Dampak) dan **perlu kamu sesuaikan** dengan pengalaman yang sebenarnya kamu alami, agar tidak ada klaim yang tidak bisa kamu pertanggungjawabkan saat wawancara.

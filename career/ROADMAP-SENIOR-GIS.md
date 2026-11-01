@@ -49,6 +49,11 @@
 **Referensi tutorial (relevan rehab/konservasi):**
 - 📘 **GEE Mangroves (Sentinel-1 + Sentinel-2 fusion, 10m, RF classification)** — `google-earth-engine.com/Terrestrial-Applications-part-1/Mangroves/`
   → **PALING RELEVAN** — metodologi identik dengan kerjaan Robbani
+  → ⚠️ **Domain mati per 21 Okt 2026** (server tidak merespons). Gunakan arsip: `web.archive.org/web/20260827161808/https://google-earth-engine.com/Terrestrial-Applications-part-1/Mangroves/`
+- 📗 **Tutorial resmi yang hidup & terverifikasi (HTTP 200)**:
+  - `developers.google.com/earth-engine/tutorials/tutorial_api_06` — NDVI, mapping function, quality masking
+  - `developers.google.com/earth-engine/tutorials/community/satellite-embedding-03-supervised-classification` — classifier mangrove + akurasi
+  - `developers.google.com/earth-engine/datasets/catalog/GOOGLE_CLOUD_SCORE_PLUS_V1_S2_HARMONIZED` — alternatif cloud mask (band `cs`, threshold 0.60)
 - 📘 **Mangroves II — Change Mapping (map-to-map + anomaly analysis, 2000-2020)** — `google-earth-engine.com/Terrestrial-Applications-part-1/Mangroves-II-Change-Mapping/`
   → Reference: Roy et al. (2016) inter-sensor harmonization, NDVI anomaly threshold ±0.05
 - 🔬 **Chen et al. 2025 — Mangrove monitoring CCDC, Lampung Indonesia, GEE** (Restor. Ecol.)
@@ -158,7 +163,12 @@
 | Tanggal | Item | Status | Catatan |
 |---|---|---|---|
 | 29 Sep 2026 | Roadmap dibuat | ✅ | Fokus GEE bulan ini |
-| | Minggu 1-2: GEE Fundamentals | ⬜ | |
+| 21 Okt 2026 | Sesi GEE #1: AOI Sumut+Kepri + SCL cloud mask + NDVI composite 2020-2026 + gain/loss 2021→2024 | 🟡 Script siap, **belum dijalankan Robbani** | `career/GEE/03_2026-10-21_aoi-sumut-kepri_ndvi-composite.js` (syntax OK). Menunggu status & screenshot |
+| 21 Okt 2026 | ⚠️ QA60 berlubang 25 Jan 2022 – 28 Feb 2024 | 🔴 Perbaiki | Timeline 2020-2026 WAJIB masking via SCL, bukan QA60 |
+| 21 Okt 2026 | ⚠️ `ndvi-timeseries-mangrove.js` pakai QA_PIXEL (band Landsat, tidak ada di S2) | ✅ Diperbaiki | **22 Okt 2026**: sudah di-patch ke SCL masking (`scl.eq(4).or(5).or(6).or(7)`). `node --check` OK |
+| 21 Okt 2026 | ⚠️ `PIPELINE-5-MAPS.md` masih pakai QA60 | ✅ Diperbaiki | **22 Okt 2026**: di-patch ke SCL masking, sama seperti script utama |
+| 22 Okt 2026 | Catatan perbedaan 2 pendekatan mask SCL | 🟡 Info | Pendekatan **whitelist** (`eq(4,5,6,7)` = vegetasi/bare/water/unclassified) dipakai di script canonical. Pendekatan **blacklist** (`neq(3,8,9,10,11)`) dipakai di panduan cron. Keduanya valid; whitelist lebih konservatif untuk klasifikasi mangrove |
+| | Minggu 1-2: GEE Fundamentals | ⬜ | Menunggu konfirmasi Robbani |
 | | Minggu 3-4: Time-series | ⬜ | |
 | | Minggu 5: Automasi | ⬜ | |
 | | Minggu 6: Portofolio | ⬜ | |

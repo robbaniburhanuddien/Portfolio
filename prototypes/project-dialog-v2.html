@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prototipe v2 — Dialog Proyek (Carousel + Tabs)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f5f1e8;
+    --bg-2:#efe6d5;
+    --surface:#fffdf8;
+    --primary:#26794A;
+    --primary-light:#3D8F5E;
+    --primary-glow:rgba(38,121,74,.18);
+    --accent:#B7791F;
+    --line:rgba(38,121,74,.22);
+    --line-soft:rgba(38,121,74,.14);
+    --text:#3D3D3D;
+    --muted:#6B6B6B;
+    --dim:#8f8878;
+    --sans:'Inter',sans-serif;
+    --display:'Playfair Display',serif;
+    --mono:'Space Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(ellipse at 18% 0%, rgba(38,121,74,.07), transparent 55%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    min-height:100vh;
+    padding:28px 20px 60px;
+  }
+
+  /* ---------------- bar kontrol prototipe ---------------- */
+  .proto{
+    max-width:1080px;margin:0 auto 24px;
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    padding:10px 14px;border:1px solid var(--line);border-radius:999px;
+    background:var(--surface);
+  }
+  .proto b{
+    font-family:var(--mono);font-size:.64rem;letter-spacing:1.3px;
+    text-transform:uppercase;color:var(--dim);font-weight:400;margin-right:auto;
+  }
+  .proto button{
+    font-family:var(--sans);font-size:.78rem;padding:7px 14px;
+    border-radius:999px;border:1px solid var(--line);
+    background:transparent;color:var(--muted);cursor:pointer;transition:.16s ease;
+  }
+  .proto button:hover{border-color:var(--primary);color:var(--primary)}
+  .proto button.on{background:var(--primary);border-color:var(--primary);color:#fff}
+
+  /* ---------------- panggung ---------------- */
+  .stage{
+    max-width:1080px;margin:0 auto;padding:44px 32px;
+    border-radius:22px;border:1px solid var(--line-soft);
+    background:
+      linear-gradient(155deg, rgba(38,121,74,.05), transparent 58%),
+      var(--bg-2);
+    display:flex;justify-content:center;
+  }
+
+  /* ---------------- dialog ---------------- */
+  .dlg{
+    position:relative;width:100%;max-width:1000px;
+    display:grid;grid-template-columns:55fr 45fr;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:16px;
+    box-shadow:0 26px 80px rgba(44,38,30,.22);
+    overflow:hidden;
+  }
+
+  .dlg-close{
+    position:absolute;top:12px;right:12px;z-index:9;
+    width:34px;height:34px;display:grid;place-items:center;
+    border-radius:50%;border:1px solid var(--line);
+    background:rgba(255,253,248,.94);color:var(--muted);
+    font-size:1.1rem;line-height:1;cursor:pointer;
+    backdrop-filter:blur(6px);transition:.18s ease;
+  }
+  .dlg-close:hover{border-color:var(--primary);color:var(--primary);transform:rotate(90deg)}
+
+  /* ================= KIRI — GALERI ================= */
+  .gallery{
+    position:relative;overflow:hidden;
+    background:#e9dfcd;
+    min-height:460px;
+  }
+  .track{
+    position:absolute;inset:0;
+    display:flex;height:100%;
+    transition:transform .5s cubic-bezier(.22,.61,.36,1);
+  }
+  .slide{
+    flex:0 0 100%;height:100%;
+    display:flex;align-items:center;justify-content:center;
+    padding:14px;
+  }
+  .slide img{
+    width:100%;height:100%;
+    object-fit:contain;           /* foto utuh, tanpa crop */
+    border-radius:6px;
+    display:block;
+  }
+
+  /* caption lokasi */
+  .gal-cap{
+    position:absolute;left:0;right:0;bottom:36px;z-index:3;
+    padding:26px 18px 10px;
+    background:linear-gradient(to top, rgba(30,26,20,.74), rgba(30,26,20,0));
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.9px;
+    text-transform:uppercase;color:rgba(255,253,248,.94);
+    display:flex;align-items:center;gap:7px;
+    pointer-events:none;
+  }
+  .gal-cap::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+  /* panah manual */
+  .gal-nav{
+    position:absolute;top:50%;transform:translateY(-50%);z-index:4;
+    width:34px;height:34px;display:grid;place-items:center;
+    border-radius:50%;border:1px solid rgba(38,121,74,.28);
+    background:rgba(255,253,248,.9);color:var(--primary);
+    font-size:1.15rem;line-height:1;cursor:pointer;
+    backdrop-filter:blur(5px);transition:.16s ease;
+  }
+  .gal-nav:hover{background:#fff;border-color:var(--primary)}
+  .gal-prev{left:12px}
+  .gal-next{right:12px}
+  .gal-nav[hidden]{display:none}
+
+  /* dot + counter */
+  .gal-dots{
+    position:absolute;left:50%;bottom:12px;transform:translateX(-50%);
+    z-index:5;display:flex;align-items:center;gap:6px;
+    padding:5px 9px;border-radius:999px;
+    background:rgba(255,253,248,.86);backdrop-filter:blur(5px);
+  }
+  .dot{
+    width:6px;height:6px;border-radius:999px;border:0;padding:0;
+    background:rgba(38,121,74,.32);cursor:pointer;transition:.2s ease;
+  }
+  .dot.on{width:16px;background:var(--primary)}
+  .gal-dots[hidden]{display:none}
+
+  .gal-count{
+    position:absolute;top:12px;left:12px;z-index:5;
+    font-family:var(--mono);font-size:.6rem;letter-spacing:1px;
+    padding:4px 9px;border-radius:999px;
+    background:rgba(255,253,248,.86);color:var(--muted);
+    backdrop-filter:blur(5px);
+  }
+  .gal-count[hidden]{display:none}
+
+  /* ================= KANAN — KONTEN ================= */
+  .body{padding:34px 32px 30px;min-width:0;display:flex;flex-direction:column}
+
+  .p-title{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(1.4rem,2.4vw,1.85rem);line-height:1.14;
+    color:var(--text);margin:0 26px 14px 0;
+  }
+
+  .meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .tag{
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.6px;
+    padding:4px 11px;border-radius:999px;
+    background:rgba(38,121,74,.07);
+    border:1px solid rgba(38,121,74,.22);
+    color:var(--primary);
+  }
+  .year{
+    font-family:var(--mono);font-size:.64rem;letter-spacing:1.4px;
+    padding:4px 11px;border-radius:999px;
+    border:1px solid var(--line);color:var(--accent);
+  }
+
+  .short{
+    font-size:.9rem;line-height:1.65;color:var(--muted);
+    margin-bottom:20px;
+  }
+
+  /* tabs */
+  .tabs{
+    display:flex;gap:6px;margin-bottom:18px;
+    padding:4px;border-radius:999px;
+    background:rgba(38,121,74,.06);
+    border:1px solid var(--line-soft);
+    align-self:flex-start;
+  }
+  .tab{
+    font-family:var(--sans);font-size:.76rem;font-weight:500;
+    letter-spacing:.2px;padding:8px 16px;border-radius:999px;
+    border:1px solid transparent;background:transparent;
+    color:var(--muted);cursor:pointer;transition:.16s ease;
+  }
+  .tab:hover{color:var(--primary)}
+  .tab[aria-selected="true"]{
+    background:var(--primary);border-color:var(--primary);color:#fff;
+    box-shadow:0 4px 12px rgba(38,121,74,.18);
+  }
+
+  .panel{animation:panelIn .26s ease both}
+  .panel[hidden]{display:none}
+  @keyframes panelIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  .tldr-text{font-size:.92rem;line-height:1.7;color:var(--muted)}
+
+  /* 4 blok full stories */
+  .blocks{display:flex;flex-direction:column;gap:15px}
+  .blk{}
+  .blk dt{
+    font-family:var(--mono);font-size:.6rem;letter-spacing:1.7px;
+    text-transform:uppercase;color:var(--primary);
+    margin-bottom:4px;display:flex;align-items:center;gap:7px;
+  }
+  .blk dt::before{
+    content:"";width:14px;height:1px;background:rgba(38,121,74,.45);
+  }
+  .blk dd{
+    font-size:.86rem;line-height:1.68;color:var(--muted);
+    padding-left:21px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .track{transition:none}
+    .panel{animation:none}
+  }
+
+  /* ---------------- responsive ---------------- */
+  @media (max-width:900px){
+    .dlg{grid-template-columns:1fr}
+    .gallery{min-height:0;height:260px}
+    .slide{padding:10px}
+    .body{padding:24px 22px 24px}
+    .p-title{margin-right:34px}
+  }
+  @media (max-width:520px){
+    body{padding:16px 12px 40px}
+    .stage{padding:18px 12px;border-radius:16px}
+    .gallery{height:210px}
+    .body{padding:20px 18px 22px}
+    .tabs{align-self:stretch;justify-content:center}
+    .tab{flex:1;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="proto">
+  <b>Prototipe v2 · Dialog Proyek</b>
+  <button id="btnTldr" class="on">TL;DR</button>
+  <button id="btnFull">Full Stories</button>
+  <button id="btnNext">Slide →</button>
+</div>
+
+<div class="stage">
+  <div class="dlg">
+    <button class="dlg-close" aria-label="Tutup">&times;</button>
+
+    <!-- ===== KIRI: galeri ===== -->
+    <div class="gallery" id="gal">
+      <span class="gal-count" id="galCount" aria-live="polite">1 / 3</span>
+
+      <div class="track" id="track">
+        <div class="slide"><img src="../images/DJI_0381.JPG" alt="Survei kawasan mangrove — foto 1" /></div>
+        <div class="slide"><img src="../images/IMG_9403~photo.JPG" alt="Penanaman mangrove — foto 2" /></div>
+        <div class="slide"><img src="../images/KT_Sejahtera_23112024_105851.jpg" alt="Kolaborasi masyarakat pesisir — foto 3" /></div>
+      </div>
+
+      <button class="gal-nav gal-prev" id="galPrev" aria-label="Foto sebelumnya">&#8249;</button>
+      <button class="gal-nav gal-next" id="galNext" aria-label="Foto berikutnya">&#8250;</button>
+
+      <div class="gal-dots" id="galDots" role="tablist" aria-label="Pilih foto">
+        <button class="dot on" role="tab" aria-selected="true" aria-label="Foto 1"></button>
+        <button class="dot" role="tab" aria-selected="false" aria-label="Foto 2"></button>
+        <button class="dot" role="tab" aria-selected="false" aria-label="Foto 3"></button>
+      </div>
+
+      <div class="gal-cap">Dokumentasi lapangan &middot; Sumatera Utara</div>
+    </div>
+
+    <!-- ===== KANAN: konten ===== -->
+    <div class="body">
+      <h2 class="p-title">Large-Scale Mangrove Planting</h2>
+
+      <div class="meta">
+        <span class="tag">Rehabilitation</span>
+        <span class="year">2025</span>
+      </div>
+
+      <p class="short">Restored 500+ ha of coastal mangrove through ecology-based planting and spatial monitoring.</p>
+
+      <div class="tabs" role="tablist" aria-label="Detail proyek">
+        <button class="tab" id="tabTldr" role="tab" aria-selected="true" aria-controls="panelTldr">TL;DR</button>
+        <button class="tab" id="tabFull" role="tab" aria-selected="false" aria-controls="panelFull">Full Stories</button>
+      </div>
+
+      <!-- panel TL;DR -->
+      <div class="panel" id="panelTldr" role="tabpanel" aria-labelledby="tabTldr">
+        <p class="tldr-text">Large-scale planting across degraded North Sumatra coastal ponds, combining GIS-based site selection, hydrological assessment, and community-led implementation. Delivered 500+ ha planted with 10K+ seedlings and first-year maintenance built into the work plan.</p>
+      </div>
+
+      <!-- panel Full Stories -->
+      <div class="panel" id="panelFull" role="tabpanel" aria-labelledby="tabFull" hidden>
+        <dl class="blocks">
+          <div class="blk">
+            <dt>Context</dt>
+            <dd>North Sumatra's coastal belt has lost mangrove cover to pond conversion and abrasion. The national restoration programme targeted degraded ponds and open mudflats where hydrology still allowed replanting.</dd>
+          </div>
+          <div class="blk">
+            <dt>Roles</dt>
+            <dd>Planned planting layouts and verified field implementation as GIS/technical facilitator; coordinated with community groups (pokmas) and local government on site selection and maintenance.</dd>
+          </div>
+          <div class="blk">
+            <dt>Process</dt>
+            <dd>Land-suitability analysis in GIS, hydrological survey to decide water-gate interventions, UAV orthophoto baseline, GNSS ground-truthing, and survival monitoring on permanent plots.</dd>
+          </div>
+          <div class="blk">
+            <dt>Impact</dt>
+            <dd>500+ ha planted and maintained in the project area, with 10K+ seedlings and survival checks feeding the provincial 831 ha programme target.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------- CAROUSEL ---------------- */
+  const track   = document.getElementById('track');
+  const slides  = Array.from(track.children);
+  const prevBtn = document.getElementById('galPrev');
+  const nextBtn = document.getElementById('galNext');
+  const dotsBox = document.getElementById('galDots');
+  const dots    = Array.from(dotsBox.children);
+  const counter = document.getElementById('galCount');
+  const gal     = document.getElementById('gal');
+
+  let index = 0;
+  let timer = null;
+  let hovered = false;
+  let manual = false;
+
+  function render() {
+    track.style.transform = 'translateX(' + (-index * 100) + '%)';
+    dots.forEach((d, i) => {
+      d.classList.toggle('on', i === index);
+      d.setAttribute('aria-selected', String(i === index));
+    });
+    counter.textContent = (index + 1) + ' / ' + slides.length;
+  }
+
+  function goTo(i) {
+    index = (i + slides.length) % slides.length;
+    render();
+  }
+
+  function startAuto() {
+    if (reduce || manual || slides.length < 2) return;
+    stopAuto();
+    timer = setInterval(() => {
+      if (!hovered && !document.hidden) goTo(index + 1);
+    }, 5000);
+  }
+  function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
+
+  function userNav(i) {
+    manual = true;          // interaksi manual = autoplay berhenti permanen
+    stopAuto();
+    goTo(i);
+  }
+
+  prevBtn.addEventListener('click', () => userNav(index - 1));
+  nextBtn.addEventListener('click', () => userNav(index + 1));
+  dots.forEach((d, i) => d.addEventListener('click', () => userNav(i)));
+
+  gal.addEventListener('mouseenter', () => { hovered = true; });
+  gal.addEventListener('mouseleave', () => { hovered = false; });
+  gal.addEventListener('focusin',    () => { hovered = true; });
+  gal.addEventListener('focusout',   () => { hovered = false; });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAuto(); else startAuto();
+  });
+
+  gal.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); userNav(index - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); userNav(index + 1); }
+  });
+
+  /* swipe */
+  let touchX = null;
+  gal.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, {passive:true});
+  gal.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) userNav(index + (dx < 0 ? 1 : -1));
+    touchX = null;
+  }, {passive:true});
+
+  /* ---------------- TABS ---------------- */
+  const tabTldr = document.getElementById('tabTldr');
+  const tabFull = document.getElementById('tabFull');
+  const panelTldr = document.getElementById('panelTldr');
+  const panelFull = document.getElementById('panelFull');
+  const tabs = [tabTldr, tabFull];
+
+  function selectTab(which) {
+    const isTldr = which === 'tldr';
+    tabTldr.setAttribute('aria-selected', String(isTldr));
+    tabFull.setAttribute('aria-selected', String(!isTldr));
+    panelTldr.hidden = !isTldr;
+    panelFull.hidden = isTldr;
+    /* re-trigger animasi */
+    const active = isTldr ? panelTldr : panelFull;
+    active.style.animation = 'none';
+    void active.offsetWidth;
+    active.style.animation = '';
+  }
+
+  tabTldr.addEventListener('click', () => selectTab('tldr'));
+  tabFull.addEventListener('click', () => selectTab('full'));
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      e.preventDefault();
+      const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+      next.focus();
+      next.click();
+    });
+  });
+
+  /* ---------------- kontrol prototipe ---------------- */
+  const btnTldr = document.getElementById('btnTldr');
+  const btnFull = document.getElementById('btnFull');
+  const btnNext = document.getElementById('btnNext');
+
+  btnTldr.addEventListener('click', () => {
+    selectTab('tldr');
+    btnTldr.classList.add('on'); btnFull.classList.remove('on');
+  });
+  btnFull.addEventListener('click', () => {
+    selectTab('full');
+    btnFull.classList.add('on'); btnTldr.classList.remove('on');
+  });
+  btnNext.addEventListener('click', () => userNav(index + 1));
+
+  /* ---------------- init ---------------- */
+  render();
+  if (slides.length < 2) {
+    prevBtn.hidden = nextBtn.hidden = dotsBox.hidden = counter.hidden = true;
+  } else {
+    startAuto();
+  }
+
+  /* dukung ?tab=full untuk screenshot */
+  const params = new URLSearchParams(location.search);
+  if (params.get('tab') === 'full') { selectTab('full'); btnFull.classList.add('on'); btnTldr.classList.remove('on'); }
+  if (params.get('slide')) { userNav(parseInt(params.get('slide'), 10) || 0); }
+})();
+</script>
+</body>
+</html>

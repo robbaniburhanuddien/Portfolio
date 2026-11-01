@@ -1,0 +1,105 @@
+[
+  {
+    "title": "Community Dashboard: Partisipasi Masyarakat dalam Rehabilitasi Mangrove",
+    "year": 2026,
+    "pdfPath": "papers/2026-08-23-community-dashboard.pdf",
+    "tags": [
+      "Ecology",
+      "Community",
+      "Dashboard"
+    ],
+    "pilar": [
+      "Ekologi",
+      "Humaniora"
+    ],
+    "sizeKB": 8
+  },
+  {
+    "title": "Mangrove Indonesia: Status, Tantangan, dan Strategi Rehabilitasi Nasional",
+    "year": 2026,
+    "pdfPath": "papers/2026-08-23-mangrove-indonesia.pdf",
+    "tags": [
+      "Ecology",
+      "Policy",
+      "National"
+    ],
+    "pilar": [
+      "Ekologi"
+    ],
+    "sizeKB": 11
+  },
+  {
+    "title": "Mangrove Indonesia v1: Analisis Kawasan Prioritas Rehabilitasi",
+    "year": 2026,
+    "pdfPath": "papers/2026-08-23-mangrove-indonesia-v1.pdf",
+    "tags": [
+      "Ecology",
+      "GIS",
+      "Priority Areas"
+    ],
+    "pilar": [
+      "Ekologi"
+    ],
+    "sizeKB": 9
+  },
+  {
+    "title": "UAV Mangrove: Pemantauan Berbasis Drone untuk Rehabilitasi Pesisir",
+    "year": 2026,
+    "pdfPath": "papers/2026-08-23-mangrove-uav.pdf",
+    "tags": [
+      "Ecology",
+      "GIS",
+      "UAV",
+      "Remote Sensing"
+    ],
+    "pilar": [
+      "Ekologi"
+    ],
+    "sizeKB": 11
+  },
+  {
+    "title": "Qowwam: Personal Philosophy — Kepemimpinan, Tanggung Jawab, dan Integritas",
+    "year": 2026,
+    "pdfPath": "papers/2026-08-24-qowwam.pdf",
+    "tags": [
+      "Philosophy",
+      "Leadership",
+      "Personal"
+    ],
+    "pilar": [
+      "Qowwam"
+    ],
+    "sizeKB": 5
+  },
+  {
+    "title": "GEE Mangrove: Google Earth Engine untuk Pemantauan Mangrove Skala Nasional",
+    "year": 2026,
+    "pdfPath": "papers/2026-09-29-gee-mangrove.pdf",
+    "tags": [
+      "Ecology",
+      "GIS",
+      "GEE",
+      "Remote Sensing",
+      "Automation"
+    ],
+    "pilar": [
+      "Ekologi"
+    ],
+    "sizeKB": 25
+  },
+  {
+    "title": "Postcolonial Mindset: Menyingkap Bias Kolonial dalam Praktik Ilmu Pengetahuan Modern",
+    "year": 2026,
+    "pdfPath": "papers/2026-09-29-postcolonial-mindset.pdf",
+    "tags": [
+      "Humanities",
+      "Interdisciplinary",
+      "Epistemology",
+      "Science Studies"
+    ],
+    "pilar": [
+      "Humaniora"
+    ],
+    "sizeKB": 18
+  }
+]

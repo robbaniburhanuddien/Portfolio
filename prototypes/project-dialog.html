@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prototipe — Dialog Proyek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --clr-bg:#f5f1e8;
+    --clr-bg-2:#efe6d5;
+    --clr-surface:#fffdf8;
+    --clr-primary:#26794A;
+    --clr-primary-light:#3D8F5E;
+    --clr-primary-glow:rgba(38,121,74,.18);
+    --clr-accent:#B7791F;
+    --clr-glass-border:rgba(38,121,74,.30);
+    --clr-text:#3D3D3D;
+    --clr-text-muted:#6B6B6B;
+    --clr-text-dim:#A0A0A0;
+    --font-sans:'Inter',sans-serif;
+    --font-display:'Playfair Display',serif;
+    --font-mono:'Space Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(38,121,74,.06), transparent 55%),
+      var(--clr-bg);
+    color:var(--clr-text);
+    font-family:var(--font-sans);
+    min-height:100vh;
+    padding:32px 24px 64px;
+  }
+
+  /* ---------- kontrol prototipe ---------- */
+  .proto-bar{
+    max-width:1000px;margin:0 auto 28px;
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    padding:12px 16px;
+    background:var(--clr-surface);
+    border:1px solid var(--clr-glass-border);
+    border-radius:999px;
+  }
+  .proto-bar span{
+    font-family:var(--font-mono);font-size:.68rem;letter-spacing:1.2px;
+    text-transform:uppercase;color:var(--clr-text-dim);margin-right:auto;
+  }
+  .proto-btn{
+    font-family:var(--font-sans);font-size:.8rem;
+    padding:7px 16px;border-radius:999px;cursor:pointer;
+    border:1px solid var(--clr-glass-border);
+    background:transparent;color:var(--clr-text-muted);
+    transition:.18s ease;
+  }
+  .proto-btn:hover{border-color:var(--clr-primary);color:var(--clr-primary)}
+  .proto-btn.active{background:var(--clr-primary);border-color:var(--clr-primary);color:#fff}
+
+  /* ---------- panggung ---------- */
+  .stage{
+    max-width:1000px;margin:0 auto;
+    padding:56px 40px;
+    border-radius:20px;
+    background:
+      linear-gradient(160deg, rgba(38,121,74,.05), transparent 60%),
+      var(--clr-bg-2);
+    border:1px solid rgba(38,121,74,.14);
+    display:flex;justify-content:center;
+  }
+
+  /* ---------- dialog ---------- */
+  .dlg{
+    position:relative;
+    width:100%;max-width:880px;
+    background:var(--clr-surface);
+    border:1px solid var(--clr-glass-border);
+    border-radius:16px;
+    box-shadow:0 24px 80px rgba(44,38,30,.22);
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:340px minmax(0,1fr);
+  }
+
+  /* ---- media (layout A: kiri) ---- */
+  .dlg-media{position:relative;background:#efe6d5;min-height:100%}
+  .dlg-media img{
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
+  .dlg-media::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(30,26,20,.72) 0%, rgba(30,26,20,.05) 42%, transparent 65%);
+    pointer-events:none;
+  }
+  .dlg-media-cap{
+    position:absolute;left:16px;right:16px;bottom:14px;z-index:2;
+    font-family:var(--font-mono);font-size:.64rem;letter-spacing:.9px;
+    text-transform:uppercase;color:rgba(255,253,248,.92);
+    display:flex;align-items:center;gap:7px;
+  }
+  .dlg-media-cap::before{
+    content:"";width:5px;height:5px;border-radius:50%;
+    background:var(--clr-accent);flex:0 0 auto;
+  }
+
+  /* ---- body ---- */
+  .dlg-body{padding:34px 34px 30px;min-width:0}
+
+  .dlg-close{
+    position:absolute;top:12px;right:12px;z-index:5;
+    width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+    border-radius:50%;border:1px solid var(--clr-glass-border);
+    background:rgba(255,253,248,.92);color:var(--clr-text-muted);
+    font-size:1.15rem;line-height:1;cursor:pointer;
+    backdrop-filter:blur(6px);transition:.18s ease;
+  }
+  .dlg-close:hover{border-color:var(--clr-primary);color:var(--clr-primary);transform:rotate(90deg)}
+
+  .kicker{
+    font-family:var(--font-mono);font-size:.66rem;letter-spacing:2px;
+    text-transform:uppercase;color:var(--clr-accent);
+    margin-bottom:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  }
+  .kicker .dot{width:4px;height:4px;border-radius:50%;background:var(--clr-text-dim)}
+  .kicker .sector{
+    color:var(--clr-primary);border:1px solid rgba(38,121,74,.35);
+    border-radius:999px;padding:2px 9px;letter-spacing:1.2px;font-size:.6rem;
+  }
+
+  .dlg-title{
+    font-family:var(--font-display);font-weight:700;
+    font-size:clamp(1.45rem,3vw,1.95rem);line-height:1.14;
+    color:var(--clr-text);margin:0 30px 14px 0;
+  }
+
+  .tldr{
+    font-size:.95rem;line-height:1.6;color:var(--clr-primary);
+    border-left:3px solid var(--clr-primary);
+    padding-left:14px;margin-bottom:22px;font-weight:500;
+  }
+
+  .label{
+    font-family:var(--font-mono);font-size:.62rem;letter-spacing:1.8px;
+    text-transform:uppercase;color:var(--clr-text-dim);margin-bottom:7px;
+  }
+  .story{
+    font-size:.9rem;line-height:1.72;color:var(--clr-text-muted);
+    margin-bottom:24px;
+  }
+
+  /* ---- stat strip ---- */
+  .stats{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    border-top:1px solid rgba(38,121,74,.16);
+    border-bottom:1px solid rgba(38,121,74,.16);
+    margin-bottom:20px;
+  }
+  .stat{padding:16px 14px 15px;position:relative}
+  .stat + .stat{border-left:1px solid rgba(38,121,74,.16)}
+  .stat-num{
+    font-family:var(--font-display);font-weight:700;
+    font-size:1.5rem;line-height:1;color:var(--clr-primary);
+    display:block;margin-bottom:5px;
+  }
+  .stat-lbl{
+    font-family:var(--font-mono);font-size:.58rem;letter-spacing:1.3px;
+    text-transform:uppercase;color:var(--clr-text-dim);line-height:1.35;
+  }
+
+  /* ---- tags ---- */
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+  .tag{
+    font-family:var(--font-mono);font-size:.66rem;letter-spacing:.6px;
+    padding:5px 12px;border-radius:999px;
+    background:rgba(38,121,74,.08);
+    border:1px solid rgba(38,121,74,.24);
+    color:var(--clr-primary);
+  }
+
+  /* ---- footer actions ---- */
+  .actions{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    padding-top:18px;border-top:1px solid rgba(38,121,74,.16);
+  }
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.82rem;font-weight:500;
+    padding:10px 20px;border-radius:999px;
+    background:var(--clr-primary);color:#fff;
+    border:1px solid var(--clr-primary);
+    text-decoration:none;transition:.18s ease;
+  }
+  .btn-primary:hover{background:var(--clr-primary-light);border-color:var(--clr-primary-light)}
+  .btn-primary .arrow{transition:transform .18s ease}
+  .btn-primary:hover .arrow{transform:translateX(3px)}
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.82rem;font-weight:500;
+    padding:10px 20px;border-radius:999px;
+    background:transparent;color:var(--clr-text-muted);
+    border:1px solid var(--clr-glass-border);
+    text-decoration:none;transition:.18s ease;
+  }
+  .btn-ghost:hover{border-color:var(--clr-primary);color:var(--clr-primary)}
+
+  /* =========================================================
+     LAYOUT B — foto besar di atas
+     ========================================================= */
+  .dlg.layout-top{grid-template-columns:1fr}
+  .dlg.layout-top .dlg-media{min-height:0;height:260px}
+  .dlg.layout-top .dlg-media img{height:260px}
+  .dlg.layout-top .dlg-body{padding-top:26px}
+  .dlg.layout-top .dlg-title{margin-right:40px}
+
+  @media (max-width:840px){
+    .stage{padding:28px 16px}
+    .dlg{grid-template-columns:1fr}
+    .dlg-media{height:220px}
+    .dlg-media img{height:220px}
+    .dlg-body{padding:24px 22px 22px}
+    .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .stat{padding:12px 8px}
+    .stat-num{font-size:1.2rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="proto-bar">
+  <span>Prototipe · Dialog Proyek</span>
+  <button class="proto-btn active" data-layout="side">Layout A — Foto Kiri</button>
+  <button class="proto-btn" data-layout="top">Layout B — Foto Atas</button>
+</div>
+
+<div class="stage">
+  <div class="dlg" id="dlgA">
+    <button class="dlg-close" aria-label="Tutup">&times;</button>
+
+    <div class="dlg-media">
+      <img src="../images/IMG_9403~photo.JPG" alt="Penanaman mangrove skala besar" />
+      <div class="dlg-media-cap">Dokumentasi lapangan · Sumatera Utara</div>
+    </div>
+
+    <div class="dlg-body">
+      <p class="kicker">
+        Project Spotlight <span class="dot"></span> 2025
+        <span class="sector">Restorasi Pesisir</span>
+      </p>
+
+      <h2 class="dlg-title">Large-Scale Mangrove Planting</h2>
+
+      <p class="tldr">Restored 500+ ha of coastal mangrove through ecology-based planting and spatial monitoring.</p>
+
+      <p class="label">Cerita Lengkap</p>
+      <p class="story">Program penanaman dan pemulihan ekosistem mangrove di wilayah pesisir target nasional dengan pendekatan berbasis ekologi. Pemilihan lokasi didasarkan pada analisis kesesuaian lahan, hidrologi, dan kondisi substrat, lalu dieksekusi bersama kelompok masyarakat pelaksana di lapangan.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-num">500+</span>
+          <span class="stat-lbl">ha Area</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">10K+</span>
+          <span class="stat-lbl">Bibit</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">2025</span>
+          <span class="stat-lbl">Tahun Pelaksanaan</span>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Rehabilitation</span>
+        <span class="tag">Community</span>
+      </div>
+
+      <div class="actions">
+        <a href="#" class="btn-primary">Lihat di Galeri <span class="arrow">&rarr;</span></a>
+        <a href="#" class="btn-ghost">Buka Peta Lokasi</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const dlg = document.getElementById('dlgA');
+  document.querySelectorAll('.proto-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.proto-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      dlg.classList.toggle('layout-top', btn.dataset.layout === 'top');
+    });
+  });
+</script>
+</body>
+</html>

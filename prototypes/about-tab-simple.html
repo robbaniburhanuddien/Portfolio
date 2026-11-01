@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me — Prototype</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-2: #f5f7f4;
+      --text: #1e2a25;
+      --text-muted: #5e6e64;
+      --primary: #26794A;
+      --primary-dark: #1d5f3d;
+      --primary-glow: rgba(38, 121, 74, 0.25);
+      --accent: #00A9A5;
+      --dim: #6b7b72;
+      --border: #e2e7e2;
+      --glass-bg: rgba(255, 255, 255, 0.75);
+      --glass-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --font-display: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --radius: 12px;
+      --shadow-card: 0 6px 16px rgba(0,0,0,.06);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Dark theme (fallback) */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1210;
+        --bg-2: #131c19;
+        --text: #d7e0db;
+        --text-muted: #aebcb3;
+        --primary: #4bd37a;
+        --primary-dark: #3fa36a;
+        --primary-glow: rgba(75, 211, 122, 0.25);
+        --accent: #6ff0c8;
+        --dim: #9fb0a3;
+        --border: #25312d;
+        --glass-bg: rgba(15, 30, 25, 0.75);
+        --glass-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 2.5rem;
+    }
+
+    /* ---------- About ---------- */
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .section-header .tag {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: .7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .section-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--text);
+      margin: 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* Photo window */
+    .about-photo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg-2);
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .about-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-photo .photo-label {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      font-size: .8rem;
+      padding: 6px 10px;
+      border-radius: 8px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Content */
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .about-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .about-role {
+      color: var(--primary);
+      font-size: 1rem;
+      margin-bottom: 20px;
+      letter-spacing: .5px;
+    }
+    .about-bio {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .about-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .skill-chip {
+      background: var(--glass-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: .75rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+      box-shadow: var(--shadow-card);
+    }
+    .about-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .about-social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--glass-bg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-card);
+      transition: background .2s, transform .15s;
+    }
+    .about-social a:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
+    .about-social a svg { width: 18px; height: 18px; }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: .95rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: var(--shadow-card);
+      transition: background .2s, transform .15s;
+    }
+    .btn-cta:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    .footer-note {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--dim);
+      margin-top: 2.5rem;
+      font-family: var(--font-display);
+    }
+
+    @media (max-width: 800px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { aspect-ratio: auto; height: 240px; }
+    }
+  </style>
+</head>
+<body class="light">
+  <div class="container">
+    <header class="section-header">
+      <span class="tag">About</span>
+      <h1>About Me</h1>
+    </header>
+
+    <div class="about-grid">
+      <!-- Photo window -->
+      <div class="about-photo">
+        <img src="../images/profil_tentang_saya/WhatsApp_Image_2026-08-16_at_9.57.30_PM.jpeg" alt="Burhanuddien Robbani, S.P." />
+        <div class="photo-label">Burhanuddien Robbani, S.P.</div>
+      </div>
+
+      <!-- Content -->
+      <div class="about-content">
+        <h2 class="about-name">Burhanuddien Robbani, <span style="color: var(--primary); font-style: italic;">S.P.</span></h2>
+        <p class="about-role">GIS &amp; Remote Sensing Analyst · Mangrove Rehabilitation Specialist</p>
+
+        <p class="about-bio">
+          GIS &amp; Remote Sensing Analyst with 3+ years of mangrove rehabilitation experience. I design,
+          monitor, and map coastal ecosystems using UAV, satellite imagery, and field surveys —
+          turning complex spatial data into actionable restoration decisions.
+        </p>
+
+        <div class="about-skills">
+          <span class="skill-chip">GIS</span>
+          <span class="skill-chip">UAV / Drone</span>
+          <span class="skill-chip">Remote Sensing</span>
+          <span class="skill-chip">GEE / NDVI</span>
+          <span class="skill-chip">ArcGIS Pro</span>
+          <span class="skill-chip">Metashape / Pix4D</span>
+          <span class="skill-chip">Community Engagement</span>
+        </div>
+
+        <div class="about-social">
+          <a href="https://linkedin.com/in/robbanib" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM0 8h4.96V24h-4.96zM8.36 8h4.96V24H8.36zM0 16h4.96V24h-4.96zM8.36 16h4.96V24H8.36zM0 8v16h4.96V24h-4.96zM15.72 8h4.96V24h-4.96zM11.24 8h4.96V24h-4.96z"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:burhanuddienrobbani@gmail.com">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 4l8 6 8-6"/></svg>
+            Email
+          </a>
+          <a href="https://wa.me/6281226768040" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-4h2v4h-2zm-4-2c-.55 0-1 .45-1 1v2h2v-2c0-.55-.45-1-1-1zM4 9.5v2H2v-2h2z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+
+        <a class="btn-cta" href="../cv.pdf" download>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L4 12h9L14 3"/><path d="M4 12h10"/></svg>
+          Unduh CV
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">Latest Update: October 2026</div>
+</body>
+</html>
