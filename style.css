@@ -732,15 +732,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   max-width: 900px;
   margin: 0 auto;
 }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0; bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, transparent, var(--clr-primary), var(--clr-accent), transparent);
-  transform: translateX(-50%);
-}
 
 /* ---- EXPERIENCE TABS (ala Brittany: click company -> panel, no scroll) ---- */
 .exp-tabs {
@@ -781,10 +772,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .timeline { display: flex; gap: 40px; align-items: flex-start; }
 
 @media (max-width: 760px) {
-  .timeline { flex-direction: column; gap: 18px; }
-  .exp-tabs { flex: 1 1 auto; width: 100%; flex-direction: row; flex-wrap: wrap; }
-  .exp-tab { flex: 1 1 calc(50% - 8px); border-left: none; border-bottom: 2px solid var(--clr-primary-glow); border-radius: 8px 8px 0 0; }
-  .exp-tab.active { border-bottom-color: var(--clr-accent); }
+  .exp-tab { flex: 1 1 100%; }
 }
 .timeline-item.right {
   justify-content: flex-start;
@@ -1383,13 +1371,18 @@ dialog.proj-dialog:not([open]){display:none}
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-photo-window { max-width: 380px; margin: 0 auto; }
 
-  .timeline::before { left: 24px; }
-  .timeline-item,
-  .timeline-item.right {
-    justify-content: flex-start;
-    padding-right: 0;
-    padding-left: 80px;
+  /* Experience: tabs pindah ke atas panel (hindari kolom 280px kejepit) */
+  .timeline { flex-direction: column; gap: 18px; }
+  .exp-tabs { flex: 1 1 auto; width: 100%; flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .exp-tab {
+    flex: 1 1 calc(50% - 8px);
+    border-left: none;
+    border-bottom: 2px solid var(--clr-primary-glow);
+    border-radius: 8px 8px 0 0;
+    padding: 12px 14px;
   }
+  .exp-tab.active { border-bottom-color: var(--clr-accent); }
+  .exp-tab-org { font-size: 0.95rem; line-height: 1.35; }
 }
 
 @media (max-width: 768px) {
